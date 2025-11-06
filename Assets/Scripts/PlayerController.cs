@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float sprintMultiplier = 1.6f;
-    private bool isSprinting = false;
 
     [Header("Dash")]
     [SerializeField] private float dashSpeed = 18f;
@@ -33,6 +32,9 @@ public class PlayerController : MonoBehaviour
     private ContactFilter2D attackFilter;
     private readonly List<Collider2D> overlapResults = new List<Collider2D>();
 
+    // Stamina reference
+    private PlayerStamina stamina;
+
     private void Awake()
     {
         if (GetComponent<PlayerInput>() == null)
@@ -42,8 +44,9 @@ public class PlayerController : MonoBehaviour
         attackFilter.SetLayerMask(enemyLayer);
         attackFilter.useTriggers = true;
 
-        // Optional: 자동으로 비활성화(또는 활성화) 상태 조정하지 않음 — Inspector에서 관리 가능
-        // if (attackAreaCollider != null) attackAreaCollider.enabled = false;
+        stamina = GetComponent<PlayerStamina>();
+        if (stamina == null)
+            Debug.LogWarning("PlayerStamina 컴포넌트가 없습니다. 스태미나 연동 기능 비활성화됩니다.");
     }
 
     private void Update()
@@ -64,6 +67,7 @@ public class PlayerController : MonoBehaviour
             Attack();
     }
 
+    // Dash: 대시 시 스태미나 소비 시도
     public void OnDash(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -72,9 +76,20 @@ public class PlayerController : MonoBehaviour
 
     public void OnSprint(InputAction.CallbackContext context)
     {
-        if (context.performed) isSprinting = true;
-        else if (context.canceled) isSprinting = false;
+        if (stamina == null) return;
+
+        if (context.started)
+        {
+        // Shift를 누르기 시작한 순간
+            stamina.SetSprint(true);
+        }
+        else if (context.canceled)
+        {
+        // Shift를 뗀 순간
+            stamina.SetSprint(false);
+        }
     }
+
 
     // ===================== Send Messages 호환 오버로드 (PlayerInput Behavior: Send Messages) =====================
     public void OnMove(InputValue value) => movementInput = value.Get<Vector2>();
@@ -88,18 +103,39 @@ public class PlayerController : MonoBehaviour
     }
     public void OnSprint(InputValue value)
     {
-        isSprinting = value.Get<float>() > 0f;
+        if (stamina == null) return;
+        bool sprinting = value.isPressed;
+        stamina.SetSprint(sprinting);
     }
+
 
     // ===================== 이동 =====================
     private void MovePlayer()
     {
         Vector3 dir = new Vector3(movementInput.x, movementInput.y, 0f);
-        if (dir.sqrMagnitude < 0.0001f) return;
+        bool isWalking = dir.sqrMagnitude >= 0.0001f;
+
+        if (!isWalking)
+        {
+            // walking 상태 전달
+            if (stamina != null) stamina.SetWalking(false);
+            return;
+        }
 
         dir = dir.normalized;
-        float speed = moveSpeed * (isSprinting ? sprintMultiplier : 1f);
+
+        // sprint 상태는 Stamina에서 읽음(존재하지 않으면 기존 로컬 동작)
+        bool sprinting = (stamina != null) ? stamina.IsSprinting : false;
+        float baseSpeed = moveSpeed * (sprinting ? sprintMultiplier : 1f);
+
+        // 스태미나 고갈 시 속도 보정
+        float exhaustedMult = (stamina != null) ? stamina.GetExhaustedSpeedMultiplier() : 1f;
+        float speed = baseSpeed * exhaustedMult;
+
         transform.Translate(dir * speed * Time.deltaTime, Space.World);
+
+        // walking 상태 전달 (스프린트 중이면 walking=false)
+        if (stamina != null) stamina.SetWalking(!sprinting && isWalking);
     }
 
     // ===================== 대시 =====================
@@ -109,6 +145,16 @@ public class PlayerController : MonoBehaviour
 
         Vector3 dir = new Vector3(movementInput.x, movementInput.y, 0f);
         if (dir.sqrMagnitude < 0.01f) return;
+
+        // 스태미나가 있으면 대시 비용 소모 시도
+        if (stamina != null)
+        {
+            if (!stamina.TryConsumeDash())
+            {
+                Debug.Log("대시 실패: 스태미나 부족");
+                return;
+            }
+        }
 
         StartCoroutine(Dash(dir.normalized));
     }
@@ -134,15 +180,22 @@ public class PlayerController : MonoBehaviour
         if (Time.time < lastAttackTime + attackCooldown) return;
         lastAttackTime = Time.time;
 
+        // 스태미나가 있으면 공격 비용 소모 시도
+        if (stamina != null)
+        {
+            if (!stamina.TryConsumeAttack())
+            {
+                Debug.Log("공격 실패: 스태미나 부족");
+                return;
+            }
+        }
+
         StartCoroutine(PerformAttack());
     }
 
     private IEnumerator PerformAttack()
     {
         isAttacking = true;
-
-        // (옵션) 공격 시작 시 콜라이더 활성화해서 트리거 이벤트를 사용하고 싶다면 여기서 활성화.
-        // if (attackAreaCollider != null) attackAreaCollider.enabled = true;
 
         // 공격 지속 시간 동안 기다림 (애니메이션 동기화 용이)
         yield return new WaitForSeconds(attackDuration);
@@ -157,13 +210,13 @@ public class PlayerController : MonoBehaviour
             {
                 if (col == null) continue;
                 Debug.Log("공격 성공: " + col.name);
-                // 예시: 적 오브젝트 파괴. 실제로는 적의 체력 시스템 호출 권장.
+                // 실제로는 EnemyHealth.TakeDamage(...) 호출 권장
                 Destroy(col.gameObject);
             }
         }
         else
         {
-            // fallback: 기존 방식 (원하면 삭제)
+            // fallback: 기존 방식
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, 1.0f, enemyLayer);
             foreach (var enemy in hitEnemies)
             {
@@ -172,16 +225,12 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        // (옵션) 공격 끝나면 콜라이더 비활성화
-        // if (attackAreaCollider != null) attackAreaCollider.enabled = false;
-
         isAttacking = false;
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        // 시각화: AttackArea 콜라이더가 있으면 그것을, 없으면 기본 반경 표시
         if (attackAreaCollider is CircleCollider2D cc)
         {
             Gizmos.DrawWireSphere(cc.transform.position + (Vector3)cc.offset, cc.radius * cc.transform.lossyScale.x);
