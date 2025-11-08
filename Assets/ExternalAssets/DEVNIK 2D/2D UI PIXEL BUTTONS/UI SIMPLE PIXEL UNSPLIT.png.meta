@@ -55,7 +55,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -143,7 +143,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PLAY_BUTTON
+      name: UI SIMPLE PIXEL UNSPLIT_0
       rect:
         serializedVersion: 2
         x: 48
@@ -158,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0683945714dcc65478b3bae3618c5214
-      internalID: 177566260
+      spriteID: fe2a1d79c957f634a9e47e4c2a83fa78
+      internalID: -1850278089
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PAUSE_BUTTON
+      name: UI SIMPLE PIXEL UNSPLIT_1
       rect:
         serializedVersion: 2
         x: 224
@@ -180,14 +180,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 003c96d0d1796be428d17751b8d86461
-      internalID: -708245964
+      spriteID: 458e675bcf1ec5749b53f193dbc0b4f5
+      internalID: -1970336432
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SETTINGS
+      name: UI SIMPLE PIXEL UNSPLIT_2
       rect:
         serializedVersion: 2
         x: 404
@@ -202,14 +202,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cf1fd6c155122b14aa3e6751f7576da9
-      internalID: 614323164
+      spriteID: b7a3c694f01228b48aca45894336d284
+      internalID: 630142540
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PLAY BAR
+      name: UI SIMPLE PIXEL UNSPLIT_3
       rect:
         serializedVersion: 2
         x: 656
@@ -224,14 +224,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9ccea323b35bbd3459a942b06e3a1d9a
-      internalID: -72823007
+      spriteID: f34324898b86bb04484854041ef15ccc
+      internalID: 1036305006
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BAR1
+      name: UI SIMPLE PIXEL UNSPLIT_4
       rect:
         serializedVersion: 2
         x: 1080
@@ -246,14 +246,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 23a4e970391969743a034fae135fc172
-      internalID: -1397424353
+      spriteID: 165640b97d1658f479ecbfa7f114360c
+      internalID: 1399591486
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EXIT_BUTTON
+      name: UI SIMPLE PIXEL UNSPLIT_5
       rect:
         serializedVersion: 2
         x: 48
@@ -268,14 +268,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a393e65a4b8fb324994453b14601d6fa
-      internalID: -949757489
+      spriteID: 07611a86bf68aee47b6c508ea772221e
+      internalID: 1002862818
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SOUND_ON
+      name: UI SIMPLE PIXEL UNSPLIT_6
       rect:
         serializedVersion: 2
         x: 224
@@ -290,14 +290,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c5f9fe375b20fed4eade3014a4005c58
-      internalID: 433989029
+      spriteID: a492fa9f9f22cf24590d7099305cf05c
+      internalID: -2059918367
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SOUND_OFF
+      name: UI SIMPLE PIXEL UNSPLIT_7
       rect:
         serializedVersion: 2
         x: 404
@@ -312,14 +312,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 15ea377e837568541b9949f8cb9c1707
-      internalID: -1616128084
+      spriteID: 528ee93fcb4452d45a83232b336ed70b
+      internalID: -748902305
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LEVEL_BAR
+      name: UI SIMPLE PIXEL UNSPLIT_8
       rect:
         serializedVersion: 2
         x: 660
@@ -334,14 +334,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0fb3eb55fc21ed8468914f35bb1f79fe
-      internalID: -1150674614
+      spriteID: 7711bd22dac4d034d881e9f4ff25f14d
+      internalID: -1609349512
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BAR2
+      name: UI SIMPLE PIXEL UNSPLIT_9
       rect:
         serializedVersion: 2
         x: 1088
@@ -356,14 +356,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fdc658b14a7acf44d876b829157fdd1d
-      internalID: 482729247
+      spriteID: 54d54b4f6079bb549bb57b1296a5c8bb
+      internalID: 496145299
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PLAY_BUTTON1
+      name: UI SIMPLE PIXEL UNSPLIT_10
       rect:
         serializedVersion: 2
         x: 44
@@ -378,14 +378,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b3a6e0fea8a2004795e9d56d93d4436
-      internalID: -716720451
+      spriteID: 22cf607d043db444bb6473c70bda5386
+      internalID: -400657339
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PAUSE_BUTTON1
+      name: UI SIMPLE PIXEL UNSPLIT_11
       rect:
         serializedVersion: 2
         x: 220
@@ -400,14 +400,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f4b9cdc174964c5429a365bce9f029bb
-      internalID: -713559888
+      spriteID: a65efa78357d3ef4b82862c8fd76f185
+      internalID: -1020991967
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SETTINGS_1
+      name: UI SIMPLE PIXEL UNSPLIT_12
       rect:
         serializedVersion: 2
         x: 400
@@ -422,17 +422,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 33968d08468e733428a9d6bf644f0ceb
-      internalID: -1398130153
+      spriteID: 6edf59cf84a7cb04d82b4aa86724db80
+      internalID: -76554959
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SET_BAR
+      name: UI SIMPLE PIXEL UNSPLIT_13
       rect:
         serializedVersion: 2
-        x: 653
+        x: 656
         y: 976
         width: 360
         height: 124
@@ -444,14 +444,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ff34eb039772e34f9b30a1c46969101
-      internalID: 590527004
+      spriteID: 78fee44f85ffc3344aba1b9236b1c224
+      internalID: -1455962172
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BAR3
+      name: UI SIMPLE PIXEL UNSPLIT_14
       rect:
         serializedVersion: 2
         x: 1088
@@ -466,58 +466,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6c25ca3fd2776754e99cdc638ab24684
-      internalID: -264501715
+      spriteID: b2acd52a6e3ce504e8d1a313f84472de
+      internalID: -1223247248
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EXIT_BAR
-      rect:
-        serializedVersion: 2
-        x: 656
-        y: 824
-        width: 360
-        height: 124
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0b2ceae3d358cc042a036340de23f24d
-      internalID: -630868318
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BAR4
-      rect:
-        serializedVersion: 2
-        x: 1136
-        y: 832
-        width: 264
-        height: 116
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f211d045e2f13fa48ba33ff5edfcda79
-      internalID: -1312014013
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: EXIT_BUTTON_1
+      name: UI SIMPLE PIXEL UNSPLIT_15
       rect:
         serializedVersion: 2
         x: 44
@@ -532,14 +488,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3707c95ea479e1c4ebcb2ee152f12569
-      internalID: 1878393918
+      spriteID: fd8b98d9c47ee1b4fadaee6db479ada3
+      internalID: -736815801
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SOUND_ON1
+      name: UI SIMPLE PIXEL UNSPLIT_16
       rect:
         serializedVersion: 2
         x: 220
@@ -554,14 +510,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 63c21898fcdcc594084bc03a45da79e7
-      internalID: 1820693325
+      spriteID: 4d8e06631ced8db4488346b5bf9241c7
+      internalID: -325630470
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SOUND_OFF2
+      name: UI SIMPLE PIXEL UNSPLIT_17
       rect:
         serializedVersion: 2
         x: 400
@@ -576,14 +532,58 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bd4a7d1ab2734484f9aba30967c30f6d
-      internalID: 1073997449
+      spriteID: fe35089b0d8b77c47a08622af93fe0b6
+      internalID: -1124973393
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BG_BAR2
+      name: UI SIMPLE PIXEL UNSPLIT_18
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 824
+        width: 360
+        height: 124
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b9ee8c1563c7df44a268878e5358c9a
+      internalID: 891474059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI SIMPLE PIXEL UNSPLIT_19
+      rect:
+        serializedVersion: 2
+        x: 1136
+        y: 832
+        width: 264
+        height: 116
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d955b78501e9b134592d31793b13bac9
+      internalID: 1270554867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI SIMPLE PIXEL UNSPLIT_20
       rect:
         serializedVersion: 2
         x: 44
@@ -598,14 +598,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c1782fc0e728acc45ae433014c34d862
-      internalID: -228637625
+      spriteID: 97e4bae731752aa4f863b2e53c1f115a
+      internalID: -2047407682
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_RIGHT
+      name: UI SIMPLE PIXEL UNSPLIT_21
       rect:
         serializedVersion: 2
         x: 580
@@ -620,14 +620,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 49dad8ac239f8c84596a45284d1fe36e
-      internalID: -525753861
+      spriteID: b346be6f2f0bfd348a241e4aa39bbf2a
+      internalID: 1573854647
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BG_UI
+      name: UI SIMPLE PIXEL UNSPLIT_22
       rect:
         serializedVersion: 2
         x: 840
@@ -642,14 +642,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a40006c5e704f174f9037a450a08c0d4
-      internalID: 1680676567
+      spriteID: ec3922b477231704884121aef93ed963
+      internalID: -294332578
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_LEFT
+      name: UI SIMPLE PIXEL UNSPLIT_23
       rect:
         serializedVersion: 2
         x: 568
@@ -664,14 +664,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 98636a8895513f549ad0b3970cbf5009
-      internalID: 701606609
+      spriteID: 3a52cdff7929bc045a1bb4c2800324c6
+      internalID: -573587783
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EMPTY_1
+      name: UI SIMPLE PIXEL UNSPLIT_24
       rect:
         serializedVersion: 2
         x: 64
@@ -686,14 +686,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5b1970ae91e308b4898287ac88d1e5b9
-      internalID: 711346776
+      spriteID: 6948fdb0623c78c4e8e8695d4f0d0dc5
+      internalID: 1627447594
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EXIT_2
+      name: UI SIMPLE PIXEL UNSPLIT_25
       rect:
         serializedVersion: 2
         x: 236
@@ -708,14 +708,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3dd12db2304b8fa4b84baebeb4833106
-      internalID: -1641844568
+      spriteID: 537fdaf005064e843b9e8cb843ba9702
+      internalID: -1399665294
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BAR_BG
+      name: UI SIMPLE PIXEL UNSPLIT_26
       rect:
         serializedVersion: 2
         x: 428
@@ -730,18 +730,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 68980adb5af8efa42b0f604452d80e06
-      internalID: -2025207524
+      spriteID: 2f8ddbd0624e93e4c8f192be42aa6a80
+      internalID: -1389845740
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BAR_OUTLINE
+      name: UI SIMPLE PIXEL UNSPLIT_27
       rect:
         serializedVersion: 2
         x: 428
-        y: 111
+        y: 108
         width: 376
         height: 36
       alignment: 0
@@ -752,14 +752,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6ecf3915b566697418db710d58c71cfa
-      internalID: -2127119051
+      spriteID: b00f0ab9930d9af4a8cbf0c0c75fffbd
+      internalID: -541746728
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SCROLL
+      name: UI SIMPLE PIXEL UNSPLIT_28
       rect:
         serializedVersion: 2
         x: 644
@@ -774,8 +774,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e9bac1baa6050354c9fc0c2caa2ca16b
-      internalID: 1897795018
+      spriteID: 5b46bdf6bb2d843479e087f4ef36a064
+      internalID: 1664564335
       vertices: []
       indices: 
       edges: []
@@ -792,37 +792,39 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      A_LEFT: 701606609
-      A_RIGHT: -525753861
-      BAR1: -1397424353
-      BAR2: 482729247
-      BAR3: -264501715
-      BAR4: -1312014013
-      BAR_BG: -2025207524
-      BAR_OUTLINE: -2127119051
-      BG_BAR2: -228637625
-      BG_UI: 1680676567
-      EMPTY_1: 711346776
-      EXIT_2: -1641844568
-      EXIT_BAR: -630868318
-      EXIT_BUTTON: -949757489
-      EXIT_BUTTON_1: 1878393918
-      LEVEL_BAR: -1150674614
-      PAUSE_BUTTON: -708245964
-      PAUSE_BUTTON1: -713559888
-      PLAY BAR: -72823007
-      PLAY_BUTTON: 177566260
-      PLAY_BUTTON1: -716720451
-      SCROLL: 1897795018
-      SETTINGS: 614323164
-      SETTINGS_1: -1398130153
-      SET_BAR: 590527004
-      SOUND_OFF: -1616128084
-      SOUND_OFF2: 1073997449
-      SOUND_ON: 433989029
-      SOUND_ON1: 1820693325
+      UI SIMPLE PIXEL UNSPLIT_0: -1850278089
+      UI SIMPLE PIXEL UNSPLIT_1: -1970336432
+      UI SIMPLE PIXEL UNSPLIT_10: -400657339
+      UI SIMPLE PIXEL UNSPLIT_11: -1020991967
+      UI SIMPLE PIXEL UNSPLIT_12: -76554959
+      UI SIMPLE PIXEL UNSPLIT_13: -1455962172
+      UI SIMPLE PIXEL UNSPLIT_14: -1223247248
+      UI SIMPLE PIXEL UNSPLIT_15: -736815801
+      UI SIMPLE PIXEL UNSPLIT_16: -325630470
+      UI SIMPLE PIXEL UNSPLIT_17: -1124973393
+      UI SIMPLE PIXEL UNSPLIT_18: 891474059
+      UI SIMPLE PIXEL UNSPLIT_19: 1270554867
+      UI SIMPLE PIXEL UNSPLIT_2: 630142540
+      UI SIMPLE PIXEL UNSPLIT_20: -2047407682
+      UI SIMPLE PIXEL UNSPLIT_21: 1573854647
+      UI SIMPLE PIXEL UNSPLIT_22: -294332578
+      UI SIMPLE PIXEL UNSPLIT_23: -573587783
+      UI SIMPLE PIXEL UNSPLIT_24: 1627447594
+      UI SIMPLE PIXEL UNSPLIT_25: -1399665294
+      UI SIMPLE PIXEL UNSPLIT_26: -1389845740
+      UI SIMPLE PIXEL UNSPLIT_27: -541746728
+      UI SIMPLE PIXEL UNSPLIT_28: 1664564335
+      UI SIMPLE PIXEL UNSPLIT_3: 1036305006
+      UI SIMPLE PIXEL UNSPLIT_4: 1399591486
+      UI SIMPLE PIXEL UNSPLIT_5: 1002862818
+      UI SIMPLE PIXEL UNSPLIT_6: -2059918367
+      UI SIMPLE PIXEL UNSPLIT_7: -748902305
+      UI SIMPLE PIXEL UNSPLIT_8: -1609349512
+      UI SIMPLE PIXEL UNSPLIT_9: 496145299
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
