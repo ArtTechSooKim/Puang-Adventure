@@ -104,6 +104,9 @@ public class PlayerPersistent : MonoBehaviour
         // Reconnect Inventory UI references
         ReconnectInventoryUI();
 
+        // Reconnect Health and Stamina UI references
+        ReconnectHealthStaminaUI();
+
         // Notify systems that player has entered a new scene
         OnPlayerEnteredScene(scene);
     }
@@ -188,6 +191,34 @@ public class PlayerPersistent : MonoBehaviour
         }
 
         Debug.Log("📦 PlayerPersistent: Reconnected Inventory UI");
+    }
+
+    /// <summary>
+    /// Reconnect Health and Stamina UI references after scene load
+    /// </summary>
+    private void ReconnectHealthStaminaUI()
+    {
+        // Refresh Health UI reference
+        if (playerHealth != null)
+        {
+            playerHealth.RefreshUIReference();
+        }
+        else
+        {
+            Debug.LogWarning("⚠ PlayerPersistent: PlayerHealth reference is null");
+        }
+
+        // Refresh Stamina UI reference
+        if (playerStamina != null)
+        {
+            playerStamina.RefreshUIReference();
+        }
+        else
+        {
+            Debug.LogWarning("⚠ PlayerPersistent: PlayerStamina reference is null");
+        }
+
+        Debug.Log("💚 PlayerPersistent: Reconnected Health and Stamina UI");
     }
 
     /// <summary>

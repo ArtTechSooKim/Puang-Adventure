@@ -18,6 +18,33 @@ public class PlayerHealth : MonoBehaviour
     void Awake()
     {
         currentHealth = maxHealth;
+        RefreshUIReference();
+    }
+
+    /// <summary>
+    /// Reconnect to HP Slider in the current scene
+    /// </summary>
+    public void RefreshUIReference()
+    {
+        // Find HPBar slider in the scene if reference is missing
+        if (hpSlider == null)
+        {
+            GameObject hpBarObj = GameObject.Find("Canvas_UI/HPBar");
+            if (hpBarObj != null)
+            {
+                hpSlider = hpBarObj.GetComponent<Slider>();
+                if (hpSlider != null)
+                {
+                    Debug.Log("✅ PlayerHealth: Reconnected to HPBar in scene");
+                }
+            }
+            else
+            {
+                Debug.LogWarning("⚠ PlayerHealth: HPBar not found in scene at Canvas_UI/HPBar");
+            }
+        }
+
+        // Update UI with current values
         if (hpSlider != null)
         {
             hpSlider.maxValue = maxHealth;

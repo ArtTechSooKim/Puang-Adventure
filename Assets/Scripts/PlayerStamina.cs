@@ -30,6 +30,33 @@ public class PlayerStamina : MonoBehaviour
     private void Awake()
     {
         currentStamina = maxStamina;
+        RefreshUIReference();
+    }
+
+    /// <summary>
+    /// Reconnect to Stamina Slider in the current scene
+    /// </summary>
+    public void RefreshUIReference()
+    {
+        // Find STBar slider in the scene if reference is missing
+        if (staminaSlider == null)
+        {
+            GameObject stBarObj = GameObject.Find("Canvas_UI/STBar");
+            if (stBarObj != null)
+            {
+                staminaSlider = stBarObj.GetComponent<Slider>();
+                if (staminaSlider != null)
+                {
+                    Debug.Log("✅ PlayerStamina: Reconnected to STBar in scene");
+                }
+            }
+            else
+            {
+                Debug.LogWarning("⚠ PlayerStamina: STBar not found in scene at Canvas_UI/STBar");
+            }
+        }
+
+        // Update UI with current values
         if (staminaSlider != null)
         {
             staminaSlider.maxValue = maxStamina;
