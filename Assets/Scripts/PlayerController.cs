@@ -35,6 +35,10 @@ public class PlayerController : MonoBehaviour
     // Stamina reference
     private PlayerStamina stamina;
 
+    //추가부분.김주은
+    private Animator anim;
+    private SpriteRenderer spriteRenderer;
+
     private void Awake()
     {
         if (GetComponent<PlayerInput>() == null)
@@ -47,6 +51,14 @@ public class PlayerController : MonoBehaviour
         stamina = GetComponent<PlayerStamina>();
         if (stamina == null)
             Debug.LogWarning("PlayerStamina 컴포넌트가 없습니다. 스태미나 연동 기능 비활성화됩니다.");
+
+
+        // Animator와 SpriteRenderer 추가부분.김주은
+        anim = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        if (anim == null)
+            Debug.LogError("PlayerController: Animator 컴포넌트를 찾을 수 없습니다. Player 오브젝트에 Animator 컴포넌트를 추가했는지 확인하세요.");
     }
 
     private void Update()
@@ -136,6 +148,62 @@ public class PlayerController : MonoBehaviour
 
         // walking 상태 전달 (스프린트 중이면 walking=false)
         if (stamina != null) stamina.SetWalking(!sprinting && isWalking);
+
+
+        //애니메이션 처리(김주은.추가부분)
+        if (anim != null)
+        {
+            // 1. Speed (Idle <-> Walk 전환)
+            // movementInput.magnitude는 속도의 크기입니다.
+            anim.SetFloat("Speed", movementInput.magnitude);
+
+            // 2. 방향 처리 (FacingBack, FacingFront, flipX)
+            if (isWalking) // 움직일 때만 방향 처리
+            {
+                // Y축 입력이 X축 입력보다 크거나 같을 때 Y축 우선 (대각선 포함, 0.01은 민감도)
+                if (Mathf.Abs(movementInput.y) >= Mathf.Abs(movementInput.x) && Mathf.Abs(movementInput.y) > 0.01f)
+                {
+                    // W 입력 (뒷모습)
+                    if (movementInput.y > 0) 
+                    {
+                        anim.SetBool("FacingBack", true);
+                        anim.SetBool("FacingFront", false);
+                    }
+                    // S 입력 (앞모습)
+                    else 
+                    {
+                        anim.SetBool("FacingBack", false);
+                        anim.SetBool("FacingFront", true);
+                    }
+                }
+                // X축 입력이 Y축보다 클 때 (측면)
+                else
+                {
+                    // 상하 방향 Bool 초기화 (측면 애니메이션이 재생되도록)
+                    anim.SetBool("FacingBack", false);
+                    anim.SetBool("FacingFront", false);
+
+                    // A/D 입력에 따른 좌우 반전(Flipping) 처리
+                    if (movementInput.x > 0)
+                    {
+                        spriteRenderer.flipX = false; // 오른쪽
+                    }
+                    else if (movementInput.x < 0)
+                    {
+                        spriteRenderer.flipX = true; // 왼쪽
+                    }
+                }
+            }
+            else // 멈췄을 때 (Idle 상태)
+            {
+                // 멈췄을 때도 캐릭터는 마지막 방향을 유지해야 합니다.
+                // Idle 상태에서는 방향 Bool 값을 유지하고, Walk 상태에서만 갱신됩니다.
+                
+                // 만약 Idle 상태에서 방향을 초기화하고 싶다면 다음 코드를 사용하세요:
+                // anim.SetBool("FacingBack", false);
+                // anim.SetBool("FacingFront", false);
+            }
+        }
     }
 
     // ===================== 대시 =====================
@@ -162,6 +230,11 @@ public class PlayerController : MonoBehaviour
     private IEnumerator Dash(Vector3 direction)
     {
         isDashing = true;
+
+        //김주은 추가부분
+        if (anim != null) anim.SetBool("Dash", true); // 대시 시작 시 Dash Bool을 True로
+
+
         float start = Time.time;
 
         while (Time.time < start + dashDuration)
@@ -171,6 +244,11 @@ public class PlayerController : MonoBehaviour
         }
 
         isDashing = false;
+
+        //김주은 추가부분
+        if (anim != null) anim.SetBool("Dash", false); // 대시 종료 시 Dash Bool을 False로
+
+
         lastDashTime = Time.time;
     }
 
@@ -196,6 +274,10 @@ public class PlayerController : MonoBehaviour
     private IEnumerator PerformAttack()
     {
         isAttacking = true;
+
+        //김주은 추가부분
+        if (anim != null) anim.SetTrigger("Attack"); // 공격 시작 시 Attack Trigger 발동
+
 
         // 공격 지속 시간 동안 기다림 (애니메이션 동기화 용이)
         yield return new WaitForSeconds(attackDuration);
