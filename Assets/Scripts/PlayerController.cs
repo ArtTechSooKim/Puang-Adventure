@@ -38,6 +38,8 @@ public class PlayerController : MonoBehaviour
     //추가부분.김주은
     private Animator anim;
     private SpriteRenderer spriteRenderer;
+    private Rigidbody2D rb;
+    private Vector3 lastInputDirection = Vector3.down;
 
     private void Awake()
     {
@@ -56,6 +58,7 @@ public class PlayerController : MonoBehaviour
         // Animator와 SpriteRenderer 추가부분.김주은
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
 
         if (anim == null)
             Debug.LogError("PlayerController: Animator 컴포넌트를 찾을 수 없습니다. Player 오브젝트에 Animator 컴포넌트를 추가했는지 확인하세요.");
@@ -146,6 +149,14 @@ public class PlayerController : MonoBehaviour
 
         transform.Translate(dir * speed * Time.deltaTime, Space.World);
 
+        //김주은.추가
+        if (isWalking)
+        {
+        // 실제로 움직이고 있을 때만 방향 저장
+        lastInputDirection = dir.normalized;
+        }
+
+
         // walking 상태 전달 (스프린트 중이면 walking=false)
         if (stamina != null) stamina.SetWalking(!sprinting && isWalking);
 
@@ -211,7 +222,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Time.time < lastDashTime + dashCooldown) return;
 
-        Vector3 dir = new Vector3(movementInput.x, movementInput.y, 0f);
+        Vector3 dir = lastInputDirection;
         if (dir.sqrMagnitude < 0.01f) return;
 
         // 스태미나가 있으면 대시 비용 소모 시도
@@ -233,6 +244,12 @@ public class PlayerController : MonoBehaviour
 
         //김주은 추가부분
         if (anim != null) anim.SetBool("Dash", true); // 대시 시작 시 Dash Bool을 True로
+        if (rb != null)
+        {
+            rb.isKinematic = true;
+            rb.linearVelocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+        }
 
 
         float start = Time.time;
@@ -247,7 +264,11 @@ public class PlayerController : MonoBehaviour
 
         //김주은 추가부분
         if (anim != null) anim.SetBool("Dash", false); // 대시 종료 시 Dash Bool을 False로
-
+        if (rb != null)
+        {
+            rb.isKinematic = false; // 물리 시스템 복구
+        }
+        
 
         lastDashTime = Time.time;
     }
@@ -276,11 +297,58 @@ public class PlayerController : MonoBehaviour
         isAttacking = true;
 
         //김주은 추가부분
+        if (rb != null)
+        {
+            rb.isKinematic = true; 
+            rb.linearVelocity = Vector2.zero; 
+            rb.angularVelocity = 0f;
+        }
         if (anim != null) anim.SetTrigger("Attack"); // 공격 시작 시 Attack Trigger 발동
+        if (rb != null) 
+        {
+            float lungeDistance = 0.3f; 
+            Vector3 lungeDirection = Vector3.zero;
+
+            // 1. 현재 바라보는 방향을 확인합니다. (가장 최신 정보를 사용)
+            if (anim.GetBool("FacingBack"))
+            {
+                lungeDirection = Vector3.up; // W 방향 (뒷모습)
+            }
+            else if (anim.GetBool("FacingFront"))
+            {
+                lungeDirection = Vector3.down; // S 방향 (앞모습)
+            }
+            else // FacingFront와 FacingBack이 모두 False일 때 (측면)
+            {
+                // SpriteRenderer의 flipX 상태를 확인합니다.
+                if (spriteRenderer.flipX)
+                    lungeDirection = Vector3.left; // A 방향 (왼쪽)
+                else
+                    lungeDirection = Vector3.right; // D 방향 (오른쪽)
+            }
+
+            // 2. 입력이 없었더라도 시야 방향으로 Lunge를 실행합니다.
+            // *만약 움직이고 있었다면, 움직이던 방향으로 Lunge 실행*
+            if (lastInputDirection.sqrMagnitude > 0.1f) {
+                lungeDirection = lastInputDirection; // 움직이고 있었으면 그 방향으로 Lunge
+            }
+            
+            // 3. 계산된 방향으로 Lunge 실행
+            if (lungeDirection.sqrMagnitude > 0.1f)
+            {
+                transform.Translate(lungeDirection.normalized * lungeDistance, Space.World);
+            }
+        }
 
 
         // 공격 지속 시간 동안 기다림 (애니메이션 동기화 용이)
         yield return new WaitForSeconds(attackDuration);
+
+        //김주은 추가
+        if (rb != null)
+        {
+            rb.isKinematic = false; // 물리 시스템 복구
+        }
 
         // 공격 판정: AttackArea 콜라이더 범위 내의 적 검색
         if (attackAreaCollider != null)
