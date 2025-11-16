@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55ee77f285e26d84c9de8ac06acd25c8, type: 3}
+  m_Name: BossMeat
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemID: Boss_Meat
+  itemName: "\uBCF4\uC2A4 \uACE0\uAE30"
+  sprite: {fileID: 21300000, guid: ef028cc40f06e164682e0c97dc52cfc5, type: 3}
+  isStackable: 1
+  maxStackSize: 99
+  worldPrefab: {fileID: 4089817076150239487, guid: 67218e49a7fc5a94cb89461fe0129858, type: 3}
+  isWeapon: 0
+  weaponTier: 0
+  hasUltimate: 0
+  isQuestItem: 1
+  stackCount: 1

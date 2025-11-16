@@ -18,6 +18,17 @@ public class PortalTrigger : MonoBehaviour
     [Tooltip("Use specific spawn position instead of PlayerSpawn tag")]
     [SerializeField] private bool useCustomSpawnPosition = false;
 
+    [Header("Quest Stage Requirements")]
+    [Tooltip("Require a specific quest stage to use this portal?")]
+    [SerializeField] private bool requiresQuestStage = false;
+
+    [Tooltip("Minimum quest stage required to use this portal")]
+    [SerializeField] private QuestStage requiredStage = QuestStage.Stage0_Tutorial;
+
+    [Tooltip("Message to show when player doesn't meet stage requirement")]
+    [TextArea(2, 4)]
+    [SerializeField] private string blockedMessage = "You cannot enter this area yet. Complete the required quest first.";
+
     [Header("Portal Visual (Optional)")]
     [Tooltip("Optional visual effect or sprite renderer to highlight the portal")]
     [SerializeField] private SpriteRenderer portalVisual;
@@ -43,6 +54,13 @@ public class PortalTrigger : MonoBehaviour
         // Check if the colliding object is the player
         if (other.CompareTag("Player") && !isTransitioning)
         {
+            // Check quest stage requirements
+            if (requiresQuestStage && !CheckQuestStageRequirement())
+            {
+                ShowBlockedMessage();
+                return;
+            }
+
             if (showDebugMessages)
                 Debug.Log($"🌀 PortalTrigger: Player entered portal '{gameObject.name}' → Loading scene '{targetSceneName}'");
 
@@ -105,6 +123,49 @@ public class PortalTrigger : MonoBehaviour
         return useCustomSpawnPosition ? spawnPosition : Vector3.zero;
     }
 
+    /// <summary>
+    /// Check if player meets the quest stage requirement
+    /// </summary>
+    private bool CheckQuestStageRequirement()
+    {
+        if (QuestManager.Instance == null)
+        {
+            Debug.LogWarning("⚠ PortalTrigger: QuestManager not found - allowing portal access");
+            return true;
+        }
+
+        bool meetsRequirement = QuestManager.Instance.IsStageReached(requiredStage);
+
+        if (showDebugMessages)
+        {
+            if (meetsRequirement)
+                Debug.Log($"✅ Portal access granted - Stage requirement met ({requiredStage})");
+            else
+                Debug.Log($"❌ Portal access denied - Stage {requiredStage} required");
+        }
+
+        return meetsRequirement;
+    }
+
+    /// <summary>
+    /// Show blocked message when player doesn't meet requirements
+    /// </summary>
+    private void ShowBlockedMessage()
+    {
+        if (DialogueManager.Instance != null)
+        {
+            DialogueManager.Instance.StartDialogue(new System.Collections.Generic.List<string> { blockedMessage });
+
+            if (showDebugMessages)
+                Debug.Log($"🚫 Portal blocked: {blockedMessage}");
+        }
+        else
+        {
+            Debug.LogWarning($"⚠ PortalTrigger: DialogueManager not found - cannot show blocked message");
+            Debug.Log($"🚫 Portal Blocked: {blockedMessage}");
+        }
+    }
+
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
@@ -148,7 +209,16 @@ public class PortalTrigger : MonoBehaviour
 
         // Show scene name label
         UnityEditor.Handles.color = Color.cyan;
-        UnityEditor.Handles.Label(transform.position + Vector3.up * 1f, $"Portal → {targetSceneName}");
+        string portalLabel = $"Portal → {targetSceneName}";
+
+        // Add quest requirement info if enabled
+        if (requiresQuestStage)
+        {
+            UnityEditor.Handles.color = Color.yellow;
+            portalLabel += $"\n🔒 Requires: {requiredStage}";
+        }
+
+        UnityEditor.Handles.Label(transform.position + Vector3.up * 1f, portalLabel);
     }
 #endif
 }

@@ -15,6 +15,14 @@ public class ItemData : ScriptableObject
     [Header("World Object")]
     public GameObject worldPrefab;  // Prefab to spawn when dropped into world
 
+    [Header("Weapon Properties")]
+    public bool isWeapon = false;
+    public int weaponTier = 0;      // 0 = non-weapon, 1-3 = weapon tiers
+    public bool hasUltimate = false; // Ultimate skill available for this weapon
+
+    [Header("Quest Properties")]
+    public bool isQuestItem = false; // Important items for quest progression
+
     [HideInInspector]
     public int stackCount = 1;      // Runtime stack count (not serialized in ScriptableObject)
 
@@ -29,6 +37,11 @@ public class ItemData : ScriptableObject
         copy.sprite = this.sprite;
         copy.isStackable = this.isStackable;
         copy.maxStackSize = this.maxStackSize;
+        copy.worldPrefab = this.worldPrefab;
+        copy.isWeapon = this.isWeapon;
+        copy.weaponTier = this.weaponTier;
+        copy.hasUltimate = this.hasUltimate;
+        copy.isQuestItem = this.isQuestItem;
         copy.stackCount = 1;
         return copy;
     }
@@ -43,5 +56,10 @@ public class ItemData : ScriptableObject
         this.sprite = other.sprite;
         this.isStackable = other.isStackable;
         this.maxStackSize = other.maxStackSize;
+        this.worldPrefab = other.worldPrefab;
+        this.isWeapon = other.isWeapon;
+        this.weaponTier = other.weaponTier;
+        this.hasUltimate = other.hasUltimate;
+        this.isQuestItem = other.isQuestItem;
     }
 }

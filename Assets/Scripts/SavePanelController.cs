@@ -169,9 +169,9 @@ public class SavePanelController : MonoBehaviour
         }
 
         // Save inventory data
-        if (InventoryManager.Instance != null)
+        if (Inventory.instance != null)
         {
-            data.inventoryData = InventoryManager.Instance.GetSaveData();
+            data.inventoryData = InventorySaveData.FromInventory(Inventory.instance);
         }
 
         // Save current scene name
@@ -210,9 +210,9 @@ public class SavePanelController : MonoBehaviour
         }
 
         // Restore inventory data
-        if (InventoryManager.Instance != null && data.inventoryData != null)
+        if (Inventory.instance != null && data.inventoryData != null)
         {
-            InventoryManager.Instance.LoadFromSaveData(data.inventoryData);
+            data.inventoryData.LoadIntoInventory(Inventory.instance);
         }
 
         // TODO: Load scene if different from current scene

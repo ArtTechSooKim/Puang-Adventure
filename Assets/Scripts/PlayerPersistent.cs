@@ -254,7 +254,7 @@ public class PlayerPersistent : MonoBehaviour
     private void OnPlayerEnteredScene(Scene scene)
     {
         // Notify other managers that player has entered a new scene
-        // Example: QuestManager can update objectives, InventoryManager can refresh UI
+        // Example: QuestManager can update objectives, Inventory can refresh UI
 
         if (GameManager.I != null)
         {

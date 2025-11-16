@@ -46,6 +46,9 @@ public class GameManager : MonoBehaviour
 
     private void InitializeGame()
     {
+        // Ensure game time is running normally at start
+        Time.timeScale = 1f;
+
         if (gameOverPanel != null) gameOverPanel.SetActive(false);
         UpdateScoreUI();
         isGameOver = false;

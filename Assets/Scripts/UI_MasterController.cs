@@ -215,6 +215,13 @@ public class UI_MasterController : MonoBehaviour
             return;
         }
 
+        // Block UI opening if dialogue is active
+        if (DialogueManager.Instance != null && DialogueManager.Instance.IsOpen())
+        {
+            LogDebug("⏸ UI_MasterController: Cannot open UI while dialogue is active");
+            return;
+        }
+
         isMasterUIOpen = true;
         masterPanel.SetActive(true);
         Time.timeScale = 0f; // Pause game
