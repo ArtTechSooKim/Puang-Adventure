@@ -85,6 +85,10 @@ public class PlayerController : MonoBehaviour
     // Dash: 대시 시 스태미나 소비 시도
     public void OnDash(InputAction.CallbackContext context)
     {
+        // Block dash input if dialogue is open
+        if (DialogueManager.Instance != null && DialogueManager.Instance.IsOpen())
+            return;
+
         if (context.performed)
             TryDash();
     }
@@ -114,6 +118,10 @@ public class PlayerController : MonoBehaviour
     }
     public void OnDash(InputValue value)
     {
+        // Block dash input if dialogue is open
+        if (DialogueManager.Instance != null && DialogueManager.Instance.IsOpen())
+            return;
+
         if (value.Get<float>() > 0f) TryDash();
     }
     public void OnSprint(InputValue value)
@@ -246,7 +254,7 @@ public class PlayerController : MonoBehaviour
         if (anim != null) anim.SetBool("Dash", true); // 대시 시작 시 Dash Bool을 True로
         if (rb != null)
         {
-            rb.isKinematic = true;
+            rb.bodyType = RigidbodyType2D.Kinematic;
             rb.linearVelocity = Vector2.zero;
             rb.angularVelocity = 0f;
         }
@@ -266,7 +274,7 @@ public class PlayerController : MonoBehaviour
         if (anim != null) anim.SetBool("Dash", false); // 대시 종료 시 Dash Bool을 False로
         if (rb != null)
         {
-            rb.isKinematic = false; // 물리 시스템 복구
+            rb.bodyType = RigidbodyType2D.Dynamic; // 물리 시스템 복구
         }
         
 
@@ -299,8 +307,8 @@ public class PlayerController : MonoBehaviour
         //김주은 추가부분
         if (rb != null)
         {
-            rb.isKinematic = true; 
-            rb.linearVelocity = Vector2.zero; 
+            rb.bodyType = RigidbodyType2D.Kinematic;
+            rb.linearVelocity = Vector2.zero;
             rb.angularVelocity = 0f;
         }
         if (anim != null) anim.SetTrigger("Attack"); // 공격 시작 시 Attack Trigger 발동
@@ -347,7 +355,7 @@ public class PlayerController : MonoBehaviour
         //김주은 추가
         if (rb != null)
         {
-            rb.isKinematic = false; // 물리 시스템 복구
+            rb.bodyType = RigidbodyType2D.Dynamic; // 물리 시스템 복구
         }
 
         // 공격 판정: AttackArea 콜라이더 범위 내의 적 검색

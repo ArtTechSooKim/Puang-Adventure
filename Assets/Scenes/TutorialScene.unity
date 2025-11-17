@@ -1099,6 +1099,7 @@ GameObject:
   - component: {fileID: 308565959}
   - component: {fileID: 308565958}
   - component: {fileID: 308565957}
+  - component: {fileID: 308565961}
   m_Layer: 0
   m_Name: NPC_Puangi
   m_TagString: Untagged
@@ -1168,6 +1169,11 @@ MonoBehaviour:
   autoOpenOnEnter: 0
   interactionKey: 101
   interactionPrompt: {fileID: 0}
+  questMarkerSprite: {fileID: 21300000, guid: f3573f666990c2f43ad88cc299d17ae5, type: 3}
+  markerOffset: {x: 0, y: 1, z: 0}
+  markerScale: 1
+  markerSortingLayer: UI
+  markerSortingOrder: 0
   showDebugMessages: 1
 --- !u!212 &308565959
 SpriteRenderer:
@@ -1242,6 +1248,42 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &308565961
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308565956}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 5
 --- !u!1 &324218466
 GameObject:
   m_ObjectHideFlags: 0
@@ -1254,6 +1296,7 @@ GameObject:
   - component: {fileID: 324218469}
   - component: {fileID: 324218468}
   - component: {fileID: 324218467}
+  - component: {fileID: 324218471}
   m_Layer: 0
   m_Name: NPC_ChungBoong
   m_TagString: Untagged
@@ -1323,6 +1366,11 @@ MonoBehaviour:
   autoOpenOnEnter: 0
   interactionKey: 101
   interactionPrompt: {fileID: 0}
+  questMarkerSprite: {fileID: 21300000, guid: f3573f666990c2f43ad88cc299d17ae5, type: 3}
+  markerOffset: {x: 0, y: 1, z: 0}
+  markerScale: 1
+  markerSortingLayer: UI
+  markerSortingOrder: 0
   showDebugMessages: 1
 --- !u!212 &324218469
 SpriteRenderer:
@@ -1397,6 +1445,42 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &324218471
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 324218466}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 5
 --- !u!1 &454678247
 GameObject:
   m_ObjectHideFlags: 0
@@ -1632,7 +1716,8 @@ MonoBehaviour:
   useCustomSpawnPosition: 0
   requiresQuestStage: 0
   requiredStage: 0
-  blockedMessage: You cannot enter this area yet. Complete the required quest first.
+  blockedMessage: "\"\uBB34\uAE30\uB97C \uBA3C\uC800 \uD68D\uB4DD\uD558\uC138\uC694!
+    \uB9C8\uC744 \uC218\uD480\uC744 \uD655\uC778\uD574\uBCF4\uC138\uC694.\""
   portalVisual: {fileID: 0}
   showDebugMessages: 1
 --- !u!61 &889133421
@@ -41680,6 +41765,55 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2049142747
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2049142749}
+  - component: {fileID: 2049142748}
+  m_Layer: 0
+  m_Name: DebugItemGiver
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2049142748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049142747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5f8ea4e0503fcd4e8f6c86aa61929bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DebugItemGiver
+  slimeDebris: {fileID: 11400000, guid: f731ebd246653c04d89700141bb3770a, type: 2}
+  batBone: {fileID: 11400000, guid: 02c0184adcaa9124ca7cfede7c14c0b0, type: 2}
+  forestSword: {fileID: 11400000, guid: 7fc56ab62a04ef945920d26a601f367f, type: 2}
+  giveQuestItemsKey: 282
+  clearInventoryKey: 283
+--- !u!4 &2049142749
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049142747}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.44677, y: 1.22181, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -41696,3 +41830,4 @@ SceneRoots:
   - {fileID: 1454660637}
   - {fileID: 1179212798}
   - {fileID: 891394281}
+  - {fileID: 2049142749}

@@ -18,11 +18,26 @@ public class NPCController : MonoBehaviour
     [Header("Visual Feedback (Optional)")]
     [SerializeField] private GameObject interactionPrompt; // UI element showing "Press E"
 
+    [Header("Quest Marker")]
+    [Tooltip("emote21 스프라이트를 할당하세요 (느낌표 말풍선)")]
+    [SerializeField] private Sprite questMarkerSprite;
+    [Tooltip("NPC 머리 위 마커 오프셋 (기본값: Vector3.up * 1.5f)")]
+    [SerializeField] private Vector3 markerOffset = new Vector3(0f, 1.5f, 0f);
+    [Tooltip("마커 크기 (기본값: 0.5f)")]
+    [SerializeField] private float markerScale = 0.5f;
+    [Tooltip("마커 SortingLayer 이름 (기본값: Default)")]
+    [SerializeField] private string markerSortingLayer = "Default";
+    [Tooltip("마커 Sorting Order (기본값: 100)")]
+    [SerializeField] private int markerSortingOrder = 100;
+
     [Header("Debug")]
     [SerializeField] private bool showDebugMessages = true;
 
-    private bool playerInRange = false;
+    private bool playerInRange = false; // For E key interaction (BoxCollider2D)
+    private bool playerInMarkerRange = false; // For quest marker (CircleCollider2D)
     private QuestStage currentStage;
+    private GameObject questMarkerObject;
+    private SpriteRenderer questMarkerRenderer;
 
     private void Reset()
     {
@@ -47,22 +62,36 @@ public class NPCController : MonoBehaviour
         {
             Debug.LogError($"❌ NPCController on '{gameObject.name}': NPCData is not assigned!");
         }
+
+        // Create quest marker object
+        CreateQuestMarker();
+
+        // Initial quest marker update
+        UpdateQuestMarker();
     }
 
     private void Update()
     {
+        // Always update quest marker based on current stage
+        if (QuestManager.Instance != null)
+        {
+            QuestStage newStage = QuestManager.Instance.GetCurrentStage();
+            if (newStage != currentStage)
+            {
+                currentStage = newStage;
+                UpdateQuestMarker();
+            }
+        }
+
+        // Update player range status every frame based on actual collider overlap
+        UpdatePlayerRangeStatus();
+
         if (!playerInRange || npcData == null) return;
 
         // Block all input if dialogue is open
         if (DialogueManager.Instance != null && DialogueManager.Instance.IsOpen())
         {
             return;
-        }
-
-        // Update current quest stage
-        if (QuestManager.Instance != null)
-        {
-            currentStage = QuestManager.Instance.GetCurrentStage();
         }
 
         // Check for interaction input (New Input System)
@@ -78,36 +107,75 @@ public class NPCController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Update player range status based on actual position and THIS NPC's colliders
+    /// </summary>
+    private void UpdatePlayerRangeStatus()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player == null) return;
+
+        Vector2 playerPos = player.transform.position;
+
+        BoxCollider2D myBox = GetComponent<BoxCollider2D>();
+        CircleCollider2D myCircle = GetComponent<CircleCollider2D>();
+
+        bool wasInRange = playerInRange;
+        bool wasInMarkerRange = playerInMarkerRange;
+
+        if (myBox != null && myCircle != null)
+        {
+            // Check if player is in THIS NPC's box
+            playerInRange = myBox.bounds.Contains(playerPos);
+
+            // Check if player is in THIS NPC's circle
+            playerInMarkerRange = myCircle.bounds.Contains(playerPos);
+        }
+        else if (myBox != null)
+        {
+            // Only box exists
+            playerInRange = myBox.bounds.Contains(playerPos);
+            playerInMarkerRange = playerInRange;
+        }
+        else if (myCircle != null)
+        {
+            // Only circle exists
+            playerInMarkerRange = myCircle.bounds.Contains(playerPos);
+            playerInRange = playerInMarkerRange;
+        }
+
+        // Update marker if status changed
+        if (wasInMarkerRange != playerInMarkerRange)
+        {
+            UpdateQuestMarker();
+        }
+
+        // Auto-open dialogue if enabled and player just entered range
+        if (autoOpenOnEnter && !wasInRange && playerInRange)
+        {
+            // Check if NPC has dialogue for current stage
+            if (QuestManager.Instance != null)
+            {
+                currentStage = QuestManager.Instance.GetCurrentStage();
+                bool hasDialogue = npcData != null && npcData.HasDialogueForStage(currentStage);
+
+                if (hasDialogue && DialogueManager.Instance != null && !DialogueManager.Instance.IsOpen())
+                {
+                    StartInteraction();
+                }
+            }
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Player")) return;
 
-        playerInRange = true;
-
-        // Check if NPC has dialogue for current stage
-        bool hasDialogue = false;
-        if (QuestManager.Instance != null)
-        {
-            currentStage = QuestManager.Instance.GetCurrentStage();
-            hasDialogue = npcData.HasDialogueForStage(currentStage);
-        }
-
-        // Show interaction prompt only if NPC has dialogue for current stage
-        if (interactionPrompt != null)
-            interactionPrompt.SetActive(hasDialogue);
-
+        // UpdatePlayerRangeStatus() in Update() handles the actual range checking
+        // This is just for debug logging
         if (showDebugMessages)
         {
-            if (hasDialogue)
-                Debug.Log($"💬 Player entered {npcData.npcName}'s interaction range");
-            else
-                Debug.Log($"⏸ Player entered {npcData.npcName}'s range (no dialogue for stage {currentStage})");
-        }
-
-        // Auto-open dialogue if enabled (only if has dialogue)
-        if (autoOpenOnEnter && hasDialogue)
-        {
-            StartInteraction();
+            Debug.Log($"💬 Trigger event: Player entered {npcData.npcName}'s collider area");
         }
     }
 
@@ -115,14 +183,12 @@ public class NPCController : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
 
-        playerInRange = false;
-
-        // Hide interaction prompt
-        if (interactionPrompt != null)
-            interactionPrompt.SetActive(false);
-
+        // UpdatePlayerRangeStatus() in Update() handles the actual range checking
+        // This is just for debug logging
         if (showDebugMessages)
-            Debug.Log($"💬 Player left {npcData.npcName}'s interaction range");
+        {
+            Debug.Log($"💬 Trigger event: Player left {npcData.npcName}'s collider area");
+        }
     }
 
     /// <summary>
@@ -302,6 +368,69 @@ public class NPCController : MonoBehaviour
 
         if (showDebugMessages)
             Debug.Log($"💬 Started dialogue with {npcData.npcName} (Stage: {currentStage})");
+    }
+
+    /// <summary>
+    /// Create quest marker sprite above NPC head
+    /// </summary>
+    private void CreateQuestMarker()
+    {
+        if (questMarkerSprite == null)
+        {
+            if (showDebugMessages)
+                Debug.LogWarning($"⚠ {npcData?.npcName ?? gameObject.name}: questMarkerSprite not assigned");
+            return;
+        }
+
+        // Create child GameObject for marker
+        questMarkerObject = new GameObject("QuestMarker");
+        questMarkerObject.transform.SetParent(transform);
+        questMarkerObject.transform.localPosition = markerOffset;
+        questMarkerObject.transform.localScale = Vector3.one * markerScale;
+
+        // Add SpriteRenderer
+        questMarkerRenderer = questMarkerObject.AddComponent<SpriteRenderer>();
+        questMarkerRenderer.sprite = questMarkerSprite;
+
+        // Set sorting layer and order
+        questMarkerRenderer.sortingLayerName = markerSortingLayer;
+        questMarkerRenderer.sortingOrder = markerSortingOrder;
+
+        // Initially hidden
+        questMarkerObject.SetActive(false);
+
+        if (showDebugMessages)
+            Debug.Log($"✅ Created quest marker for {npcData?.npcName ?? gameObject.name} (Layer: {markerSortingLayer}, Order: {markerSortingOrder})");
+    }
+
+    /// <summary>
+    /// Update quest marker visibility based on current stage and player proximity
+    /// </summary>
+    private void UpdateQuestMarker()
+    {
+        if (questMarkerObject == null || npcData == null) return;
+
+        // Get current stage
+        if (QuestManager.Instance != null)
+        {
+            currentStage = QuestManager.Instance.GetCurrentStage();
+        }
+
+        // Show marker only if:
+        // 1. Player is in marker range (Circle Collider 2D trigger)
+        // 2. NPC has dialogue for current stage
+        bool hasDialogue = npcData.HasDialogueForStage(currentStage);
+        bool shouldShowMarker = playerInMarkerRange && hasDialogue;
+
+        questMarkerObject.SetActive(shouldShowMarker);
+
+        if (showDebugMessages && questMarkerObject.activeSelf != shouldShowMarker)
+        {
+            if (shouldShowMarker)
+                Debug.Log($"📍 Quest marker shown for {npcData.npcName} (Stage: {currentStage}, Player in marker range)");
+            else
+                Debug.Log($"📍 Quest marker hidden for {npcData.npcName} (Stage: {currentStage}, Player in marker range: {playerInMarkerRange})");
+        }
     }
 
 #if UNITY_EDITOR

@@ -253,23 +253,28 @@ TitleScene → VillageScene → Stage1 → Village → Stage2 → Village → St
 
 ## 🛠️ 구현 우선순위 (체크리스트)
 
-### Phase 1: 핵심 시스템 구축
-- [ ] QuestManager.cs 작성
-  - [ ] QuestStage enum 정의
-  - [ ] Stage 진행 메서드
-  - [ ] 조건 검사 메서드
-  - [ ] DontDestroyOnLoad 적용
-- [ ] ItemData.cs 확장
-  - [ ] isWeapon, weaponTier, hasUltimate 필드 추가
-  - [ ] isQuestItem 필드 추가
-- [ ] NPCData.cs ScriptableObject 작성
-  - [ ] NPCDialogueSet 구조체 정의
-- [ ] NPCController.cs 작성
-  - [ ] Stage 기반 대화 분기
-  - [ ] 아이템 소모/지급 로직
-- [ ] PortalTrigger.cs 확장
-  - [ ] requiresQuestStage 조건 추가
-  - [ ] 차단 대사 기능
+### Phase 1: 핵심 시스템 구축 ✅ 완료
+- [x] QuestManager.cs 작성
+  - [x] QuestStage enum 정의
+  - [x] Stage 진행 메서드
+  - [x] 조건 검사 메서드
+  - [x] DontDestroyOnLoad 적용
+- [x] ItemData.cs 확장
+  - [x] isWeapon, weaponTier, hasUltimate 필드 추가
+  - [x] isQuestItem 필드 추가
+- [x] NPCData.cs ScriptableObject 작성
+  - [x] NPCDialogueSet 구조체 정의
+- [x] NPCController.cs 작성
+  - [x] Stage 기반 대화 분기
+  - [x] 아이템 소모/지급 로직
+  - [x] Quest Marker 시스템 (emote21 스프라이트)
+- [x] PortalTrigger.cs 확장
+  - [x] requiresQuestStage 조건 추가
+  - [x] 차단 대사 기능
+- [x] DialogueManager 개선
+  - [x] Space key input conflict 해결
+  - [x] Time.timeScale 관리 개선
+  - [x] Scene 전환 시 UI 재연결
 
 ### Phase 2: Scene 및 Prefab 제작
 - [ ] TitleScene 제작
@@ -280,14 +285,14 @@ TitleScene → VillageScene → Stage1 → Village → Stage2 → Village → St
   - [ ] 중붕이 NPC 배치
   - [ ] 무기 습득 지점 Trigger
   - [ ] 던전 입구 포탈 3개
-- [ ] Stage1Scene 제작
-  - [ ] 미니 슬라임 x1, 박쥐 x1
+- [ ] Stage1Scene 제작 (Forest)
+  - [ ] 슬라임 x1
   - [ ] StageClearTrigger 추가
-- [ ] Stage2Scene 제작
-  - [ ] 미니 슬라임 x1, 박쥐 x1, 해골 x1
+- [ ] Stage2Scene 제작 (Cave)
+  - [ ] 박쥐 x1, 해골 x1
   - [ ] StageClearTrigger 추가
-- [ ] Stage3Scene 제작
-  - [ ] 거대 슬라임 보스
+- [ ] Stage3Scene 제작 (Forest2)
+  - [ ] 거대 버섯 보스
   - [ ] 퓨앙이 NPC (비활성화)
   - [ ] 첫 진입 강제 사망 로직
 - [ ] EndingScene 제작
