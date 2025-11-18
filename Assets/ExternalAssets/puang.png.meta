@@ -1,0 +1,1365 @@
+fileFormatVersion: 2
+guid: 25a69cd2889ca4975ba61784b1fe7766
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7568988279134874822
+    second: puang_0
+  - first:
+      213: -8474473702108715133
+    second: puang_1
+  - first:
+      213: -5839931873655259846
+    second: puang_2
+  - first:
+      213: -5499481279748106526
+    second: puang_3
+  - first:
+      213: 770386227649407800
+    second: puang_4
+  - first:
+      213: 1800978136792438104
+    second: puang_5
+  - first:
+      213: -4763812783108093198
+    second: puang_6
+  - first:
+      213: -8233726062292980515
+    second: puang_7
+  - first:
+      213: -3784654403659895896
+    second: puang_8
+  - first:
+      213: -2916246990261282372
+    second: puang_9
+  - first:
+      213: 5817197396149524964
+    second: puang_10
+  - first:
+      213: -6964106949081801378
+    second: puang_11
+  - first:
+      213: 7551805973178957717
+    second: puang_12
+  - first:
+      213: -4203387409745382719
+    second: puang_13
+  - first:
+      213: 8016658299567430248
+    second: puang_14
+  - first:
+      213: -5373643638436831282
+    second: puang_15
+  - first:
+      213: 4063611925663107114
+    second: puang_16
+  - first:
+      213: 3402170172481150155
+    second: puang_17
+  - first:
+      213: 5487990311868974408
+    second: puang_18
+  - first:
+      213: -2935806085339783460
+    second: puang_19
+  - first:
+      213: 7101677758712088030
+    second: puang_20
+  - first:
+      213: 3432401453157093963
+    second: puang_21
+  - first:
+      213: -3781131046051129947
+    second: puang_22
+  - first:
+      213: 6707675619978266394
+    second: puang_23
+  - first:
+      213: 5624112273534360987
+    second: puang_24
+  - first:
+      213: 6270067916124211461
+    second: puang_25
+  - first:
+      213: 5306278239864348156
+    second: puang_26
+  - first:
+      213: 3215636142266827959
+    second: puang_27
+  - first:
+      213: -1221215272849121738
+    second: puang_28
+  - first:
+      213: -458738637615163999
+    second: puang_29
+  - first:
+      213: -1978974069727560101
+    second: puang_30
+  - first:
+      213: 9064015386818075386
+    second: puang_31
+  - first:
+      213: -6706594269501573423
+    second: puang_32
+  - first:
+      213: 5106231397707148382
+    second: puang_33
+  - first:
+      213: -7922106477407063474
+    second: puang_34
+  - first:
+      213: -1011365246255802597
+    second: puang_35
+  - first:
+      213: 5695659087234633422
+    second: puang_36
+  - first:
+      213: -1960310223941297399
+    second: puang_37
+  - first:
+      213: -7553633297088452635
+    second: puang_38
+  - first:
+      213: 9165294873465717511
+    second: puang_39
+  - first:
+      213: 4143987172637973381
+    second: puang_40
+  - first:
+      213: 8327228280636416573
+    second: puang_41
+  - first:
+      213: 3049693918995285732
+    second: puang_42
+  - first:
+      213: -6827049575321700746
+    second: puang_43
+  - first:
+      213: 6196219169717535124
+    second: puang_44
+  - first:
+      213: -6972214712674689279
+    second: puang_45
+  - first:
+      213: -1965116586853410192
+    second: puang_46
+  - first:
+      213: 3615127465071772514
+    second: puang_47
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: puang_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 358
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a331219234d85f690800000000000000
+      internalID: -7568988279134874822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_1
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 358
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 387ab6f411f946a80800000000000000
+      internalID: -8474473702108715133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_2
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 358
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3dfb46f6e464fea0800000000000000
+      internalID: -5839931873655259846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_3
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 358
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e614bfd9eaeda3b0800000000000000
+      internalID: -5499481279748106526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_4
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 326
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83b65ee3136f0ba00800000000000000
+      internalID: 770386227649407800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_5
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 326
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85512cbc21c5ef810800000000000000
+      internalID: 1800978136792438104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_6
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 326
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fa8066738983edb0800000000000000
+      internalID: -4763812783108093198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_7
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 326
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ddca62f35cdebbd80800000000000000
+      internalID: -8233726062292980515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_8
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 294
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8abeb303fd43a7bc0800000000000000
+      internalID: -3784654403659895896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_9
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 294
+        width: 15
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb99c2430d86787d0800000000000000
+      internalID: -2916246990261282372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_10
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 294
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e9d1d10636dab050800000000000000
+      internalID: 5817197396149524964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_11
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 294
+        width: 15
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5d562290a58a5f90800000000000000
+      internalID: -6964106949081801378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_12
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 262
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59f310c75876dc860800000000000000
+      internalID: 7551805973178957717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_13
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 262
+        width: 15
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c2f6ccdb619aa5c0800000000000000
+      internalID: -4203387409745382719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_14
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 262
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86a5767df34e04f60800000000000000
+      internalID: 8016658299567430248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_15
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 262
+        width: 15
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecf5f65e49bfc65b0800000000000000
+      internalID: -5373643638436831282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_16
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 230
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a28c0363489d46830800000000000000
+      internalID: 4063611925663107114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_17
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 230
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bcc1b241fbfe63f20800000000000000
+      internalID: 3402170172481150155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_18
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 230
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8454cbdac12492c40800000000000000
+      internalID: 5487990311868974408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_19
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 230
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cde54e18bebe147d0800000000000000
+      internalID: -2935806085339783460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_20
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 198
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed583559b4a3e8260800000000000000
+      internalID: 7101677758712088030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_21
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 198
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4296fd9fe652af20800000000000000
+      internalID: 3432401453157093963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_22
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 198
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a5dbeec859b68bc0800000000000000
+      internalID: -3781131046051129947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_23
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 198
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a174a550073761d50800000000000000
+      internalID: 6707675619978266394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_24
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 166
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9d1ee0a05cdc0e40800000000000000
+      internalID: 5624112273534360987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_25
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 166
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 509482aac81c30750800000000000000
+      internalID: 6270067916124211461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_26
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 166
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfddf7ef1ffa3a940800000000000000
+      internalID: 5306278239864348156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_27
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 166
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b4c8b2c80c30ac20800000000000000
+      internalID: 3215636142266827959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_28
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 134
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63edb8bfd2f5d0fe0800000000000000
+      internalID: -1221215272849121738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_29
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 134
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a5933cb3ab32a9f0800000000000000
+      internalID: -458738637615163999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_30
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 134
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5efd2291954984e0800000000000000
+      internalID: -1978974069727560101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_31
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 134
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afa57f998f9d9cd70800000000000000
+      internalID: 9064015386818075386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_32
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 102
+        width: 18
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d630b18b046de2a0800000000000000
+      internalID: -6706594269501573423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_33
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 102
+        width: 18
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5ce749f66afcd640800000000000000
+      internalID: 5106231397707148382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_34
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 102
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e42b455c1260f0290800000000000000
+      internalID: -7922106477407063474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_35
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 102
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b175fbebaa8e6f1f0800000000000000
+      internalID: -1011365246255802597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_36
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 70
+        width: 18
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ece885053cb0b0f40800000000000000
+      internalID: 5695659087234633422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_37
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 70
+        width: 18
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90b996ccc349bc4e0800000000000000
+      internalID: -1960310223941297399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_38
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 70
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e7ea73898a1c2790800000000000000
+      internalID: -7553633297088452635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_39
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 70
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70302aaa02ba13f70800000000000000
+      internalID: 9165294873465717511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_40
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 38
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58b9cd2b066628930800000000000000
+      internalID: 4143987172637973381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_41
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 38
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d32abee6002409370800000000000000
+      internalID: 8327228280636416573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_42
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 38
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e6026b1670b25a20800000000000000
+      internalID: 3049693918995285732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_43
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 38
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 676f7fe15927141a0800000000000000
+      internalID: -6827049575321700746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_44
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 6
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 491ca7181846df550800000000000000
+      internalID: 6196219169717535124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_45
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 6
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10fd541c8a7bd3f90800000000000000
+      internalID: -6972214712674689279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_46
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 6
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07adf5a30e08ab4e0800000000000000
+      internalID: -1965116586853410192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puang_47
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 6
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2638c5596438b2230800000000000000
+      internalID: 3615127465071772514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      puang_0: -7568988279134874822
+      puang_1: -8474473702108715133
+      puang_10: 5817197396149524964
+      puang_11: -6964106949081801378
+      puang_12: 7551805973178957717
+      puang_13: -4203387409745382719
+      puang_14: 8016658299567430248
+      puang_15: -5373643638436831282
+      puang_16: 4063611925663107114
+      puang_17: 3402170172481150155
+      puang_18: 5487990311868974408
+      puang_19: -2935806085339783460
+      puang_2: -5839931873655259846
+      puang_20: 7101677758712088030
+      puang_21: 3432401453157093963
+      puang_22: -3781131046051129947
+      puang_23: 6707675619978266394
+      puang_24: 5624112273534360987
+      puang_25: 6270067916124211461
+      puang_26: 5306278239864348156
+      puang_27: 3215636142266827959
+      puang_28: -1221215272849121738
+      puang_29: -458738637615163999
+      puang_3: -5499481279748106526
+      puang_30: -1978974069727560101
+      puang_31: 9064015386818075386
+      puang_32: -6706594269501573423
+      puang_33: 5106231397707148382
+      puang_34: -7922106477407063474
+      puang_35: -1011365246255802597
+      puang_36: 5695659087234633422
+      puang_37: -1960310223941297399
+      puang_38: -7553633297088452635
+      puang_39: 9165294873465717511
+      puang_4: 770386227649407800
+      puang_40: 4143987172637973381
+      puang_41: 8327228280636416573
+      puang_42: 3049693918995285732
+      puang_43: -6827049575321700746
+      puang_44: 6196219169717535124
+      puang_45: -6972214712674689279
+      puang_46: -1965116586853410192
+      puang_47: 3615127465071772514
+      puang_5: 1800978136792438104
+      puang_6: -4763812783108093198
+      puang_7: -8233726062292980515
+      puang_8: -3784654403659895896
+      puang_9: -2916246990261282372
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

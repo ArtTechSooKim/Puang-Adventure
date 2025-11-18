@@ -7080,8 +7080,9 @@ GameObject:
   - component: {fileID: 758359740}
   - component: {fileID: 758359739}
   - component: {fileID: 758359738}
+  - component: {fileID: 758359746}
   m_Layer: 3
-  m_Name: Bat
+  m_Name: Bat2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7274,7 +7275,7 @@ SpriteRenderer:
   m_SortingLayerID: 1384401985
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 5546671543968653177, guid: b64b2a6f50aff4f4ca53b6fb4089bfd7, type: 3}
+  m_Sprite: {fileID: 5546671543968653177, guid: 420451a60408ea9429885f9db25fdb9f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -7300,6 +7301,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &758359746
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758359737}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2a47c51a4cfde4cf09b2c6c5b0bf78ee, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &903639855
 GameObject:
   m_ObjectHideFlags: 0
@@ -8847,15 +8870,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4772807030945676114, guid: 736f9b71ad9801640b321998d810cec4, type: 3}
       propertyPath: m_Name
-      value: Slime
+      value: Skeleton
       objectReference: {fileID: 0}
     - target: {fileID: 6629887986750289933, guid: 736f9b71ad9801640b321998d810cec4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.8352423
+      value: -5.19
       objectReference: {fileID: 0}
     - target: {fileID: 6629887986750289933, guid: 736f9b71ad9801640b321998d810cec4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.11397219
+      value: -0.18
       objectReference: {fileID: 0}
     - target: {fileID: 6629887986750289933, guid: 736f9b71ad9801640b321998d810cec4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8892,7 +8915,7 @@ PrefabInstance:
     - target: {fileID: 8010173822612895354, guid: 736f9b71ad9801640b321998d810cec4, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 7860893253022973495, guid: 9ee6da54f2dba3f418fcdc50e1e4c24d, type: 3}
+      objectReference: {fileID: 4723107735738678597, guid: 30fc528ebfe79e245947c2d630f4d057, type: 3}
     - target: {fileID: 8010173822612895354, guid: 736f9b71ad9801640b321998d810cec4, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -8908,8 +8931,38 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4772807030945676114, guid: 736f9b71ad9801640b321998d810cec4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1473810678}
   m_SourcePrefab: {fileID: 100100000, guid: 736f9b71ad9801640b321998d810cec4, type: 3}
+--- !u!1 &1473810677 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4772807030945676114, guid: 736f9b71ad9801640b321998d810cec4, type: 3}
+  m_PrefabInstance: {fileID: 1473810676}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1473810678
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473810677}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bbf00422343c041459630e86ae20fd97, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1762716021
 GameObject:
   m_ObjectHideFlags: 0
@@ -9163,7 +9216,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5080206473680205166, guid: 8b43e3881d672874f83b92d2f0cab3e2, type: 3}
       propertyPath: m_Name
-      value: Bat
+      value: Bat2
       objectReference: {fileID: 0}
     - target: {fileID: 6394822941048616497, guid: 8b43e3881d672874f83b92d2f0cab3e2, type: 3}
       propertyPath: m_LocalPosition.x
