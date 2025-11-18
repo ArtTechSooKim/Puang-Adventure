@@ -9,7 +9,7 @@ public class QuestManager : MonoBehaviour
     public static QuestManager Instance { get; private set; }
 
     [Header("Quest Progress")]
-    [SerializeField] private QuestStage currentStage = QuestStage.Stage0_Tutorial;
+    [SerializeField] private QuestStage currentStage = QuestStage.Stage0_VillageTutorial;
 
     [Header("Debug")]
     [SerializeField] private bool showDebugMessages = true;
@@ -108,10 +108,10 @@ public class QuestManager : MonoBehaviour
     /// </summary>
     public void ResetQuest()
     {
-        currentStage = QuestStage.Stage0_Tutorial;
+        currentStage = QuestStage.Stage0_VillageTutorial;
 
         if (showDebugMessages)
-            Debug.Log("🔄 Quest Reset to Stage0_Tutorial");
+            Debug.Log("🔄 Quest Reset to Stage0_VillageTutorial");
     }
 
 #if UNITY_EDITOR
@@ -140,11 +140,13 @@ public class QuestManager : MonoBehaviour
 /// </summary>
 public enum QuestStage
 {
-    Stage0_Tutorial = 0,        // 튜토리얼 단계
-    Stage1_FirstQuest = 1,      // 첫 번째 퀘스트
-    Stage2_WeaponUpgrade = 2,   // 무기 업그레이드 단계
-    Stage3_BossPreparation = 3, // 보스 준비 단계
-    Stage4_BossDefeated = 4,    // 보스 격파 후
-    Stage5_FinalQuest = 5,      // 최종 퀘스트
-    Stage6_GameComplete = 6     // 게임 완료
+    Stage0_VillageTutorial = 0,      // VillageScene - 칼자루 획득 (프롤로그)
+    Stage1_ForestHunt = 1,            // ForestScene - 슬라임2 + 박쥐2 처치
+    Stage2_WeaponUpgrade1 = 2,        // VillageScene - 무기 1차 강화 (숲의 검)
+    Stage3_CaveExploration = 3,       // CaveScene - 박쥐5 + 해골5 처치
+    Stage4_PeuangSadCutscene = 4,     // PeuangSadScene - 퓨앙이 컷씬
+    Stage5_UnkillableBoss = 5,        // UnkillableBossScene - 필패 보스전
+    Stage6_WeaponUpgrade2 = 6,        // VillageScene - 무기 2차 강화 (중붕이의 검)
+    Stage7_FinalBoss = 7,             // BossScene - 거대 버섯 보스 처치
+    Stage8_Ending = 8                 // EndingScene - 엔딩
 }

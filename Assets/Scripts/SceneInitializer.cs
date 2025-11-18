@@ -10,7 +10,7 @@ public class SceneInitializer : MonoBehaviour
 {
     [Header("First Scene to Load")]
     [Tooltip("Name of the first gameplay scene to load after initialization")]
-    [SerializeField] private string firstSceneName = "TutorialScene";
+    [SerializeField] private string firstSceneName = "02_VillageScene";
 
     [Header("Auto Load")]
     [Tooltip("Automatically load the first scene on Start")]

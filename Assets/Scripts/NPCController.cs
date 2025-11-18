@@ -38,6 +38,8 @@ public class NPCController : MonoBehaviour
     private QuestStage currentStage;
     private GameObject questMarkerObject;
     private SpriteRenderer questMarkerRenderer;
+    private float interactionCooldown = 0f; // Cooldown to prevent rapid re-interaction
+    private bool isWaitingForStageAdvance = false; // Prevent multiple stage advances
 
     private void Reset()
     {
@@ -72,6 +74,12 @@ public class NPCController : MonoBehaviour
 
     private void Update()
     {
+        // Update cooldown timer
+        if (interactionCooldown > 0f)
+        {
+            interactionCooldown -= Time.unscaledDeltaTime; // Use unscaledDeltaTime to work even when Time.timeScale = 0
+        }
+
         // Always update quest marker based on current stage
         if (QuestManager.Instance != null)
         {
@@ -90,6 +98,12 @@ public class NPCController : MonoBehaviour
 
         // Block all input if dialogue is open
         if (DialogueManager.Instance != null && DialogueManager.Instance.IsOpen())
+        {
+            return;
+        }
+
+        // Block input during cooldown
+        if (interactionCooldown > 0f)
         {
             return;
         }
@@ -252,14 +266,36 @@ public class NPCController : MonoBehaviour
             GiveRewardItems(dialogueSet.rewardItems);
         }
 
-        // Advance quest stage if configured
-        if (dialogueSet.advanceStageOnComplete)
+        // Store quest advancement flag for after dialogue ends
+        if (dialogueSet.advanceStageOnComplete && !isWaitingForStageAdvance)
+        {
+            StartCoroutine(AdvanceStageAfterDialogue());
+        }
+    }
+
+    /// <summary>
+    /// Wait for dialogue to end, then advance quest stage
+    /// </summary>
+    private System.Collections.IEnumerator AdvanceStageAfterDialogue()
+    {
+        isWaitingForStageAdvance = true;
+
+        // Wait until dialogue is closed
+        while (DialogueManager.Instance != null && DialogueManager.Instance.IsOpen())
+        {
+            yield return null;
+        }
+
+        // Dialogue finished, now advance stage
+        if (QuestManager.Instance != null)
         {
             QuestManager.Instance.AdvanceStage();
 
             if (showDebugMessages)
                 Debug.Log($"📈 Quest advanced by {npcData.npcName}");
         }
+
+        isWaitingForStageAdvance = false;
     }
 
     /// <summary>
@@ -365,6 +401,9 @@ public class NPCController : MonoBehaviour
         }
 
         DialogueManager.Instance.StartDialogue(dialogueLines);
+
+        // Set cooldown to prevent immediate re-interaction
+        interactionCooldown = 0.5f;
 
         if (showDebugMessages)
             Debug.Log($"💬 Started dialogue with {npcData.npcName} (Stage: {currentStage})");

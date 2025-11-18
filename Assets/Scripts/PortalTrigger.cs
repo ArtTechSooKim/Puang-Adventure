@@ -23,7 +23,7 @@ public class PortalTrigger : MonoBehaviour
     [SerializeField] private bool requiresQuestStage = false;
 
     [Tooltip("Minimum quest stage required to use this portal")]
-    [SerializeField] private QuestStage requiredStage = QuestStage.Stage0_Tutorial;
+    [SerializeField] private QuestStage requiredStage = QuestStage.Stage0_VillageTutorial;
 
     [Tooltip("Message to show when player doesn't meet stage requirement")]
     [TextArea(2, 4)]

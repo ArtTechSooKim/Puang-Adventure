@@ -15,33 +15,49 @@ MonoBehaviour:
   npcName: "\uC911\uBD95\uC774"
   npcSprite: {fileID: 5546671543968653177, guid: 9c358ab93df44a047aae7ae3f88768f3, type: 3}
   dialogueSets:
-  - questStage: 3
+  - questStage: 2
     dialogueLines:
-    - "\"\uC624, \uB358\uC804\uC744 \uD074\uB9AC\uC5B4\uD588\uAD70\uC694!\""
-    - "\"\uC2AC\uB77C\uC784 \uC794\uD574 1\uAC1C\uC640 \uBC15\uC950 \uBF08 1\uAC1C\uB97C
-      \uC8FC\uC2DC\uBA74\""
-    - "\"\uB354 \uAC15\uD55C \uBB34\uAE30\uB85C \uAC15\uD654\uD574\uB4DC\uB9B4\uAC8C\uC694!\""
+    - "\"\uBB34\uC2A8 \uC77C\uB85C \uC624\uC168\uB294\uAC00?\""
+    - "\"\uC0AC\uB0E5\uC6A9 \uCE7C\uC774 \uB9CE\uC774 \uBB34\uB520\uAC83 \uAC19\uC544\uC11C \uC190\uC88B \uBCFC\uB824\uACE0 \uC654\uC5B4\uC694.\""
+    - "\"\uC5B4.. \uADF8 \uCE7C\uC740 \uB0B4\uAC00 \uB3C4\uB9DD\uCE58\uB2E4 \uC783\uC5B4\uBC84\uB9B0 \uCE7C \uC544\uB2CC\uAC00! \uB108\uAC00 \uC4F0\uACE0 \uC788\uC5C8\uAD6C\uB098.\""
+    - "\"\uC544\uC800\uC528 \uCE7C\uC774\uC5C8\uAD70\uC694! \uCE7C \uCC3E\uACE0 \uACC4\uC168\uC73C\uBA74 \uB3CC\uB824 \uB4DC\uB9B4\uAC8C\uC694.\""
+    - "\"\uD544\uC694 \uC5C6\uB124. \uB09C \uB298\uC5B4\uC11C \uB354 \uC774\uC0C1 \uC0AC\uB0E5\uC744 \uBABB \uD558\uB294 \uBAB8\uC774 \uB418\uC5B4\uBC84\uB838\uC5B4. \uADF8\uB798\uC11C \uB300\uC7A5\uC7A5\uC774\uB85C \uC804\uC9C1\uD588\uC9C0.\""
+    - "\"\uADF8\uB7FC \uC81C\uAC00.. \uAC10\uC0AC\uD569\uB2C8\uB2E4. \uC0AC\uB0E5\uC5D0\uC11C \uC5BB\uC5B4\uC628 \uAC83\uC744 \uB4DC\uB9B4\uD14C\uB2C8 \uBB34\uAE30\uB97C \uAC15\uD654\uD574 \uC8FC\uC2DC\uACA0\uC5B4\uC694?\""
+    - "\"\uC88B\uC9C0. \uC774\uB9AC \uC8FC\uC2DC\uAC8C\uB098. \uC544\uCC38, \"Space\" \uD0A4\uB97C \uB204\uB974\uBA74 \uB300\uC2DC\uAC00 \uB098\uAC04\uB2E4\uB294 \uAC83\uC744 \uC78A\uC9C0 \uB9D0\uAC8C\uB098.\""
+    - "\"\uB0B4 \uD574\uACE8\uACFC \uBC15\uC950 \uBF08\uAC00 5\uAC1C\uC529 \uB354 \uD544\uC694\uD55C\uB370.. \uB2E4\uC74C\uBC88\uC5D0 \uAC00\uC838\uB2E4 \uC8FC\uBA74 \uC815\uB9D0 \uACE0\uB9C8\uC6B8 \uAC78\uC138.\""
     requiredItems:
     - {fileID: 11400000, guid: f731ebd246653c04d89700141bb3770a, type: 2}
-    - {fileID: 11400000, guid: ef50fd141345cac409e4bfae4e3b79ef, type: 2}
+    - {fileID: 11400000, guid: f731ebd246653c04d89700141bb3770a, type: 2}
+    - {fileID: 11400000, guid: 02c0184adcaa9124ca7cfede7c14c0b0, type: 2}
+    - {fileID: 11400000, guid: 02c0184adcaa9124ca7cfede7c14c0b0, type: 2}
     rewardItems:
     - {fileID: 11400000, guid: 7fc56ab62a04ef945920d26a601f367f, type: 2}
     advanceStageOnComplete: 1
     insufficientItemsMessage: "\"\uC7AC\uB8CC\uAC00 \uBD80\uC871\uD569\uB2C8\uB2E4.
-      \uC2AC\uB77C\uC784 \uC794\uD574\uC640 \uBC15\uC950 \uBF08\uB97C \uAC00\uC838\uC624\uC138\uC694!\""
-  - questStage: 5
+      \uC2AC\uB77C\uC784 \uC794\uD574 2\uAC1C\uC640 \uBC15\uC950 \uBF08 2\uAC1C\uB97C \uAC00\uC838\uC624\uC138\uC694!\""
+  - questStage: 6
     dialogueLines:
-    - "\"\uBCF4\uC2A4\uB97C \uB9CC\uB0AC\uB2E4\uACE0\uC694? \uBB34\uC11C\uC6E0\uACA0\uC5B4\uC694...\""
-    - "\"\uBC15\uC950 \uBF08 2\uAC1C\uC640 \uD574\uACE8 \uBF08 1\uAC1C\uB97C \uC8FC\uC2DC\uBA74\""
-    - "\"\uCD5C\uC885 \uBB34\uAE30\uB97C \uB9CC\uB4E4\uC5B4\uB4DC\uB9AC\uC8E0!\""
+    - "\"\uC0AC\uB0E5\uC740 \uC798 \uB418\uAC00\uACE0 \uC788\uB294\uAC00?\""
+    - "\"\uAC70\uB300 \uBC84\uC12F \uC0AC\uB0E5\uD560 \uC900\uBE44\uB97C \uD558\uACE0 \uC788\uC5B4\uC694.\""
+    - "\"\uC790\uB124\uAC00 \uAC00\uC9C0\uACE0 \uC788\uB294 \uADF8 \uBB34\uAE30\uB85C\uB294 \uAC70\uB300 \uBC84\uC12F \uC0AC\uB0E5\uC740 \uD0DD\uB3C4 \uC5C6\uC744 \uAC78\uC138. \uC774\uAC78 \uBC1B\uAC8C\uB098.\""
+    - "\"\uAC10\uC0AC\uD569\uB2C8\uB2E4. \uC804\uC5D0 \uD544\uC694\uD558\uB2E4\uACE0 \uD558\uC168\uB358 \uD574\uACE8\uACFC \uBC15\uC950 \uBF08\uB97C \uAD6C\uD588\uC5B4\uC694. \uC774\uAC70\uB77C\uB3C4 \uBC1B\uC73C\uC138\uC694..\""
+    - "\"\uD558\uD558 \uACE0\uB9D9\uB124. \uC774 \uD574\uACE8\uC740.. \uBC84\uC12F \uADFC\uCC98\uC5D0 \uC11C\uC2DD\uD558\uACE0 \uC788\uB294 \uD574\uACE8 \uC544\uB2CC\uAC00. \uC798 \uD558\uACE0 \uC788\uB124.\""
+    - "\"\uC0C8 \uBB34\uAE30\uC5D0\uB294 \"R\" \uD0A4\uB97C \uB204\uB974\uBA74 \uAD81\uADF9\uAE30\uAC00 \uB098\uAC00\uB294 \uD2B9\uC218 \uAE30\uB2A5\uC774 \uC788\uC73C\uB2C8 \uAF2D \uD65C\uC6A9\uD558\uC2DC\uAC8C\uB098.\""
     requiredItems:
-    - {fileID: 11400000, guid: 02c0184adcaa9124ca7cfede7c14c0b0, type: 2}
-    - {fileID: 11400000, guid: 02c0184adcaa9124ca7cfede7c14c0b0, type: 2}
     - {fileID: 11400000, guid: ef50fd141345cac409e4bfae4e3b79ef, type: 2}
+    - {fileID: 11400000, guid: ef50fd141345cac409e4bfae4e3b79ef, type: 2}
+    - {fileID: 11400000, guid: ef50fd141345cac409e4bfae4e3b79ef, type: 2}
+    - {fileID: 11400000, guid: ef50fd141345cac409e4bfae4e3b79ef, type: 2}
+    - {fileID: 11400000, guid: ef50fd141345cac409e4bfae4e3b79ef, type: 2}
+    - {fileID: 11400000, guid: 02c0184adcaa9124ca7cfede7c14c0b0, type: 2}
+    - {fileID: 11400000, guid: 02c0184adcaa9124ca7cfede7c14c0b0, type: 2}
+    - {fileID: 11400000, guid: 02c0184adcaa9124ca7cfede7c14c0b0, type: 2}
+    - {fileID: 11400000, guid: 02c0184adcaa9124ca7cfede7c14c0b0, type: 2}
+    - {fileID: 11400000, guid: 02c0184adcaa9124ca7cfede7c14c0b0, type: 2}
     rewardItems:
     - {fileID: 11400000, guid: 15fba3a67f862804f90265233dbc9a92, type: 2}
     advanceStageOnComplete: 1
     insufficientItemsMessage: "\"\uC7AC\uB8CC\uAC00 \uBD80\uC871\uD569\uB2C8\uB2E4.
-      \uBC15\uC950 \uBF08 2\uAC1C\uC640 \uD574\uACE8 \uBF08 1\uAC1C\uAC00 \uD544\uC694\uD574\uC694!\""
+      \uD574\uACE8 5\uAC1C\uC640 \uBC15\uC950 \uBF08 5\uAC1C\uAC00 \uD544\uC694\uD574\uC694!\""
   givesQuestItems: 1
   requiresQuestItems: 1
