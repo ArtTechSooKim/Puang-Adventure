@@ -6,14 +6,32 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/00_TitleScene.unity
+    guid: 1e5b12fa9a935cf4d9e81cb719c459e1
+  - enabled: 1
     path: Assets/Scenes/01_InitialScene.unity
     guid: 5b1860f86db798642b127bf2fc798b9e
   - enabled: 1
     path: Assets/Scenes/02_VillageScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/CaveScene.unity
-    guid: 5453d2db53efcb14eb537fb50a5ec295
+    path: Assets/Scenes/03_ForestScene.unity
+    guid: 95752315546deea46ad627566c195afd
+  - enabled: 1
+    path: Assets/Scenes/04_CaveScene.unity
+    guid: 2922cb79c5e7e7b4e81f0d13821d5cbe
+  - enabled: 1
+    path: Assets/Scenes/05_PeuangSadScene.unity
+    guid: 8366e3aa257e86f458c5333e6ace88e7
+  - enabled: 1
+    path: Assets/Scenes/06_UnkillableBossScene.unity
+    guid: f2e40f8dde6e6d4439c67cc5b9f55c02
+  - enabled: 1
+    path: Assets/Scenes/07_BossScene.unity
+    guid: 70882330a016e7e4dae46fa2147901b3
+  - enabled: 1
+    path: Assets/Scenes/08_EndingScene.unity
+    guid: 0da9f55127f40e44da3fb17e57dd5fc0
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 5b4ec4f6d10c15641be6c86e2bba91eb, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 3590b91b4603b465dbb4216d601bff33, type: 3}

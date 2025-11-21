@@ -7335,7 +7335,7 @@ GameObject:
   - component: {fileID: 903639856}
   - component: {fileID: 903639858}
   m_Layer: 0
-  m_Name: Portal_ToVillage
+  m_Name: Portal_ToForest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7414,7 +7414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 425c45af6433bf648b1de7ce3365c2c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PortalTrigger
-  targetSceneName: TutorialScene
+  targetSceneName: 03_ForestScene
   spawnPosition: {x: 0.5, y: 4, z: 0}
   useCustomSpawnPosition: 0
   requiresQuestStage: 0
