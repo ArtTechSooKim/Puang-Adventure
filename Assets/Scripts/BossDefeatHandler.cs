@@ -84,18 +84,10 @@ public class BossDefeatHandler : MonoBehaviour
         if (showDebugMessages)
             Debug.Log("🎉 Boss defeated! Returning to Village...");
 
-        // Stage 진행
-        if (QuestManager.Instance != null)
-        {
-            QuestStage currentStage = QuestManager.Instance.GetCurrentStage();
-
-            if (currentStage == QuestStage.Stage7_FinalBoss)
-            {
-                QuestManager.Instance.AdvanceStage(); // Stage7 → Stage8
-                if (showDebugMessages)
-                    Debug.Log("📈 Advanced to Stage8_Ending");
-            }
-        }
+        // Stage는 Village에서 NPC_Puangi와 대화할 때 진행됨
+        // 여기서는 Stage 진행하지 않음!
+        if (showDebugMessages)
+            Debug.Log("⏸ Stage remains at Stage7 - will advance when talking to NPC_Puangi");
 
         // 승리 메시지 표시 및 복귀
         StartCoroutine(ShowVictoryAndReturn());

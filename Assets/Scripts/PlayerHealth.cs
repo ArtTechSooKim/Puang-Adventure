@@ -14,6 +14,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private Slider hpSlider; // Optional: can be assigned manually or auto-found via UIReferenceManager
 
     private int currentHealth;
+    private bool ignoreDeathProcessing = false; // 특수 씬에서 사망 처리 무시
 
     void Awake()
     {
@@ -92,8 +93,17 @@ public class PlayerHealth : MonoBehaviour
     private void Die()
     {
         Debug.Log("Player died");
-        GameManager.I?.OnPlayerDeath();
-        // 추가: 리스폰/게임오버 UI 로직은 GameManager에서 처리
+
+        // 특수 씬에서는 GameManager의 사망 처리를 건너뜀
+        if (!ignoreDeathProcessing)
+        {
+            GameManager.I?.OnPlayerDeath();
+            // 추가: 리스폰/게임오버 UI 로직은 GameManager에서 처리
+        }
+        else
+        {
+            Debug.Log("⚠ PlayerHealth: Death processing ignored (special scene handling)");
+        }
     }
 
     public int GetCurrentHealth()
@@ -105,5 +115,17 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth = maxHealth;
         UpdateUI();
+    }
+
+    /// <summary>
+    /// 특수 씬에서 사망 처리를 무시하도록 설정 (UnkillableBossScene 등)
+    /// </summary>
+    public void SetIgnoreDeathProcessing(bool ignore)
+    {
+        ignoreDeathProcessing = ignore;
+        if (ignore)
+            Debug.Log("⚠ PlayerHealth: Death processing will be ignored");
+        else
+            Debug.Log("✅ PlayerHealth: Death processing re-enabled");
     }
 }

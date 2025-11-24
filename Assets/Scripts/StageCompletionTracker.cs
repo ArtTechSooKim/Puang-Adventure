@@ -17,6 +17,7 @@ public class StageCompletionTracker : MonoBehaviour
     [SerializeField] private int stage1_RequiredSlimeResidue = 2;
     [SerializeField] private int stage1_RequiredBatBone = 2;
     [SerializeField] private string stage1_TargetScene = "02_VillageScene";
+    [SerializeField] private string stage1_SpawnPointName = "PortalToForest"; // 스폰될 오브젝트 이름
 
     [Header("Stage 3 - Cave Requirements")]
     [SerializeField] private ItemData skeletonBoneItem; // 해골 뼈
@@ -24,6 +25,7 @@ public class StageCompletionTracker : MonoBehaviour
     [SerializeField] private int stage3_RequiredBatBone = 5;
     [SerializeField] private int stage3_RequiredSkeletonBone = 5;
     [SerializeField] private string stage3_TargetScene = "05_PeuangSadScene";
+    [SerializeField] private string stage3_SpawnPointName = ""; // 비어있으면 PlayerSpawn 태그 사용
 
     [Header("Check Settings")]
     [SerializeField] private float checkInterval = 1f; // 인벤토리 체크 간격 (초)
@@ -93,16 +95,35 @@ public class StageCompletionTracker : MonoBehaviour
     private void CheckInventoryCompletion()
     {
         if (Inventory.instance == null)
+        {
+            if (showDebugMessages)
+                Debug.LogWarning("⚠️ StageCompletionTracker: Inventory.instance is null!");
             return;
+        }
 
-        QuestStage currentStage = QuestManager.Instance != null ? QuestManager.Instance.GetCurrentStage() : QuestStage.Stage0_VillageTutorial;
+        if (QuestManager.Instance == null)
+        {
+            if (showDebugMessages)
+                Debug.LogWarning("⚠️ StageCompletionTracker: QuestManager.Instance is null!");
+            return;
+        }
+
+        QuestStage currentStage = QuestManager.Instance.GetCurrentStage();
 
         bool isCompleted = false;
         string targetScene = "";
+        string targetSpawnPoint = "";
 
         // Stage1: ForestScene - 슬라임 잔해2 + 박쥐 뼈2
         if (currentStage == QuestStage.Stage1_ForestHunt)
         {
+            if (slimeResidueItem == null || batBoneItem == null)
+            {
+                if (showDebugMessages)
+                    Debug.LogError("❌ StageCompletionTracker: slimeResidueItem or batBoneItem is not assigned in Inspector!");
+                return;
+            }
+
             int slimeCount = CountItemInInventory(slimeResidueItem);
             int batCount = CountItemInInventory(batBoneItem);
 
@@ -115,6 +136,7 @@ public class StageCompletionTracker : MonoBehaviour
             {
                 isCompleted = true;
                 targetScene = stage1_TargetScene;
+                targetSpawnPoint = stage1_SpawnPointName;
 
                 if (showDebugMessages)
                     Debug.Log("🎉 Stage1 목표 달성! Village로 복귀합니다.");
@@ -123,6 +145,13 @@ public class StageCompletionTracker : MonoBehaviour
         // Stage3: CaveScene - 박쥐 뼈5 + 해골5
         else if (currentStage == QuestStage.Stage3_CaveExploration)
         {
+            if (batBoneItem == null || skeletonBoneItem == null)
+            {
+                if (showDebugMessages)
+                    Debug.LogError("❌ StageCompletionTracker: batBoneItem or skeletonBoneItem is not assigned in Inspector!");
+                return;
+            }
+
             int batCount = CountItemInInventory(batBoneItem);
             int skeletonCount = CountItemInInventory(skeletonBoneItem);
 
@@ -135,6 +164,7 @@ public class StageCompletionTracker : MonoBehaviour
             {
                 isCompleted = true;
                 targetScene = stage3_TargetScene;
+                targetSpawnPoint = stage3_SpawnPointName;
 
                 if (showDebugMessages)
                     Debug.Log("🎉 Stage3 목표 달성! PeuangSadScene으로 이동합니다.");
@@ -143,7 +173,7 @@ public class StageCompletionTracker : MonoBehaviour
 
         if (isCompleted)
         {
-            StartCoroutine(TransitionToNextScene(targetScene));
+            StartCoroutine(TransitionToNextScene(targetScene, targetSpawnPoint));
         }
     }
 
@@ -172,7 +202,7 @@ public class StageCompletionTracker : MonoBehaviour
     /// <summary>
     /// 다음 Scene으로 전환
     /// </summary>
-    private IEnumerator TransitionToNextScene(string targetScene)
+    private IEnumerator TransitionToNextScene(string targetScene, string spawnPointName = "")
     {
         isTransitioning = true;
 
@@ -183,11 +213,32 @@ public class StageCompletionTracker : MonoBehaviour
             DialogueManager.Instance.StartDialogue(new System.Collections.Generic.List<string> { message });
         }
 
-        // Quest Stage 자동 전환
+        // 대화가 끝날 때까지 대기
+        while (DialogueManager.Instance != null && DialogueManager.Instance.IsOpen())
+        {
+            yield return null;
+        }
+
+        // 대화가 끝난 후 Quest Stage 자동 전환
         AdvanceQuestStage();
 
-        // 대기
-        yield return new WaitForSeconds(transitionDelay);
+        // 짧은 딜레이 (스테이지 변경 후)
+        yield return new WaitForSeconds(0.5f);
+
+        // 스폰 포인트가 지정되었으면 PlayerPersistent에 저장
+        if (!string.IsNullOrEmpty(spawnPointName))
+        {
+            // Scene 로드 후 특정 오브젝트 위치로 이동하도록 표시
+            PlayerPrefs.SetString("TargetSpawnPoint", spawnPointName);
+
+            if (showDebugMessages)
+                Debug.Log($"🎯 Target spawn point set: {spawnPointName}");
+        }
+        else
+        {
+            // 스폰 포인트 미지정 시 PlayerSpawn 태그 사용
+            PlayerPrefs.DeleteKey("TargetSpawnPoint");
+        }
 
         // Scene 전환
         if (showDebugMessages)

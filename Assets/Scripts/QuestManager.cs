@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Collections;
 
 /// <summary>
 /// Manages the global quest progression system.
@@ -99,8 +101,28 @@ public class QuestManager : MonoBehaviour
     /// </summary>
     private void OnStageChanged(QuestStage from, QuestStage to)
     {
-        // You can add custom logic here for specific stage transitions
-        // Example: Play sound effects, show notifications, unlock areas, etc.
+        // Stage8 도달 시 EndingScene으로 자동 이동
+        if (to == QuestStage.Stage8_Ending)
+        {
+            if (showDebugMessages)
+                Debug.Log("🎬 Stage8 reached! Loading EndingScene...");
+
+            StartCoroutine(LoadEndingScene());
+        }
+    }
+
+    /// <summary>
+    /// EndingScene 로드 (짧은 딜레이 후)
+    /// </summary>
+    private IEnumerator LoadEndingScene()
+    {
+        // 짧은 딜레이 (대화 종료 등을 위해)
+        yield return new WaitForSeconds(0.5f);
+
+        if (showDebugMessages)
+            Debug.Log("🌀 Loading EndingScene...");
+
+        SceneManager.LoadScene("08_EndingScene");
     }
 
     /// <summary>

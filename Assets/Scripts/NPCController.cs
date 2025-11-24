@@ -40,6 +40,7 @@ public class NPCController : MonoBehaviour
     private SpriteRenderer questMarkerRenderer;
     private float interactionCooldown = 0f; // Cooldown to prevent rapid re-interaction
     private bool isWaitingForStageAdvance = false; // Prevent multiple stage advances
+    private QuestStage lockedStageForDialogue = QuestStage.Stage0_VillageTutorial; // 대화 시작 시 잠긴 스테이지
 
     private void Reset()
     {
@@ -216,14 +217,34 @@ public class NPCController : MonoBehaviour
             return;
         }
 
-        // Get current quest stage
-        currentStage = QuestManager.Instance.GetCurrentStage();
-
-        // Check if this NPC has dialogue for the current stage
-        if (!npcData.HasDialogueForStage(currentStage))
+        // 이미 대화 중이거나 스테이지 변경 대기 중이면 무시
+        if (DialogueManager.Instance != null && DialogueManager.Instance.IsOpen())
         {
             if (showDebugMessages)
-                Debug.Log($"⏸ {npcData.npcName} has no dialogue for current stage {currentStage} - interaction blocked");
+                Debug.Log($"⏸ Dialogue already open, ignoring interaction");
+            return;
+        }
+
+        if (isWaitingForStageAdvance)
+        {
+            if (showDebugMessages)
+                Debug.Log($"⏸ Waiting for stage advance, ignoring interaction");
+            return;
+        }
+
+        // 🔒 대화 시작 전에 스테이지를 잠금 (중요!)
+        // 이렇게 하면 대화 도중 스테이지가 변경되어도 올바른 대화가 표시됨
+        lockedStageForDialogue = QuestManager.Instance.GetCurrentStage();
+        currentStage = lockedStageForDialogue;
+
+        if (showDebugMessages)
+            Debug.Log($"🔒 Locked stage for dialogue: {lockedStageForDialogue}");
+
+        // Check if this NPC has dialogue for the current stage
+        if (!npcData.HasDialogueForStage(lockedStageForDialogue))
+        {
+            if (showDebugMessages)
+                Debug.Log($"⏸ {npcData.npcName} has no dialogue for current stage {lockedStageForDialogue} - interaction blocked");
 
             // Show a generic message (optional)
             if (DialogueManager.Instance != null)
@@ -233,8 +254,8 @@ public class NPCController : MonoBehaviour
             return;
         }
 
-        // Get dialogue for this stage
-        NPCDialogueSet dialogueSet = npcData.GetDialogueForStage(currentStage);
+        // Get dialogue for this stage (using locked stage!)
+        NPCDialogueSet dialogueSet = npcData.GetDialogueForStage(lockedStageForDialogue);
 
         // Check if player has required items
         if (dialogueSet.HasRequirements())
@@ -365,6 +386,7 @@ public class NPCController : MonoBehaviour
 
     /// <summary>
     /// Give reward items to player
+    /// If inventory is full, drop items in front of NPC
     /// </summary>
     private void GiveRewardItems(List<ItemData> rewardItems)
     {
@@ -377,9 +399,48 @@ public class NPCController : MonoBehaviour
             bool success = Inventory.instance.AddItem(reward);
 
             if (success && showDebugMessages)
+            {
                 Debug.Log($"🎁 Gave player: {reward.itemName}");
-            else if (!success)
-                Debug.LogWarning($"⚠ Failed to give {reward.itemName} - inventory full?");
+            }
+            else
+            {
+                // Inventory is full, drop item in front of NPC
+                if (showDebugMessages)
+                    Debug.Log($"⚠ Inventory full! Dropping {reward.itemName} in front of NPC");
+
+                DropRewardItemInFrontOfNPC(reward);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Drop a reward item in front of the NPC (y-1 position)
+    /// </summary>
+    private void DropRewardItemInFrontOfNPC(ItemData itemData)
+    {
+        if (itemData == null)
+        {
+            Debug.LogError("❌ NPCController: Cannot drop null ItemData");
+            return;
+        }
+
+        // Calculate drop position (NPC position y-1)
+        Vector3 dropPosition = transform.position + new Vector3(0f, -1f, 0f);
+
+        if (showDebugMessages)
+            Debug.Log($"🎁 Dropping '{itemData.itemName}' at NPC position {dropPosition}");
+
+        // Use ItemWorldSpawner if available
+        if (ItemWorldSpawner.Instance != null)
+        {
+            GameObject droppedItem = ItemWorldSpawner.Instance.SpawnItemAtPosition(itemData, dropPosition);
+
+            if (droppedItem != null && showDebugMessages)
+                Debug.Log($"✅ Successfully dropped '{itemData.itemName}' in front of {npcData.npcName}");
+        }
+        else
+        {
+            Debug.LogError("❌ NPCController: ItemWorldSpawner.Instance not found!");
         }
     }
 
@@ -406,7 +467,7 @@ public class NPCController : MonoBehaviour
         interactionCooldown = 0.5f;
 
         if (showDebugMessages)
-            Debug.Log($"💬 Started dialogue with {npcData.npcName} (Stage: {currentStage})");
+            Debug.Log($"💬 Started dialogue with {npcData.npcName} (Locked Stage: {lockedStageForDialogue})");
     }
 
     /// <summary>

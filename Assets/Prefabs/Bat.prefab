@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1103327034646310914}
   - component: {fileID: 1126390892248253005}
   - component: {fileID: 1298258288885792456}
+  - component: {fileID: 4396810666266184259}
   m_Layer: 3
   m_Name: Bat
   m_TagString: Enemy
@@ -236,3 +237,19 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
+--- !u!114 &4396810666266184259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5080206473680205166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07d7b5482e7b4dc4994d6448cead12c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyItemDropper
+  itemPrefabToDrop: {fileID: 4089817076150239487, guid: d2b878705a9838744a4f08d22230fb19, type: 3}
+  dropOffsetY: -0.3
+  dropChance: 1
+  showDebugMessages: 1

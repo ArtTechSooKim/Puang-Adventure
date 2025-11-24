@@ -1628,6 +1628,7 @@ GameObject:
   - component: {fileID: 416745401}
   - component: {fileID: 416745400}
   - component: {fileID: 416745399}
+  - component: {fileID: 416745402}
   m_Layer: 0
   m_Name: Portal_ToForest
   m_TagString: Untagged
@@ -1648,6 +1649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PortalTrigger
   targetSceneName: 03_ForestScene
+  targetSpawnPointName: Portal_ToVillage
   spawnPosition: {x: 0, y: 0.7, z: 0}
   useCustomSpawnPosition: 0
   requiresQuestStage: 0
@@ -1717,6 +1719,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &416745402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 416745398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2e707e0d745abe41bb36498e132ae5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PortalSpawnPoint
+  localOffset: {x: 0, y: -1, z: 0}
+  matchRotation: 0
+  showDebugGizmos: 1
 --- !u!1 &454678247
 GameObject:
   m_ObjectHideFlags: 0
@@ -1873,6 +1890,64 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
+--- !u!1 &771998568
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 771998570}
+  - component: {fileID: 771998569}
+  m_Layer: 0
+  m_Name: StageCompletionTracker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &771998569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771998568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7b1dedeb3dedd2468ec9506b4164682, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StageCompletionTracker
+  slimeResidueItem: {fileID: 11400000, guid: f731ebd246653c04d89700141bb3770a, type: 2}
+  batBoneItem: {fileID: 11400000, guid: 02c0184adcaa9124ca7cfede7c14c0b0, type: 2}
+  stage1_RequiredSlimeResidue: 2
+  stage1_RequiredBatBone: 2
+  stage1_TargetScene: 02_VillageScene
+  stage1_SpawnPointName: PortalToForest
+  skeletonBoneItem: {fileID: 11400000, guid: ef50fd141345cac409e4bfae4e3b79ef, type: 2}
+  stage3_RequiredBatBone: 5
+  stage3_RequiredSkeletonBone: 5
+  stage3_TargetScene: 05_PeuangSadScene
+  stage3_SpawnPointName: 
+  checkInterval: 1
+  transitionDelay: 2
+  showDebugMessages: 1
+--- !u!4 &771998570
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771998568}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.20163, y: -2.34972, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &856329190 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 227289970409199687, guid: d750908f62aec4a40aa757319780a867, type: 3}
@@ -42309,3 +42384,4 @@ SceneRoots:
   - {fileID: 891394281}
   - {fileID: 2049142749}
   - {fileID: 928564412}
+  - {fileID: 771998570}

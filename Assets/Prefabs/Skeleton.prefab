@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4772807030945676114, guid: 736f9b71ad9801640b321998d810cec4, type: 3}
       propertyPath: m_Name
-      value: Skeleton Variant
+      value: Skeleton
       objectReference: {fileID: 0}
     - target: {fileID: 6629887986750289933, guid: 736f9b71ad9801640b321998d810cec4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -75,6 +75,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4772807030945676114, guid: 736f9b71ad9801640b321998d810cec4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7199034642073361825}
+    - targetCorrespondingSourceObject: {fileID: 4772807030945676114, guid: 736f9b71ad9801640b321998d810cec4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -4299005620348928009}
   m_SourcePrefab: {fileID: 100100000, guid: 736f9b71ad9801640b321998d810cec4, type: 3}
 --- !u!1 &1353331283366444525 stripped
 GameObject:
@@ -103,3 +106,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-4299005620348928009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1353331283366444525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07d7b5482e7b4dc4994d6448cead12c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyItemDropper
+  itemPrefabToDrop: {fileID: 4089817076150239487, guid: 9d0239230f80de14fbf42c42b3b90059, type: 3}
+  dropOffsetY: -0.3
+  dropChance: 1
+  showDebugMessages: 1

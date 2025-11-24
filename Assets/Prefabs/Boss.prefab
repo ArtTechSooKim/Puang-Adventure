@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &6938536675767911216
+--- !u!1001 &5078228047087293990
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,15 +10,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4772807030945676114, guid: 736f9b71ad9801640b321998d810cec4, type: 3}
       propertyPath: m_Name
-      value: Boss Variant
+      value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 6629887986750289933, guid: 736f9b71ad9801640b321998d810cec4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4.6869206
+      objectReference: {fileID: 0}
+    - target: {fileID: 6629887986750289933, guid: 736f9b71ad9801640b321998d810cec4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4.6869206
+      objectReference: {fileID: 0}
+    - target: {fileID: 6629887986750289933, guid: 736f9b71ad9801640b321998d810cec4, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 4.6869206
       objectReference: {fileID: 0}
     - target: {fileID: 6629887986750289933, guid: 736f9b71ad9801640b321998d810cec4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.5292759
+      value: -3.411152
       objectReference: {fileID: 0}
     - target: {fileID: 6629887986750289933, guid: 736f9b71ad9801640b321998d810cec4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.0832546
+      value: -2.1886182
       objectReference: {fileID: 0}
     - target: {fileID: 6629887986750289933, guid: 736f9b71ad9801640b321998d810cec4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -52,9 +64,74 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8010173822612895354, guid: 736f9b71ad9801640b321998d810cec4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 357749872346554099, guid: a3b6548fe6d5cc246a317212ed371417, type: 3}
+    - target: {fileID: 8010173822612895354, guid: 736f9b71ad9801640b321998d810cec4, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010173822612895354, guid: 736f9b71ad9801640b321998d810cec4, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010173822612895354, guid: 736f9b71ad9801640b321998d810cec4, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2992704441694293241, guid: 736f9b71ad9801640b321998d810cec4, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4772807030945676114, guid: 736f9b71ad9801640b321998d810cec4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3407402700096484284}
+    - targetCorrespondingSourceObject: {fileID: 4772807030945676114, guid: 736f9b71ad9801640b321998d810cec4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -931842392387847270}
   m_SourcePrefab: {fileID: 100100000, guid: 736f9b71ad9801640b321998d810cec4, type: 3}
+--- !u!1 &307677669671087476 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4772807030945676114, guid: 736f9b71ad9801640b321998d810cec4, type: 3}
+  m_PrefabInstance: {fileID: 5078228047087293990}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &3407402700096484284
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307677669671087476}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 080f445c5e2ae4e4babc1c7cfb5ed6b0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-931842392387847270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307677669671087476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07d7b5482e7b4dc4994d6448cead12c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyItemDropper
+  itemPrefabToDrop: {fileID: 4089817076150239487, guid: 67218e49a7fc5a94cb89461fe0129858, type: 3}
+  dropOffsetY: -0.3
+  dropChance: 1
+  showDebugMessages: 1

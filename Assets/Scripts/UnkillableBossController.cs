@@ -30,6 +30,9 @@ public class UnkillableBossController : MonoBehaviour
         if (showDebugMessages)
             Debug.Log("💀 UnkillableBossController: Scene started!");
 
+        // PlayerHealth의 일반 사망 처리 비활성화
+        DisablePlayerDeathProcessing();
+
         // Boss를 무적으로 설정
         if (bossGameObject != null)
         {
@@ -62,6 +65,34 @@ public class UnkillableBossController : MonoBehaviour
 
         // 자동 사망 타이머 시작
         StartCoroutine(AutoDeathTimer());
+    }
+
+    /// <summary>
+    /// PlayerHealth의 일반 사망 처리를 비활성화
+    /// 이 씬에서는 UnkillableBossController가 사망을 처리함
+    /// </summary>
+    private void DisablePlayerDeathProcessing()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
+            {
+                playerHealth.SetIgnoreDeathProcessing(true);
+
+                if (showDebugMessages)
+                    Debug.Log("✅ UnkillableBossController: Disabled normal death processing");
+            }
+            else
+            {
+                Debug.LogWarning("⚠ UnkillableBossController: PlayerHealth not found on Player!");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("⚠ UnkillableBossController: Player GameObject not found!");
+        }
     }
 
     private void Update()
@@ -146,6 +177,29 @@ public class UnkillableBossController : MonoBehaviour
     private IEnumerator ReturnToVillage()
     {
         yield return new WaitForSeconds(deathMessageDuration);
+
+        // Quest Stage 진행 (Stage5 → Stage6)
+        if (QuestManager.Instance != null)
+        {
+            QuestManager.Instance.AdvanceStage(); // Stage5 → Stage6
+            if (showDebugMessages)
+                Debug.Log("📈 Advanced to Stage6_WeaponUpgrade2");
+        }
+
+        // 플레이어 체력 회복 및 사망 처리 재활성화
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
+            {
+                playerHealth.ResetHealth();
+                playerHealth.SetIgnoreDeathProcessing(false); // 일반 사망 처리 재활성화
+
+                if (showDebugMessages)
+                    Debug.Log("💚 Player health restored and death processing re-enabled");
+            }
+        }
 
         if (showDebugMessages)
             Debug.Log($"🌀 Returning to Village: {returnSceneName}");

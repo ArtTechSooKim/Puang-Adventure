@@ -217,11 +217,67 @@ public class PlayerPersistent : MonoBehaviour
     /// </summary>
     private void TryFindSpawnPoint(Scene scene)
     {
-        GameObject spawnPoint = GameObject.FindGameObjectWithTag("PlayerSpawn");
-        if (spawnPoint != null)
+        // 먼저 PlayerPrefs에서 지정된 스폰 포인트 이름 확인
+        string targetSpawnPointName = PlayerPrefs.GetString("TargetSpawnPoint", "");
+
+        if (!string.IsNullOrEmpty(targetSpawnPointName))
         {
-            transform.position = spawnPoint.transform.position;
-            Debug.Log($"📍 PlayerPersistent: Moved to spawn point at {spawnPoint.transform.position}");
+            // 이름으로 오브젝트 찾기
+            GameObject spawnPoint = GameObject.Find(targetSpawnPointName);
+
+            if (spawnPoint != null)
+            {
+                // PortalSpawnPoint 컴포넌트가 있는지 확인
+                PortalSpawnPoint portalSpawn = spawnPoint.GetComponent<PortalSpawnPoint>();
+
+                if (portalSpawn != null)
+                {
+                    // 오프셋이 적용된 위치로 이동
+                    transform.position = portalSpawn.GetSpawnPosition();
+                    Debug.Log($"📍 PlayerPersistent: Moved to custom spawn point '{targetSpawnPointName}' with offset at {portalSpawn.GetSpawnPosition()}");
+
+                    // 회전도 적용 (필요시)
+                    if (portalSpawn != null)
+                    {
+                        transform.rotation = portalSpawn.GetSpawnRotation();
+                    }
+                }
+                else
+                {
+                    // PortalSpawnPoint 컴포넌트가 없으면 기본 위치 사용
+                    transform.position = spawnPoint.transform.position;
+                    Debug.Log($"📍 PlayerPersistent: Moved to custom spawn point '{targetSpawnPointName}' at {spawnPoint.transform.position} (no PortalSpawnPoint component)");
+                }
+
+                // 사용 후 삭제
+                PlayerPrefs.DeleteKey("TargetSpawnPoint");
+                return;
+            }
+            else
+            {
+                Debug.LogWarning($"⚠ PlayerPersistent: Custom spawn point '{targetSpawnPointName}' not found in scene - falling back to PlayerSpawn tag");
+                PlayerPrefs.DeleteKey("TargetSpawnPoint");
+            }
+        }
+
+        // 기본 동작: PlayerSpawn 태그로 찾기
+        GameObject defaultSpawnPoint = GameObject.FindGameObjectWithTag("PlayerSpawn");
+        if (defaultSpawnPoint != null)
+        {
+            // PortalSpawnPoint 컴포넌트 확인
+            PortalSpawnPoint portalSpawn = defaultSpawnPoint.GetComponent<PortalSpawnPoint>();
+
+            if (portalSpawn != null)
+            {
+                transform.position = portalSpawn.GetSpawnPosition();
+                transform.rotation = portalSpawn.GetSpawnRotation();
+                Debug.Log($"📍 PlayerPersistent: Moved to PlayerSpawn with offset at {portalSpawn.GetSpawnPosition()}");
+            }
+            else
+            {
+                transform.position = defaultSpawnPoint.transform.position;
+                Debug.Log($"📍 PlayerPersistent: Moved to PlayerSpawn at {defaultSpawnPoint.transform.position}");
+            }
         }
         else
         {

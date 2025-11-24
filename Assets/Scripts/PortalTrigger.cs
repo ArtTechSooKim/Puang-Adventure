@@ -12,6 +12,10 @@ public class PortalTrigger : MonoBehaviour
     [Tooltip("Name of the scene to load (must be added in Build Settings)")]
     [SerializeField] private string targetSceneName = "TutorialScene";
 
+    [Tooltip("Name of the GameObject in target scene to spawn at (e.g., 'Portal_ToVillage'). Leave empty to use PlayerSpawn tag.")]
+    [SerializeField] private string targetSpawnPointName = "";
+
+    [Header("Legacy Spawn Settings (Deprecated)")]
     [Tooltip("Optional: Specific spawn position in target scene. If empty, uses PlayerSpawn tag.")]
     [SerializeField] private Vector3 spawnPosition = Vector3.zero;
 
@@ -75,16 +79,28 @@ public class PortalTrigger : MonoBehaviour
     {
         isTransitioning = true;
 
-        // Save player's current position before transitioning (optional)
-        PlayerPersistent playerPersistent = player.GetComponent<PlayerPersistent>();
-        if (playerPersistent != null)
+        // Set target spawn point for next scene if specified
+        if (!string.IsNullOrEmpty(targetSpawnPointName))
         {
-            // If using custom spawn position, set it before scene loads
-            if (useCustomSpawnPosition)
-            {
-                playerPersistent.SaveCurrentPosition();
-                // The new position will be set after scene loads via OnSceneLoaded in PlayerPersistent
-            }
+            PlayerPrefs.SetString("TargetSpawnPoint", targetSpawnPointName);
+
+            if (showDebugMessages)
+                Debug.Log($"🎯 PortalTrigger: Set target spawn point to '{targetSpawnPointName}'");
+        }
+        else
+        {
+            // Clear any previously set spawn point
+            PlayerPrefs.DeleteKey("TargetSpawnPoint");
+
+            if (showDebugMessages)
+                Debug.Log($"🎯 PortalTrigger: Using default PlayerSpawn tag");
+        }
+
+        // Legacy support: Save player's current position if using custom spawn position
+        PlayerPersistent playerPersistent = player.GetComponent<PlayerPersistent>();
+        if (playerPersistent != null && useCustomSpawnPosition)
+        {
+            playerPersistent.SaveCurrentPosition();
         }
 
         // Load the target scene
@@ -210,6 +226,16 @@ public class PortalTrigger : MonoBehaviour
         // Show scene name label
         UnityEditor.Handles.color = Color.cyan;
         string portalLabel = $"Portal → {targetSceneName}";
+
+        // Add spawn point info
+        if (!string.IsNullOrEmpty(targetSpawnPointName))
+        {
+            portalLabel += $"\n📍 Spawn at: {targetSpawnPointName}";
+        }
+        else
+        {
+            portalLabel += $"\n📍 Spawn at: PlayerSpawn (default)";
+        }
 
         // Add quest requirement info if enabled
         if (requiresQuestStage)

@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4772807030945676114, guid: 736f9b71ad9801640b321998d810cec4, type: 3}
       propertyPath: m_Name
-      value: Slime Variant
+      value: Slime
       objectReference: {fileID: 0}
     - target: {fileID: 6629887986750289933, guid: 736f9b71ad9801640b321998d810cec4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -71,5 +71,29 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4772807030945676114, guid: 736f9b71ad9801640b321998d810cec4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6205774983735208510}
   m_SourcePrefab: {fileID: 100100000, guid: 736f9b71ad9801640b321998d810cec4, type: 3}
+--- !u!1 &356923637520006754 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4772807030945676114, guid: 736f9b71ad9801640b321998d810cec4, type: 3}
+  m_PrefabInstance: {fileID: 5100439403823695152}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6205774983735208510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356923637520006754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07d7b5482e7b4dc4994d6448cead12c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyItemDropper
+  itemPrefabToDrop: {fileID: 4089817076150239487, guid: abcf7f66c2961fd4295c1ed167fc72aa, type: 3}
+  dropOffsetY: -0.3
+  dropChance: 1
+  showDebugMessages: 1
