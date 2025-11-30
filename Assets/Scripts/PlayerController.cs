@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float dashCooldown = 1f;
     private bool isDashing = false;
     private float lastDashTime = -99f;
+    private bool isDashEnabled = false; // 대시 기능 활성화 여부
 
     [Header("Attack")]
     [Tooltip("Hierarchy의 AttackArea(자식) Collider2D를 할당하세요. Is Trigger 체크 필요")]
@@ -27,10 +28,28 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float attackCooldown = 0.3f;
     [SerializeField] private LayerMask enemyLayer;
 
+    [Header("Attack Effect (Sword Slash)")]
+    [Tooltip("검기 이펙트 SpriteRenderer들을 할당하세요 (여러 방향별 이펙트 가능)")]
+    [SerializeField] private SpriteRenderer[] swordSlashEffects;
+    [Tooltip("검기 이펙트 Animator (SlashEffect 오브젝트의 Animator)")]
+    [SerializeField] private Animator slashEffectAnimator;
+
+    [Header("Attack Range by Weapon Tier")]
+    [SerializeField] private float defaultAttackRadius = 0.7f;  // 무기 없거나 다른 아이템일 때
+    [SerializeField] private float tier0AttackRadius = 1.0f;    // Tier 0 무기 (칼자루 - Item_WeaponTier0)
+    [SerializeField] private float tier1AttackRadius = 1.2f;    // Tier 1 무기 (숲의 검 - Item_WeaponTier1)
+    [SerializeField] private float tier2AttackRadius = 1.5f;    // Tier 2 무기 (중붕이의 검 - Item_WeaponTier2)
+
+    [Header("Sword Slash Effect Colors by Weapon Tier")]
+    [SerializeField] private Color tier0SlashColor = Color.white;           // Tier 0 검기 색상 (흰색)
+    [SerializeField] private Color tier1SlashColor = Color.green;           // Tier 1 검기 색상 (초록색)
+    [SerializeField] private Color tier2SlashColor = new Color(1f, 0.84f, 0f); // Tier 2 검기 색상 (금색)
+
     private bool isAttacking = false;
     private float lastAttackTime = -99f;
     private ContactFilter2D attackFilter;
     private readonly List<Collider2D> overlapResults = new List<Collider2D>();
+    private ItemData currentWeapon = null; // 현재 장착된 무기 추적
 
     // Stamina reference
     private PlayerStamina stamina;
@@ -62,12 +81,109 @@ public class PlayerController : MonoBehaviour
 
         if (anim == null)
             Debug.LogError("PlayerController: Animator 컴포넌트를 찾을 수 없습니다. Player 오브젝트에 Animator 컴포넌트를 추가했는지 확인하세요.");
+
+        // 검기 이펙트 자동 찾기 (할당되지 않은 경우)
+        if (swordSlashEffects == null || swordSlashEffects.Length == 0)
+        {
+            AutoFindSlashEffects();
+        }
+
+        // 검기 이펙트 Animator 자동 찾기 (할당되지 않은 경우)
+        if (slashEffectAnimator == null)
+        {
+            AutoFindSlashEffectAnimator();
+        }
+    }
+
+    /// <summary>
+    /// 자식 오브젝트에서 검기 이펙트를 자동으로 찾습니다.
+    /// 이름에 "slash", "effect", "sword" 등이 포함된 SpriteRenderer를 찾습니다.
+    /// </summary>
+    private void AutoFindSlashEffects()
+    {
+        List<SpriteRenderer> foundEffects = new List<SpriteRenderer>();
+
+        // 모든 자식 오브젝트의 SpriteRenderer 검색 (비활성화된 것도 포함)
+        SpriteRenderer[] allRenderers = GetComponentsInChildren<SpriteRenderer>(true);
+
+        Debug.Log($"[PlayerController] 검기 이펙트 검색 시작... 총 {allRenderers.Length}개의 SpriteRenderer 발견");
+
+        foreach (var renderer in allRenderers)
+        {
+            // Player 자신의 SpriteRenderer는 제외
+            if (renderer == spriteRenderer)
+            {
+                Debug.Log($"[PlayerController]   - {renderer.gameObject.name} (Player 본인, 제외)");
+                continue;
+            }
+
+            string objName = renderer.gameObject.name.ToLower();
+            Debug.Log($"[PlayerController]   - 검사 중: {renderer.gameObject.name}");
+
+            // 검기 이펙트로 추정되는 오브젝트 이름 패턴
+            if (objName.Contains("slash") ||
+                objName.Contains("effect") ||
+                objName.Contains("sword") ||
+                objName.Contains("attack"))
+            {
+                foundEffects.Add(renderer);
+                Debug.Log($"[PlayerController] ✅ 검기 이펙트 발견: {renderer.gameObject.name} (활성화: {renderer.gameObject.activeSelf})");
+            }
+        }
+
+        if (foundEffects.Count > 0)
+        {
+            swordSlashEffects = foundEffects.ToArray();
+            Debug.Log($"[PlayerController] ✅ 총 {swordSlashEffects.Length}개의 검기 이펙트를 자동으로 찾았습니다.");
+
+            // 초기 색상 설정 (기본 흰색)
+            UpdateSwordSlashColor(tier0SlashColor);
+        }
+        else
+        {
+            Debug.LogWarning("[PlayerController] ⚠ 검기 이펙트를 찾지 못했습니다. Player의 자식 오브젝트 이름에 'slash', 'effect', 'sword', 'attack' 등을 포함시키거나 Inspector에서 수동으로 할당하세요.");
+        }
+    }
+
+    /// <summary>
+    /// 자식 오브젝트에서 검기 이펙트 Animator를 자동으로 찾습니다.
+    /// 이름에 "slash", "effect", "sword" 등이 포함된 Animator를 찾습니다.
+    /// </summary>
+    private void AutoFindSlashEffectAnimator()
+    {
+        // 모든 자식 오브젝트의 Animator 검색
+        Animator[] allAnimators = GetComponentsInChildren<Animator>(true);
+
+        foreach (var animator in allAnimators)
+        {
+            // Player 자신의 Animator는 제외
+            if (animator == anim)
+                continue;
+
+            string objName = animator.gameObject.name.ToLower();
+
+            // 검기 이펙트로 추정되는 오브젝트 이름 패턴
+            if (objName.Contains("slash") ||
+                objName.Contains("effect") ||
+                objName.Contains("sword") ||
+                objName.Contains("attack"))
+            {
+                slashEffectAnimator = animator;
+                Debug.Log($"[PlayerController] 검기 이펙트 Animator 발견: {animator.gameObject.name}");
+                return;
+            }
+        }
+
+        Debug.LogWarning("[PlayerController] 검기 이펙트 Animator를 찾지 못했습니다. SlashEffect 오브젝트의 Animator를 Inspector에서 수동으로 할당하세요.");
     }
 
     private void Update()
     {
         if (!isDashing && !isAttacking)
             MovePlayer();
+
+        // Hotbar 1번 칸의 무기에 따라 공격 범위 업데이트
+        UpdateAttackRange();
     }
 
     // ===================== Input System 콜백 (InputAction.CallbackContext) =====================
@@ -87,10 +203,23 @@ public class PlayerController : MonoBehaviour
     {
         // Block dash input if dialogue is open
         if (DialogueManager.Instance != null && DialogueManager.Instance.IsOpen())
+        {
+            Debug.Log("[PlayerController] 대시 입력 차단: 대화 중");
             return;
+        }
+
+        // Block dash if not enabled
+        if (!isDashEnabled)
+        {
+            Debug.Log($"[PlayerController] 대시 입력 차단: 대시 기능 비활성화 상태 (isDashEnabled={isDashEnabled})");
+            return;
+        }
 
         if (context.performed)
+        {
+            Debug.Log("[PlayerController] 대시 입력 수신 - TryDash() 호출");
             TryDash();
+        }
     }
 
     public void OnSprint(InputAction.CallbackContext context)
@@ -120,9 +249,23 @@ public class PlayerController : MonoBehaviour
     {
         // Block dash input if dialogue is open
         if (DialogueManager.Instance != null && DialogueManager.Instance.IsOpen())
+        {
+            Debug.Log("[PlayerController] 대시 입력 차단: 대화 중");
             return;
+        }
 
-        if (value.Get<float>() > 0f) TryDash();
+        // Block dash if not enabled
+        if (!isDashEnabled)
+        {
+            Debug.Log($"[PlayerController] 대시 입력 차단: 대시 기능 비활성화 상태 (isDashEnabled={isDashEnabled})");
+            return;
+        }
+
+        if (value.Get<float>() > 0f)
+        {
+            Debug.Log("[PlayerController] 대시 입력 수신 - TryDash() 호출");
+            TryDash();
+        }
     }
     public void OnSprint(InputValue value)
     {
@@ -311,7 +454,19 @@ public class PlayerController : MonoBehaviour
             rb.linearVelocity = Vector2.zero;
             rb.angularVelocity = 0f;
         }
-        if (anim != null) anim.SetTrigger("Attack"); // 공격 시작 시 Attack Trigger 발동
+        if (anim != null) anim.SetTrigger("Attack"); // 공격 시작 시 Attack Trigger 발동 (Player)
+
+        // 🔹 검기 이펙트 Animator 트리거 (SlashEffect)
+        // 무기가 있을 때만 검기 이펙트 재생
+        if (slashEffectAnimator != null && currentWeapon != null && currentWeapon.isWeapon)
+        {
+            slashEffectAnimator.SetTrigger("Attack");
+            Debug.Log("[PlayerController] 검기 이펙트 애니메이션 트리거 발동!");
+        }
+        else if (slashEffectAnimator != null)
+        {
+            Debug.Log("[PlayerController] 무기가 없어서 검기 이펙트를 재생하지 않습니다.");
+        }
         if (rb != null) 
         {
             float lungeDistance = 0.3f; 
@@ -397,6 +552,186 @@ public class PlayerController : MonoBehaviour
         {
             Gizmos.DrawWireSphere(transform.position, 1.0f);
         }
+    }
+
+    // ===================== 공격 범위 업데이트 =====================
+    /// <summary>
+    /// Hotbar 1번 칸의 무기에 따라 AttackArea의 Radius와 검기 색상을 업데이트합니다.
+    /// </summary>
+    private void UpdateAttackRange()
+    {
+        // Inventory와 AttackArea가 없으면 리턴
+        if (Inventory.instance == null || attackAreaCollider == null)
+        {
+            Debug.LogWarning("[PlayerController] UpdateAttackRange: Inventory 또는 AttackArea가 없습니다.");
+            return;
+        }
+
+        // Hotbar 1번 칸(index 0) 체크
+        ItemData hotbarSlot0 = null;
+        if (Inventory.instance.items != null && Inventory.instance.items.Length > 0)
+        {
+            hotbarSlot0 = Inventory.instance.items[0];
+        }
+
+        // 무기가 변경되었는지 체크 (최적화를 위해)
+        if (hotbarSlot0 == currentWeapon)
+            return;
+
+        Debug.Log($"[PlayerController] 🔄 무기 변경 감지: {currentWeapon?.itemName ?? "없음"} → {hotbarSlot0?.itemName ?? "없음"}");
+        currentWeapon = hotbarSlot0;
+
+        // AttackArea가 CircleCollider2D인지 확인
+        if (attackAreaCollider is CircleCollider2D circleCollider)
+        {
+            float newRadius = defaultAttackRadius;
+            Color newSlashColor = tier0SlashColor; // 기본 색상
+
+            // 무기가 있고 isWeapon이 true인 경우
+            if (currentWeapon != null && currentWeapon.isWeapon)
+            {
+                switch (currentWeapon.weaponTier)
+                {
+                    case 0:
+                        newRadius = tier0AttackRadius;
+                        newSlashColor = tier0SlashColor;
+                        Debug.Log($"[PlayerController] 무기 Tier 0 (칼자루) 장착: Attack Radius = {newRadius}, 검기 색상 = 흰색");
+                        break;
+                    case 1:
+                        newRadius = tier1AttackRadius;
+                        newSlashColor = tier1SlashColor;
+                        Debug.Log($"[PlayerController] 무기 Tier 1 (숲의 검) 장착: Attack Radius = {newRadius}, 검기 색상 = 초록색");
+                        break;
+                    case 2:
+                        newRadius = tier2AttackRadius;
+                        newSlashColor = tier2SlashColor;
+                        Debug.Log($"[PlayerController] 무기 Tier 2 (중붕이의 검) 장착: Attack Radius = {newRadius}, 검기 색상 = 금색");
+                        break;
+                    default:
+                        newRadius = defaultAttackRadius;
+                        newSlashColor = tier0SlashColor;
+                        Debug.Log($"[PlayerController] 알 수 없는 무기 Tier ({currentWeapon.weaponTier}): Attack Radius = {newRadius}");
+                        break;
+                }
+            }
+            else
+            {
+                // 무기가 아니거나 아무것도 없을 때
+                if (currentWeapon != null)
+                    Debug.Log($"[PlayerController] 무기가 아닌 아이템 장착 ({currentWeapon.itemName}): Attack Radius = {newRadius}");
+                else
+                    Debug.Log($"[PlayerController] Hotbar 1번 칸 비어있음: Attack Radius = {newRadius}");
+            }
+
+            circleCollider.radius = newRadius;
+
+            // 검기 이펙트 색상 업데이트
+            UpdateSwordSlashColor(newSlashColor);
+        }
+        else
+        {
+            Debug.LogWarning("[PlayerController] AttackArea가 CircleCollider2D가 아닙니다!");
+        }
+    }
+
+    /// <summary>
+    /// 검기 이펙트의 색상을 업데이트하고, 무기 유무에 따라 활성화/비활성화합니다.
+    /// </summary>
+    private void UpdateSwordSlashColor(Color color)
+    {
+        if (swordSlashEffects == null || swordSlashEffects.Length == 0)
+        {
+            Debug.LogWarning("[PlayerController] 검기 이펙트 SpriteRenderer가 할당되지 않았습니다.");
+            return;
+        }
+
+        // 무기가 없거나 비무기 아이템이면 검기 이펙트 비활성화
+        bool hasWeapon = currentWeapon != null && currentWeapon.isWeapon;
+
+        int colorChangedCount = 0;
+        foreach (var slashEffect in swordSlashEffects)
+        {
+            if (slashEffect != null)
+            {
+                // 무기 유무에 따라 SlashEffect 오브젝트 활성화/비활성화
+                slashEffect.gameObject.SetActive(hasWeapon);
+
+                if (hasWeapon)
+                {
+                    // SpriteRenderer.color 설정 (가장 확실한 방법)
+                    slashEffect.color = color;
+
+                    // Material Shader 정보 로그
+                    if (slashEffect.material != null)
+                    {
+                        Debug.Log($"[PlayerController]     Material: {slashEffect.material.name}, Shader: {slashEffect.material.shader.name}");
+                    }
+
+                    // PropertyBlock을 사용한 색상 설정 (여러 속성 이름 시도)
+                    MaterialPropertyBlock propertyBlock = new MaterialPropertyBlock();
+                    slashEffect.GetPropertyBlock(propertyBlock);
+
+                    // 다양한 Shader 속성 이름 시도
+                    propertyBlock.SetColor("_Color", color);
+                    propertyBlock.SetColor("_MainColor", color);
+                    propertyBlock.SetColor("_TintColor", color);
+
+                    slashEffect.SetPropertyBlock(propertyBlock);
+
+                    colorChangedCount++;
+                    Debug.Log($"[PlayerController]   - {slashEffect.gameObject.name} 활성화");
+                    Debug.Log($"[PlayerController]     목표 색상: RGB({color.r:F2}, {color.g:F2}, {color.b:F2})");
+                    Debug.Log($"[PlayerController]     현재 색상: RGB({slashEffect.color.r:F2}, {slashEffect.color.g:F2}, {slashEffect.color.b:F2})");
+                }
+                else
+                {
+                    Debug.Log($"[PlayerController]   - {slashEffect.gameObject.name} 비활성화 (무기 없음)");
+                }
+            }
+        }
+
+        if (hasWeapon && colorChangedCount > 0)
+        {
+            Debug.Log($"[PlayerController] ✅ {colorChangedCount}개 검기 이펙트 활성화 및 색상 변경 완료: RGB({color.r:F2}, {color.g:F2}, {color.b:F2})");
+        }
+        else if (!hasWeapon)
+        {
+            Debug.Log($"[PlayerController] ✅ 검기 이펙트 비활성화 완료 (무기 없음)");
+        }
+        else
+        {
+            Debug.LogWarning("[PlayerController] ⚠ 유효한 검기 이펙트를 찾지 못했습니다.");
+        }
+    }
+
+    // ===================== 대시 활성화/비활성화 (외부 호출용) =====================
+    /// <summary>
+    /// 대시 기능을 활성화합니다.
+    /// </summary>
+    public void EnableDash()
+    {
+        Debug.Log($"[PlayerController] EnableDash() 호출됨 - 현재 상태: {isDashEnabled}");
+        isDashEnabled = true;
+        Debug.Log($"[PlayerController] ✅ 대시 기능이 활성화되었습니다! 새 상태: {isDashEnabled}");
+        Debug.Log($"[PlayerController] 이제 Space 키를 눌러 대시를 사용할 수 있습니다.");
+    }
+
+    /// <summary>
+    /// 대시 기능을 비활성화합니다.
+    /// </summary>
+    public void DisableDash()
+    {
+        Debug.Log($"[PlayerController] DisableDash() 호출됨 - 현재 상태: {isDashEnabled}");
+        isDashEnabled = false;
+        Debug.Log($"[PlayerController] ❌ 대시 기능이 비활성화되었습니다. 새 상태: {isDashEnabled}");
+    }
+
+    /// <summary>
+    /// 대시 활성화 상태를 반환합니다.
+    /// </summary>
+    public bool IsDashEnabled()
+    {
+        return isDashEnabled;
     }
 }
 // ...existing code...

@@ -19,7 +19,7 @@ MonoBehaviour:
   maxStackSize: 1
   worldPrefab: {fileID: 4089817076150239487, guid: 6472c9e2394ad4640b58603714b16455, type: 3}
   isWeapon: 1
-  weaponTier: 0
+  weaponTier: 2
   hasUltimate: 1
   isQuestItem: 1
   stackCount: 1

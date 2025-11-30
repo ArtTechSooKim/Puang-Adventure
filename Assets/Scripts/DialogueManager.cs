@@ -124,6 +124,75 @@ public class DialogueManager : MonoBehaviour
 
         var line = lines.Dequeue();
         if (dialogueText != null) dialogueText.text = line;
+
+        // 대화 라인 디버그 출력
+        Debug.Log($"[DialogueManager] 현재 대화 라인: \"{line}\"");
+
+        // 특정 키워드가 포함된 대화 라인에서 이벤트 트리거
+        CheckForDialogueEvents(line);
+    }
+
+    /// <summary>
+    /// 대화 라인에서 특정 키워드를 감지하여 이벤트를 트리거합니다.
+    /// </summary>
+    private void CheckForDialogueEvents(string line)
+    {
+        Debug.Log($"[DialogueManager] CheckForDialogueEvents 호출됨");
+
+        // 여러 키워드 패턴을 체크
+        string[] dashKeywords = new string[]
+        {
+            "\"Space\"키를 누르면 대시가 나간다",
+            "Space키를 누르면 대시가 나간다",
+            "\"Space\"",
+            "대시가 나간다"
+        };
+
+        bool keywordFound = false;
+        foreach (var keyword in dashKeywords)
+        {
+            if (line.Contains(keyword))
+            {
+                Debug.Log($"[DialogueManager] ✅ 키워드 발견: \"{keyword}\"");
+                keywordFound = true;
+                break;
+            }
+        }
+
+        if (!keywordFound)
+        {
+            Debug.Log($"[DialogueManager] ⚠ 대시 관련 키워드를 찾지 못했습니다.");
+            return;
+        }
+
+        Debug.Log($"[DialogueManager] 플레이어 검색 시작...");
+
+        // 플레이어 찾기
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            Debug.Log($"[DialogueManager] ✅ Player 오브젝트 발견: {player.name}");
+
+            PlayerController playerController = player.GetComponent<PlayerController>();
+            if (playerController != null)
+            {
+                Debug.Log($"[DialogueManager] ✅ PlayerController 컴포넌트 발견");
+                Debug.Log($"[DialogueManager] 대시 활성화 전 상태: {playerController.IsDashEnabled()}");
+
+                playerController.EnableDash();
+
+                Debug.Log($"[DialogueManager] 대시 활성화 후 상태: {playerController.IsDashEnabled()}");
+                Debug.Log("🎯 대화 이벤트: 대시 기능 활성화!");
+            }
+            else
+            {
+                Debug.LogError("❌ DialogueManager: PlayerController를 찾을 수 없습니다!");
+            }
+        }
+        else
+        {
+            Debug.LogError("❌ DialogueManager: Player 태그를 가진 오브젝트를 찾을 수 없습니다!");
+        }
     }
 
     private void EndDialogue()
