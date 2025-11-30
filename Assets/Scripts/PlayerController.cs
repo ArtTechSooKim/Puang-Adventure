@@ -21,6 +21,9 @@ public class PlayerController : MonoBehaviour
     private float lastDashTime = -99f;
     private bool isDashEnabled = false; // 대시 기능 활성화 여부
 
+    [Header("Ultimate")]
+    private bool isUltActive = false; // 궁극기 사용 중 여부 (PlayerUlt에서 제어)
+
     [Header("Attack")]
     [Tooltip("Hierarchy의 AttackArea(자식) Collider2D를 할당하세요. Is Trigger 체크 필요")]
     [SerializeField] private Collider2D attackAreaCollider;
@@ -136,8 +139,8 @@ public class PlayerController : MonoBehaviour
             swordSlashEffects = foundEffects.ToArray();
             Debug.Log($"[PlayerController] ✅ 총 {swordSlashEffects.Length}개의 검기 이펙트를 자동으로 찾았습니다.");
 
-            // 초기 색상 설정 (기본 흰색)
-            UpdateSwordSlashColor(tier0SlashColor);
+            // 초기 색상 및 크기 설정 (기본 흰색, 크기 1.0배)
+            UpdateSwordSlashColor(tier0SlashColor, 1.0f);
         }
         else
         {
@@ -179,7 +182,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (!isDashing && !isAttacking)
+        // 궁극기 사용 중에는 이동/공격 차단
+        if (!isDashing && !isAttacking && !isUltActive)
             MovePlayer();
 
         // Hotbar 1번 칸의 무기에 따라 공격 범위 업데이트
@@ -194,6 +198,9 @@ public class PlayerController : MonoBehaviour
 
     public void OnAttack(InputAction.CallbackContext context)
     {
+        // 궁극기 사용 중에는 공격 차단
+        if (isUltActive) return;
+
         if (context.performed)
             Attack();
     }
@@ -201,6 +208,9 @@ public class PlayerController : MonoBehaviour
     // Dash: 대시 시 스태미나 소비 시도
     public void OnDash(InputAction.CallbackContext context)
     {
+        // 궁극기 사용 중에는 대시 차단
+        if (isUltActive) return;
+
         // Block dash input if dialogue is open
         if (DialogueManager.Instance != null && DialogueManager.Instance.IsOpen())
         {
@@ -625,8 +635,9 @@ public class PlayerController : MonoBehaviour
 
             circleCollider.radius = newRadius;
 
-            // 검기 이펙트 색상 업데이트
-            UpdateSwordSlashColor(newSlashColor);
+            // 검기 이펙트 색상 및 크기 업데이트
+            float sizeMultiplier = newRadius / defaultAttackRadius; // 기본 크기 대비 배율 계산
+            UpdateSwordSlashColor(newSlashColor, sizeMultiplier);
         }
         else
         {
@@ -635,9 +646,11 @@ public class PlayerController : MonoBehaviour
     }
 
     /// <summary>
-    /// 검기 이펙트의 색상을 업데이트하고, 무기 유무에 따라 활성화/비활성화합니다.
+    /// 검기 이펙트의 색상과 크기를 업데이트하고, 무기 유무에 따라 활성화/비활성화합니다.
     /// </summary>
-    private void UpdateSwordSlashColor(Color color)
+    /// <param name="color">검기 색상</param>
+    /// <param name="sizeMultiplier">크기 배율 (기본값 1.0)</param>
+    private void UpdateSwordSlashColor(Color color, float sizeMultiplier = 1.0f)
     {
         if (swordSlashEffects == null || swordSlashEffects.Length == 0)
         {
@@ -661,6 +674,9 @@ public class PlayerController : MonoBehaviour
                     // SpriteRenderer.color 설정 (가장 확실한 방법)
                     slashEffect.color = color;
 
+                    // 검기 크기 조정 (공격 범위에 비례)
+                    slashEffect.transform.localScale = Vector3.one * sizeMultiplier;
+
                     // Material Shader 정보 로그
                     if (slashEffect.material != null)
                     {
@@ -681,6 +697,7 @@ public class PlayerController : MonoBehaviour
                     colorChangedCount++;
                     Debug.Log($"[PlayerController]   - {slashEffect.gameObject.name} 활성화");
                     Debug.Log($"[PlayerController]     목표 색상: RGB({color.r:F2}, {color.g:F2}, {color.b:F2})");
+                    Debug.Log($"[PlayerController]     크기 배율: {sizeMultiplier:F2}x (localScale: {slashEffect.transform.localScale})");
                     Debug.Log($"[PlayerController]     현재 색상: RGB({slashEffect.color.r:F2}, {slashEffect.color.g:F2}, {slashEffect.color.b:F2})");
                 }
                 else
@@ -702,6 +719,24 @@ public class PlayerController : MonoBehaviour
         {
             Debug.LogWarning("[PlayerController] ⚠ 유효한 검기 이펙트를 찾지 못했습니다.");
         }
+    }
+
+    // ===================== 궁극기 상태 제어 (외부 호출용) =====================
+    /// <summary>
+    /// 궁극기 활성 상태를 설정합니다. (PlayerUlt에서 호출)
+    /// </summary>
+    public void SetUltActive(bool active)
+    {
+        isUltActive = active;
+        Debug.Log($"[PlayerController] 궁극기 상태 변경: {active}");
+    }
+
+    /// <summary>
+    /// 현재 궁극기 활성 상태를 반환합니다.
+    /// </summary>
+    public bool IsUltActive()
+    {
+        return isUltActive;
     }
 
     // ===================== 대시 활성화/비활성화 (외부 호출용) =====================

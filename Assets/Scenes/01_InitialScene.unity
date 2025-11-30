@@ -119,6 +119,74 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &630295157
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 630295158}
+  - component: {fileID: 630295159}
+  m_Layer: 0
+  m_Name: UltArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &630295158
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630295157}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 770089085}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &630295159
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630295157}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 5
 --- !u!1 &657161134
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,6 +253,7 @@ GameObject:
   - component: {fileID: 770089089}
   - component: {fileID: 770089090}
   - component: {fileID: 770089094}
+  - component: {fileID: 770089095}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -265,6 +334,8 @@ Transform:
   m_Children:
   - {fileID: 866157400}
   - {fileID: 1729665933}
+  - {fileID: 630295158}
+  - {fileID: 844877123}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &770089087
@@ -319,6 +390,7 @@ MonoBehaviour:
     m_Bits: 8
   swordSlashEffects:
   - {fileID: 1729665934}
+  slashEffectAnimator: {fileID: 0}
   defaultAttackRadius: 0.7
   tier0AttackRadius: 1
   tier1AttackRadius: 1.2
@@ -473,6 +545,35 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &770089095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770089083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feb284d29da05304e85fd6bb0df0ae21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerUlt
+  ultCooldown: 15
+  slashCount: 8
+  slashInterval: 0.15
+  ultDamage: 10
+  fxPerSlash: 3
+  ultArea: {fileID: 630295157}
+  ultEffect: {fileID: 844877123}
+  playerSprite: {fileID: 770089084}
+  playerCollider: {fileID: 770089090}
+  slashFxPrefabs:
+  - {fileID: 6149364883633430100, guid: 1c83a1d3a1d1cb847ab4335898ceee7a, type: 3}
+  - {fileID: 6262349039413186131, guid: e3f04f3f2bd962b46a66bf93301d3901, type: 3}
+  - {fileID: 8287274857696754739, guid: c02b7da85f6ee4a41bde57dd009e0def, type: 3}
+  - {fileID: 8173935636316862495, guid: ba64ba00d10c4ed4eb08e6f2b3ae948e, type: 3}
+  - {fileID: 982385263901975349, guid: 0528edc2a6ad84249aaa016878ed3a55, type: 3}
+  - {fileID: 9140578627028991708, guid: 212fbcd9e6e95c44a97a0f73350500ea, type: 3}
+  showDebugLogs: 1
 --- !u!1 &790213696
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,6 +631,37 @@ MonoBehaviour:
   defaultPanel: 1
   showDebugLogs: 1
   useUIReferenceManager: 1
+--- !u!1 &844877122
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 844877123}
+  m_Layer: 0
+  m_Name: UltEffect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &844877123
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 844877122}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 770089085}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &866157399
 GameObject:
   m_ObjectHideFlags: 0

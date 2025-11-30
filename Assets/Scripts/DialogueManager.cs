@@ -139,7 +139,7 @@ public class DialogueManager : MonoBehaviour
     {
         Debug.Log($"[DialogueManager] CheckForDialogueEvents 호출됨");
 
-        // 여러 키워드 패턴을 체크
+        // 대시 활성화 키워드 체크
         string[] dashKeywords = new string[]
         {
             "\"Space\"키를 누르면 대시가 나간다",
@@ -148,20 +148,44 @@ public class DialogueManager : MonoBehaviour
             "대시가 나간다"
         };
 
-        bool keywordFound = false;
+        bool dashKeywordFound = false;
         foreach (var keyword in dashKeywords)
         {
             if (line.Contains(keyword))
             {
-                Debug.Log($"[DialogueManager] ✅ 키워드 발견: \"{keyword}\"");
-                keywordFound = true;
+                Debug.Log($"[DialogueManager] ✅ 대시 키워드 발견: \"{keyword}\"");
+                dashKeywordFound = true;
                 break;
             }
         }
 
-        if (!keywordFound)
+        // 궁극기 활성화 키워드 체크
+        string[] ultKeywords = new string[]
         {
-            Debug.Log($"[DialogueManager] ⚠ 대시 관련 키워드를 찾지 못했습니다.");
+            "\"R\" 키를 누르면 궁극기",  // 띄어쓰기 있음 (실제 대화문)
+            "\"R\"키를 누르면 궁극기",   // 띄어쓰기 없음
+            "R키를 누르면 궁극기",
+            "궁극기가 나가는",           // 대화문: "궁극기가 나가는 특수 기능"
+            "궁극기를 사용할 수 있다",
+            "난무를 사용할 수 있다",
+            "Blade Dance"
+        };
+
+        bool ultKeywordFound = false;
+        foreach (var keyword in ultKeywords)
+        {
+            if (line.Contains(keyword))
+            {
+                Debug.Log($"[DialogueManager] ✅ 궁극기 키워드 발견: \"{keyword}\"");
+                ultKeywordFound = true;
+                break;
+            }
+        }
+
+        // 키워드가 하나도 없으면 종료
+        if (!dashKeywordFound && !ultKeywordFound)
+        {
+            Debug.Log($"[DialogueManager] ⚠ 이벤트 키워드를 찾지 못했습니다.");
             return;
         }
 
@@ -169,10 +193,17 @@ public class DialogueManager : MonoBehaviour
 
         // 플레이어 찾기
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null)
+        if (player == null)
         {
-            Debug.Log($"[DialogueManager] ✅ Player 오브젝트 발견: {player.name}");
+            Debug.LogError("❌ DialogueManager: Player 태그를 가진 오브젝트를 찾을 수 없습니다!");
+            return;
+        }
 
+        Debug.Log($"[DialogueManager] ✅ Player 오브젝트 발견: {player.name}");
+
+        // 대시 활성화
+        if (dashKeywordFound)
+        {
             PlayerController playerController = player.GetComponent<PlayerController>();
             if (playerController != null)
             {
@@ -189,9 +220,25 @@ public class DialogueManager : MonoBehaviour
                 Debug.LogError("❌ DialogueManager: PlayerController를 찾을 수 없습니다!");
             }
         }
-        else
+
+        // 궁극기 활성화
+        if (ultKeywordFound)
         {
-            Debug.LogError("❌ DialogueManager: Player 태그를 가진 오브젝트를 찾을 수 없습니다!");
+            PlayerUlt playerUlt = player.GetComponent<PlayerUlt>();
+            if (playerUlt != null)
+            {
+                Debug.Log($"[DialogueManager] ✅ PlayerUlt 컴포넌트 발견");
+                Debug.Log($"[DialogueManager] 궁극기 활성화 전 상태: {playerUlt.IsUltEnabled()}");
+
+                playerUlt.EnableUlt();
+
+                Debug.Log($"[DialogueManager] 궁극기 활성화 후 상태: {playerUlt.IsUltEnabled()}");
+                Debug.Log("🎯 대화 이벤트: 궁극기 'Blade Dance' 활성화!");
+            }
+            else
+            {
+                Debug.LogError("❌ DialogueManager: PlayerUlt를 찾을 수 없습니다!");
+            }
         }
     }
 
