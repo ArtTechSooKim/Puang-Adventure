@@ -12,11 +12,16 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject dialoguePanel; // DialoguePanel (비활성화 상태로 둠)
     [SerializeField] private TextMeshProUGUI dialogueText;   // DialogueText (TextMeshProUGUI)
 
+    [Header("Text Settings")]
+    [Tooltip("대화 텍스트 크기 배율 (1 = 기본, 2 = 2배)")]
+    [SerializeField] private float fontSizeMultiplier = 2f;
+
     private Queue<string> lines = new Queue<string>();
     private bool isOpen = false;
 
     // 시간 복원용
     private float previousTimeScale = 1f;
+    private float originalFontSize = 0f; // 원본 폰트 크기 저장
 
     void OnEnable()
     {
@@ -284,7 +289,16 @@ public class DialogueManager : MonoBehaviour
                 if (text != null)
                 {
                     dialogueText = text;
-                    Debug.Log("✅ DialogueManager: Found DialogueText in current scene");
+
+                    // 원본 폰트 크기 저장 및 배율 적용
+                    if (originalFontSize == 0f)
+                    {
+                        originalFontSize = dialogueText.fontSize;
+                    }
+
+                    ApplyFontSize();
+
+                    Debug.Log($"✅ DialogueManager: Found DialogueText (Original size: {originalFontSize}, New size: {dialogueText.fontSize})");
                 }
                 else
                 {
@@ -308,6 +322,31 @@ public class DialogueManager : MonoBehaviour
         // Ensure panel is hidden initially
         if (dialoguePanel != null && !isOpen)
             dialoguePanel.SetActive(false);
+    }
+
+    /// <summary>
+    /// 폰트 크기 배율 적용
+    /// </summary>
+    private void ApplyFontSize()
+    {
+        if (dialogueText == null) return;
+
+        if (originalFontSize == 0f)
+        {
+            originalFontSize = dialogueText.fontSize;
+        }
+
+        dialogueText.fontSize = originalFontSize * fontSizeMultiplier;
+    }
+
+    /// <summary>
+    /// 폰트 크기 배율 설정 (런타임에서 변경 가능)
+    /// </summary>
+    public void SetFontSizeMultiplier(float multiplier)
+    {
+        fontSizeMultiplier = Mathf.Max(0.1f, multiplier);
+        ApplyFontSize();
+        Debug.Log($"📝 DialogueManager: Font size multiplier set to {fontSizeMultiplier}x (Size: {dialogueText?.fontSize})");
     }
 }
 // ...existing code...
