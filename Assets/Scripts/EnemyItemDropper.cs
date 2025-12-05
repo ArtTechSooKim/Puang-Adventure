@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 /// <summary>
@@ -19,6 +20,9 @@ public class EnemyItemDropper : MonoBehaviour
 
     [Header("Debug")]
     [SerializeField] private bool showDebugMessages = true;
+
+    // Static event for tutorial or other systems to track enemy deaths via item drops
+    public static event Action OnItemDropped;
 
     private void OnDestroy()
     {
@@ -50,7 +54,7 @@ public class EnemyItemDropper : MonoBehaviour
         }
 
         // Roll for drop chance
-        float roll = Random.value;
+        float roll = UnityEngine.Random.value;
         return roll <= dropChance;
     }
 
@@ -79,6 +83,9 @@ public class EnemyItemDropper : MonoBehaviour
 
         if (showDebugMessages)
             Debug.Log($"[EnemyItemDropper] ✅ Successfully dropped '{itemPrefabToDrop.name}' from {gameObject.name}");
+
+        // Notify subscribers that an item was dropped (for tutorial tracking, etc.)
+        OnItemDropped?.Invoke();
     }
 
     /// <summary>

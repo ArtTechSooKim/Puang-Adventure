@@ -14,6 +14,9 @@ public class EnemyHealth : MonoBehaviour
 
     private int currentHealth;
 
+    // Event for tutorial or other systems to listen to
+    public event Action OnDeath;
+
     void Awake()
     {
         currentHealth = maxHealth;
@@ -28,7 +31,18 @@ public class EnemyHealth : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log($"Enemy died: {name}");
+        Debug.Log($"💀 EnemyHealth: Enemy died: {name}");
+
+        if (OnDeath != null)
+        {
+            Debug.Log($"🔔 EnemyHealth: OnDeath has {OnDeath.GetInvocationList().Length} subscriber(s). Invoking...");
+            OnDeath.Invoke();
+        }
+        else
+        {
+            Debug.LogWarning($"⚠️ EnemyHealth: OnDeath event has no subscribers for {name}!");
+        }
+
         GameManager.I?.OnEnemyKilled(scoreValue);
         Destroy(gameObject);
     }

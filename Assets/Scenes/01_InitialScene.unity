@@ -867,6 +867,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueManager
   dialoguePanel: {fileID: 1247510763}
   dialogueText: {fileID: 1218317020}
+  fontSizeMultiplier: 2
 --- !u!4 &1111471649
 Transform:
   m_ObjectHideFlags: 0
@@ -1470,7 +1471,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6514d0257480a94b846559393e6c08b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneInitializer
-  firstSceneName: 02_VillageScene
+  firstSceneName: TutorialScene
   autoLoadFirstScene: 1
   showDebugLogs: 1
 --- !u!1 &1729665932
@@ -1551,7 +1552,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -849338025
-  m_SortingLayer: 8
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
