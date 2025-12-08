@@ -110,6 +110,9 @@ public class DialogueManager : MonoBehaviour
 
         isOpen = true;
 
+        // 🔊 대화 시작 사운드 재생
+        AudioManager.I?.PlayDialogueOpenSound();
+
         // 이전 timeScale 저장 후 0으로 설정 (대화 중 게임 정지)
         previousTimeScale = Time.timeScale;
         Time.timeScale = 0f;
@@ -250,6 +253,9 @@ public class DialogueManager : MonoBehaviour
     private void EndDialogue()
     {
         isOpen = false;
+
+        // 🔊 대화 종료 사운드 재생
+        AudioManager.I?.PlayDialogueCloseSound();
 
         // UI 숨김 및 텍스트 클리어
         if (dialoguePanel != null) dialoguePanel.SetActive(false);

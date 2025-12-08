@@ -1,0 +1,548 @@
+fileFormatVersion: 2
+guid: f16e27818c3a3384e946519995bb8a21
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2355692315614448917
+    second: NewMushroom_Die_0
+  - first:
+      213: -4604034429821651082
+    second: NewMushroom_Die_1
+  - first:
+      213: -3735245054613175847
+    second: NewMushroom_Die_2
+  - first:
+      213: -180429582369345954
+    second: NewMushroom_Die_3
+  - first:
+      213: -3948164002858729936
+    second: NewMushroom_Die_4
+  - first:
+      213: -1164823336927477635
+    second: NewMushroom_Die_5
+  - first:
+      213: -1448263681657953629
+    second: NewMushroom_Die_6
+  - first:
+      213: -8929900725248920266
+    second: NewMushroom_Die_7
+  - first:
+      213: 6692722463059293374
+    second: NewMushroom_Die_8
+  - first:
+      213: 75758910794830756
+    second: NewMushroom_Die_9
+  - first:
+      213: -4122660507851404801
+    second: NewMushroom_Die_10
+  - first:
+      213: -1405704919588169151
+    second: NewMushroom_Die_11
+  - first:
+      213: 236498477935449825
+    second: NewMushroom_Die_12
+  - first:
+      213: -5903324007151440431
+    second: NewMushroom_Die_13
+  - first:
+      213: -8304524232027182263
+    second: NewMushroom_Die_14
+  - first:
+      213: 8678727598527448078
+    second: NewMushroom_Die_15
+  - first:
+      213: -4759153235377997842
+    second: NewMushroom_Die_16
+  - first:
+      213: -120064086509429355
+    second: NewMushroom_Die_17
+  - first:
+      213: -782837437931962707
+    second: NewMushroom_Die_18
+  - first:
+      213: -4480452624144419702
+    second: NewMushroom_Die_19
+  - first:
+      213: 8682226132866261922
+    second: NewMushroom_Die_20
+  - first:
+      213: -1811878705480661520
+    second: NewMushroom_Die_21
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: NewMushroom_Die_0
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 0
+        width: 1320
+        height: 673
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51d01581ea911b020800000000000000
+      internalID: 2355692315614448917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NewMushroom_Die_1
+      rect:
+        serializedVersion: 2
+        x: 1759
+        y: 0
+        width: 1320
+        height: 673
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 677ffcc441f2b10c0800000000000000
+      internalID: -4604034429821651082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NewMushroom_Die_2
+      rect:
+        serializedVersion: 2
+        x: 3295
+        y: 0
+        width: 1320
+        height: 673
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d14fbab96eb92cc0800000000000000
+      internalID: -3735245054613175847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NewMushroom_Die_3
+      rect:
+        serializedVersion: 2
+        x: 4831
+        y: 0
+        width: 1320
+        height: 673
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5e27e3304cfe7df0800000000000000
+      internalID: -180429582369345954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NewMushroom_Die_4
+      rect:
+        serializedVersion: 2
+        x: 6348
+        y: 0
+        width: 1320
+        height: 673
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03efe96f1cd4539c0800000000000000
+      internalID: -3948164002858729936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NewMushroom_Die_5
+      rect:
+        serializedVersion: 2
+        x: 7907
+        y: 0
+        width: 1320
+        height: 673
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d704a58b857b5dfe0800000000000000
+      internalID: -1164823336927477635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NewMushroom_Die_6
+      rect:
+        serializedVersion: 2
+        x: 9457
+        y: 0
+        width: 1320
+        height: 673
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a2ada1dadbb6ebe0800000000000000
+      internalID: -1448263681657953629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NewMushroom_Die_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 21504
+        height: 736
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 635f8006a9e921480800000000000000
+      internalID: -8929900725248920266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NewMushroom_Die_8
+      rect:
+        serializedVersion: 2
+        x: 10975
+        y: 0
+        width: 1320
+        height: 673
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb43deede9351ec50800000000000000
+      internalID: 6692722463059293374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NewMushroom_Die_10
+      rect:
+        serializedVersion: 2
+        x: 12511
+        y: 0
+        width: 1320
+        height: 673
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff94cf36c1e59c6c0800000000000000
+      internalID: -4122660507851404801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NewMushroom_Die_12
+      rect:
+        serializedVersion: 2
+        x: 14047
+        y: 2
+        width: 1320
+        height: 673
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e65347dc16384300800000000000000
+      internalID: 236498477935449825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NewMushroom_Die_14
+      rect:
+        serializedVersion: 2
+        x: 15583
+        y: 0
+        width: 1320
+        height: 673
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94b6561d53760cc80800000000000000
+      internalID: -8304524232027182263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NewMushroom_Die_16
+      rect:
+        serializedVersion: 2
+        x: 17119
+        y: 2
+        width: 1320
+        height: 673
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee7b4a5f85714fdb0800000000000000
+      internalID: -4759153235377997842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NewMushroom_Die_18
+      rect:
+        serializedVersion: 2
+        x: 18655
+        y: 6
+        width: 1320
+        height: 673
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dae30337f7dc225f0800000000000000
+      internalID: -782837437931962707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NewMushroom_Die_20
+      rect:
+        serializedVersion: 2
+        x: 20191
+        y: 0
+        width: 1313
+        height: 673
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a36b1ddaa67d7870800000000000000
+      internalID: 8682226132866261922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: fe37be6028d0f4a4aa0cbcc302fbf88c
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      NewMushroom_Die_0: 2355692315614448917
+      NewMushroom_Die_1: -4604034429821651082
+      NewMushroom_Die_10: -4122660507851404801
+      NewMushroom_Die_11: -1405704919588169151
+      NewMushroom_Die_12: 236498477935449825
+      NewMushroom_Die_13: -5903324007151440431
+      NewMushroom_Die_14: -8304524232027182263
+      NewMushroom_Die_15: 8678727598527448078
+      NewMushroom_Die_16: -4759153235377997842
+      NewMushroom_Die_17: -120064086509429355
+      NewMushroom_Die_18: -782837437931962707
+      NewMushroom_Die_19: -4480452624144419702
+      NewMushroom_Die_2: -3735245054613175847
+      NewMushroom_Die_20: 8682226132866261922
+      NewMushroom_Die_21: -1811878705480661520
+      NewMushroom_Die_3: -180429582369345954
+      NewMushroom_Die_4: -3948164002858729936
+      NewMushroom_Die_5: -1164823336927477635
+      NewMushroom_Die_6: -1448263681657953629
+      NewMushroom_Die_7: -8929900725248920266
+      NewMushroom_Die_8: 6692722463059293374
+      NewMushroom_Die_9: 75758910794830756
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

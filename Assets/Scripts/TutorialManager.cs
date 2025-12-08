@@ -244,11 +244,11 @@ public class TutorialManager : MonoBehaviour
 
         // 8. "검은 반드시 아이템 슬롯 1번에 위치해야 사용할 수 있습니다."
         yield return new WaitForSeconds(1f);
-        yield return ShowMessage("검은 반드시 아이템 슬롯 1번에 위치해야 사용할 수 있습니다.", 1f, false);
+        yield return ShowMessage("검은 반드시 아이템 슬롯 1번에 위치해야 사용할 수 있습니다.", 3f, false);
 
         // 9. "드래그해서 아이템을 월드에 배치하거나 아이템 슬롯을 바꿀 수 있습니다."
         yield return new WaitForSeconds(1.0f);
-        yield return ShowMessage("드래그해서 아이템을 월드에 배치하거나 \n아이템 슬롯을 바꿀 수 있습니다.", 1f, true);
+        yield return ShowMessage("드래그해서 아이템을 월드에 배치하거나 \n아이템 슬롯을 바꿀 수 있습니다.", 3f, true);
         // 10. Teleport player to safe position and spawn enemies
         if (playerController != null)
         {

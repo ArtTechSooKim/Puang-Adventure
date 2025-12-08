@@ -54,10 +54,7 @@ public class SettingsPanelController : MonoBehaviour
             AutoFindSliders();
         }
 
-        // Setup slider listeners
-        SetupSliderListeners();
-
-        // Load saved settings
+        // Load saved settings (이 안에서 리스너도 추가됨)
         LoadSettings();
 
         LogDebug("✅ SettingsPanelController: Initialized and settings loaded");
@@ -88,38 +85,6 @@ public class SettingsPanelController : MonoBehaviour
         LogDebug("✅ SettingsPanelController: Auto-found sliders from UIReferenceManager");
     }
 
-    /// <summary>
-    /// Setup slider change listeners
-    /// </summary>
-    private void SetupSliderListeners()
-    {
-        if (sliderBrightness != null)
-        {
-            sliderBrightness.onValueChanged.AddListener(OnBrightnessChanged);
-        }
-        else
-        {
-            Debug.LogWarning("⚠ SettingsPanelController: sliderBrightness is not assigned!");
-        }
-
-        if (sliderBGM != null)
-        {
-            sliderBGM.onValueChanged.AddListener(OnBGMVolumeChanged);
-        }
-        else
-        {
-            Debug.LogWarning("⚠ SettingsPanelController: sliderBGM is not assigned!");
-        }
-
-        if (sliderSFX != null)
-        {
-            sliderSFX.onValueChanged.AddListener(OnSFXVolumeChanged);
-        }
-        else
-        {
-            Debug.LogWarning("⚠ SettingsPanelController: sliderSFX is not assigned!");
-        }
-    }
 
     /// <summary>
     /// Load settings from PlayerPrefs
@@ -131,6 +96,12 @@ public class SettingsPanelController : MonoBehaviour
         if (sliderBrightness != null)
         {
             sliderBrightness.value = brightness;
+            sliderBrightness.onValueChanged.AddListener(OnBrightnessChanged);
+            LogDebug($"✅ SettingsPanelController: Brightness slider listener added");
+        }
+        else
+        {
+            Debug.LogWarning("⚠ SettingsPanelController: sliderBrightness is not assigned!");
         }
         ApplyBrightness(brightness);
 
@@ -139,6 +110,12 @@ public class SettingsPanelController : MonoBehaviour
         if (sliderBGM != null)
         {
             sliderBGM.value = bgmVolume;
+            sliderBGM.onValueChanged.AddListener(OnBGMVolumeChanged);
+            LogDebug($"✅ SettingsPanelController: BGM slider listener added");
+        }
+        else
+        {
+            Debug.LogWarning("⚠ SettingsPanelController: sliderBGM is not assigned!");
         }
         ApplyBGMVolume(bgmVolume);
 
@@ -147,6 +124,12 @@ public class SettingsPanelController : MonoBehaviour
         if (sliderSFX != null)
         {
             sliderSFX.value = sfxVolume;
+            sliderSFX.onValueChanged.AddListener(OnSFXVolumeChanged);
+            LogDebug($"✅ SettingsPanelController: SFX slider listener added");
+        }
+        else
+        {
+            Debug.LogWarning("⚠ SettingsPanelController: sliderSFX is not assigned!");
         }
         ApplySFXVolume(sfxVolume);
 
@@ -219,20 +202,19 @@ public class SettingsPanelController : MonoBehaviour
         // Clamp value between 0 and 1
         value = Mathf.Clamp01(value);
 
-        // Option 1: Use AudioMixer
+        // 🔊 AudioManager를 통해 BGM 볼륨 설정
+        if (AudioManager.I != null)
+        {
+            AudioManager.I.SetBGMVolume(value);
+        }
+
+        // Option 1: Use AudioMixer (fallback if AudioManager not available)
         if (audioMixer != null)
         {
             // Convert 0-1 range to decibels (-80 to 0)
             float volumeDB = value > 0.0001f ? Mathf.Log10(value) * 20f : -80f;
             audioMixer.SetFloat(bgmMixerParameter, volumeDB);
         }
-
-        // Option 2: Control AudioSource directly (if you have a reference)
-        // Example:
-        // if (bgmAudioSource != null)
-        // {
-        //     bgmAudioSource.volume = value;
-        // }
     }
 
     /// <summary>
@@ -243,17 +225,19 @@ public class SettingsPanelController : MonoBehaviour
         // Clamp value between 0 and 1
         value = Mathf.Clamp01(value);
 
-        // Option 1: Use AudioMixer
+        // 🔊 AudioManager를 통해 SFX 볼륨 설정
+        if (AudioManager.I != null)
+        {
+            AudioManager.I.SetSFXVolume(value);
+        }
+
+        // Option 1: Use AudioMixer (fallback if AudioManager not available)
         if (audioMixer != null)
         {
             // Convert 0-1 range to decibels (-80 to 0)
             float volumeDB = value > 0.0001f ? Mathf.Log10(value) * 20f : -80f;
             audioMixer.SetFloat(sfxMixerParameter, volumeDB);
         }
-
-        // Option 2: Control all SFX AudioSources globally
-        // Example:
-        // AudioListener.volume = value;
     }
 
     /// <summary>

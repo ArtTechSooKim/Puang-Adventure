@@ -167,22 +167,22 @@ public class UI_MasterController : MonoBehaviour
     private void SetupButtonListeners()
     {
         if (buttonMap != null)
-            buttonMap.onClick.AddListener(() => SwitchPanel(PanelType.Map));
+            buttonMap.onClick.AddListener(() => { AudioManager.I?.PlayUIClickSound(); SwitchPanel(PanelType.Map); });
         else
             Debug.LogWarning("⚠ UI_MasterController: buttonMap is not assigned!");
 
         if (buttonInventory != null)
-            buttonInventory.onClick.AddListener(() => SwitchPanel(PanelType.Inventory));
+            buttonInventory.onClick.AddListener(() => { AudioManager.I?.PlayUIClickSound(); SwitchPanel(PanelType.Inventory); });
         else
             Debug.LogWarning("⚠ UI_MasterController: buttonInventory is not assigned!");
 
         if (buttonSettings != null)
-            buttonSettings.onClick.AddListener(() => SwitchPanel(PanelType.Settings));
+            buttonSettings.onClick.AddListener(() => { AudioManager.I?.PlayUIClickSound(); SwitchPanel(PanelType.Settings); });
         else
             Debug.LogWarning("⚠ UI_MasterController: buttonSettings is not assigned!");
 
         if (buttonSave != null)
-            buttonSave.onClick.AddListener(() => SwitchPanel(PanelType.Save));
+            buttonSave.onClick.AddListener(() => { AudioManager.I?.PlayUIClickSound(); SwitchPanel(PanelType.Save); });
         else
             Debug.LogWarning("⚠ UI_MasterController: buttonSave is not assigned!");
 
@@ -226,6 +226,9 @@ public class UI_MasterController : MonoBehaviour
         masterPanel.SetActive(true);
         Time.timeScale = 0f; // Pause game
 
+        // 🔊 패널 열림 사운드 재생
+        AudioManager.I?.PlayUIPanelOpenSound();
+
         // Disable HUD interaction (but keep visible)
         SetHUDInteractable(false);
 
@@ -249,6 +252,9 @@ public class UI_MasterController : MonoBehaviour
         isMasterUIOpen = false;
         masterPanel.SetActive(false);
         Time.timeScale = 1f; // Resume game
+
+        // 🔊 패널 닫힘 사운드 재생
+        AudioManager.I?.PlayUIPanelCloseSound();
 
         // Re-enable HUD interaction
         SetHUDInteractable(true);

@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c205a9e16a009994d8cff7764ef3fd02, type: 3}
+  m_Name: GameAudioClips
+  m_EditorClassIdentifier: Assembly-CSharp::AudioClipData
+  swordSlash: {fileID: 8300000, guid: 4a289b650374c471986319ec498f033e, type: 3}
+  dashWhoosh: {fileID: 8300000, guid: 8584d8c1a7c0f474aa4c8e833f7a29d1, type: 3}
+  footstepWalk: {fileID: 8300000, guid: c2e78375a758b4837b8f952aee7cead0, type: 3}
+  footstepRun: {fileID: 8300000, guid: 4ca996fc08d464a61a93c86578d1623e, type: 3}
+  playerHit: {fileID: 8300000, guid: 888c41f3ea2364d8c99c9b9afe205850, type: 3}
+  playerDeath: {fileID: 8300000, guid: 19369124afbb5491a85d41a3d06336e0, type: 3}
+  playerHeal: {fileID: 8300000, guid: 5f45ee792c08e488d939e47244b28342, type: 3}
+  ultimateSlash: {fileID: 8300000, guid: 128d2db6828a042228f5bc4acdf9f191, type: 3}
+  weaponEquip: {fileID: 8300000, guid: 825880fd96d1a4489b49457a45255b71, type: 3}
+  staminaDepleted: {fileID: 8300000, guid: 321ab181346824b14a47f45866a081cb, type: 3}
+  enemyDeath: {fileID: 8300000, guid: 98b5f47386c2e4d87aa441ec4f8172d5, type: 3}
+  enemyHit: {fileID: 8300000, guid: 8462af5930f09e24d8ab8a846f5fb2eb, type: 3}
+  enemyAttack: {fileID: 8300000, guid: 28204002296ec12479228cf885ffeced, type: 3}
+  bossAppear: {fileID: 8300000, guid: b216ad0f5fa804530a515888b6e5e354, type: 3}
+  bossVictory: {fileID: 8300000, guid: 6347d5754ce09084097756b1dac8f940, type: 3}
+  uiClick: {fileID: 8300000, guid: 3d9c3ea7d207c4dc78b60413205d3451, type: 3}
+  uiPanelOpen: {fileID: 8300000, guid: db4bb35e60f8341388462c5c82069842, type: 3}
+  uiPanelClose: {fileID: 8300000, guid: 5ee448bcc31d44773be5614f6179d66a, type: 3}
+  dialogueOpen: {fileID: 8300000, guid: ce12c45c442bd4ba0ac3b2c488a8c851, type: 3}
+  dialogueClose: {fileID: 8300000, guid: 321ab181346824b14a47f45866a081cb, type: 3}
+  dialogueAdvance: {fileID: 8300000, guid: 761e39f6988214d8283ff0438176bffd, type: 3}
+  sliderAdjust: {fileID: 8300000, guid: ce12c45c442bd4ba0ac3b2c488a8c851, type: 3}
+  tabSwitch: {fileID: 8300000, guid: ce12c45c442bd4ba0ac3b2c488a8c851, type: 3}
+  portalEnter: {fileID: 8300000, guid: 8d7b560ba4db7494dbb616855d809a4e, type: 3}
+  questProgress: {fileID: 8300000, guid: 6347d5754ce09084097756b1dac8f940, type: 3}
+  itemPickup: {fileID: 8300000, guid: 0ac20bb33bb2b4b6282238feedd013de, type: 3}
+  itemDrop: {fileID: 8300000, guid: 27ac61921fba65b46a5ef73d8aa1abe5, type: 3}
+  sceneTransition: {fileID: 0}
+  gameOver: {fileID: 8300000, guid: 5c64da278b2a32041b90665a91803976, type: 3}
+  abilityUnlock: {fileID: 0}
+  ambientVillage: {fileID: 0}
+  ambientForest: {fileID: 8300000, guid: c299a65c7c201f84e8ddb8dea9275b65, type: 3}
+  ambientCave: {fileID: 0}

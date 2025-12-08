@@ -63,6 +63,30 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Vector3 lastInputDirection = Vector3.down;
 
+    /// <summary>
+    /// 방향을 4방향(상/하/좌/우) 중 가장 가까운 방향으로 스냅합니다.
+    /// </summary>
+    private Vector2 SnapToFourDirection(Vector3 direction)
+    {
+        if (direction.sqrMagnitude < 0.01f)
+            return Vector2.down; // 기본값
+
+        // 상하좌우 중 가장 큰 성분을 선택
+        float absX = Mathf.Abs(direction.x);
+        float absY = Mathf.Abs(direction.y);
+
+        if (absY > absX)
+        {
+            // 상 또는 하
+            return direction.y > 0 ? Vector2.up : Vector2.down;
+        }
+        else
+        {
+            // 좌 또는 우
+            return direction.x > 0 ? Vector2.right : Vector2.left;
+        }
+    }
+
     private void Awake()
     {
         if (GetComponent<PlayerInput>() == null)
@@ -295,6 +319,15 @@ public class PlayerController : MonoBehaviour
         {
             // walking 상태 전달
             if (stamina != null) stamina.SetWalking(false);
+
+            // Animator 업데이트 (멈춰있을 때 Idle로 전환)
+            if (anim != null)
+            {
+                anim.SetBool("IsWalking", false);
+                // 마지막 방향 유지
+                anim.SetFloat("MoveX", lastInputDirection.x);
+                anim.SetFloat("MoveY", lastInputDirection.y);
+            }
             return;
         }
 
@@ -322,58 +355,24 @@ public class PlayerController : MonoBehaviour
         if (stamina != null) stamina.SetWalking(!sprinting && isWalking);
 
 
-        //애니메이션 처리(김주은.추가부분)
+        //애니메이션 처리 - MoveX/MoveY Float 방식 (간단한 방향 처리)
         if (anim != null)
         {
-            // 1. Speed (Idle <-> Walk 전환)
-            // movementInput.magnitude는 속도의 크기입니다.
-            anim.SetFloat("Speed", movementInput.magnitude);
+            // 1. IsWalking Bool (Idle <-> Walk 전환) - Speed보다 명확함
+            anim.SetBool("IsWalking", isWalking);
 
-            // 2. 방향 처리 (FacingBack, FacingFront, flipX)
-            if (isWalking) // 움직일 때만 방향 처리
+            // 2. 방향 처리 (MoveX, MoveY)
+            if (isWalking)
             {
-                // Y축 입력이 X축 입력보다 크거나 같을 때 Y축 우선 (대각선 포함, 0.01은 민감도)
-                if (Mathf.Abs(movementInput.y) >= Mathf.Abs(movementInput.x) && Mathf.Abs(movementInput.y) > 0.01f)
-                {
-                    // W 입력 (뒷모습)
-                    if (movementInput.y > 0) 
-                    {
-                        anim.SetBool("FacingBack", true);
-                        anim.SetBool("FacingFront", false);
-                    }
-                    // S 입력 (앞모습)
-                    else 
-                    {
-                        anim.SetBool("FacingBack", false);
-                        anim.SetBool("FacingFront", true);
-                    }
-                }
-                // X축 입력이 Y축보다 클 때 (측면)
-                else
-                {
-                    // 상하 방향 Bool 초기화 (측면 애니메이션이 재생되도록)
-                    anim.SetBool("FacingBack", false);
-                    anim.SetBool("FacingFront", false);
-
-                    // A/D 입력에 따른 좌우 반전(Flipping) 처리
-                    if (movementInput.x > 0)
-                    {
-                        spriteRenderer.flipX = false; // 오른쪽
-                    }
-                    else if (movementInput.x < 0)
-                    {
-                        spriteRenderer.flipX = true; // 왼쪽
-                    }
-                }
+                // 움직일 때는 입력 방향을 그대로 전달
+                anim.SetFloat("MoveX", movementInput.x);
+                anim.SetFloat("MoveY", movementInput.y);
             }
-            else // 멈췄을 때 (Idle 상태)
+            // Idle 상태에서는 마지막 방향 유지 (lastInputDirection 사용)
+            else
             {
-                // 멈췄을 때도 캐릭터는 마지막 방향을 유지해야 합니다.
-                // Idle 상태에서는 방향 Bool 값을 유지하고, Walk 상태에서만 갱신됩니다.
-                
-                // 만약 Idle 상태에서 방향을 초기화하고 싶다면 다음 코드를 사용하세요:
-                // anim.SetBool("FacingBack", false);
-                // anim.SetBool("FacingFront", false);
+                anim.SetFloat("MoveX", lastInputDirection.x);
+                anim.SetFloat("MoveY", lastInputDirection.y);
             }
         }
     }
@@ -403,8 +402,18 @@ public class PlayerController : MonoBehaviour
     {
         isDashing = true;
 
+        // 🔊 대시 사운드 재생
+        AudioManager.I?.PlayPlayerDashSound();
+
         //김주은 추가부분
-        if (anim != null) anim.SetBool("Dash", true); // 대시 시작 시 Dash Bool을 True로
+        if (anim != null)
+        {
+            anim.SetTrigger("Dash"); // 대시 트리거 발동
+            // 대시 방향을 4방향으로 스냅 (자연스러운 전환)
+            Vector2 snappedDir = SnapToFourDirection(direction);
+            anim.SetFloat("MoveX", snappedDir.x);
+            anim.SetFloat("MoveY", snappedDir.y);
+        }
         if (rb != null)
         {
             rb.bodyType = RigidbodyType2D.Kinematic;
@@ -424,12 +433,11 @@ public class PlayerController : MonoBehaviour
         isDashing = false;
 
         //김주은 추가부분
-        if (anim != null) anim.SetBool("Dash", false); // 대시 종료 시 Dash Bool을 False로
         if (rb != null)
         {
             rb.bodyType = RigidbodyType2D.Dynamic; // 물리 시스템 복구
         }
-        
+
 
         lastDashTime = Time.time;
     }
@@ -457,6 +465,9 @@ public class PlayerController : MonoBehaviour
     {
         isAttacking = true;
 
+        // 🔊 공격 사운드 재생
+        AudioManager.I?.PlayPlayerAttackSound();
+
         //김주은 추가부분
         if (rb != null)
         {
@@ -464,7 +475,14 @@ public class PlayerController : MonoBehaviour
             rb.linearVelocity = Vector2.zero;
             rb.angularVelocity = 0f;
         }
-        if (anim != null) anim.SetTrigger("Attack"); // 공격 시작 시 Attack Trigger 발동 (Player)
+        if (anim != null)
+        {
+            anim.SetTrigger("Attack"); // 공격 시작 시 Attack Trigger 발동 (Player)
+            // 공격 방향을 4방향으로 스냅 (자연스러운 전환)
+            Vector2 snappedDir = SnapToFourDirection(lastInputDirection);
+            anim.SetFloat("MoveX", snappedDir.x);
+            anim.SetFloat("MoveY", snappedDir.y);
+        }
 
         // 🔹 검기 이펙트 Animator 트리거 (SlashEffect)
         // 무기가 있을 때만 검기 이펙트 재생
@@ -477,39 +495,15 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("[PlayerController] 무기가 없어서 검기 이펙트를 재생하지 않습니다.");
         }
-        if (rb != null) 
+        // 공격 시 Lunge (마지막 방향으로 돌진)
+        if (rb != null)
         {
-            float lungeDistance = 0.3f; 
-            Vector3 lungeDirection = Vector3.zero;
+            float lungeDistance = 0.3f;
 
-            // 1. 현재 바라보는 방향을 확인합니다. (가장 최신 정보를 사용)
-            if (anim.GetBool("FacingBack"))
+            // 마지막 입력 방향으로 Lunge 실행 (훨씬 간단!)
+            if (lastInputDirection.sqrMagnitude > 0.1f)
             {
-                lungeDirection = Vector3.up; // W 방향 (뒷모습)
-            }
-            else if (anim.GetBool("FacingFront"))
-            {
-                lungeDirection = Vector3.down; // S 방향 (앞모습)
-            }
-            else // FacingFront와 FacingBack이 모두 False일 때 (측면)
-            {
-                // SpriteRenderer의 flipX 상태를 확인합니다.
-                if (spriteRenderer.flipX)
-                    lungeDirection = Vector3.left; // A 방향 (왼쪽)
-                else
-                    lungeDirection = Vector3.right; // D 방향 (오른쪽)
-            }
-
-            // 2. 입력이 없었더라도 시야 방향으로 Lunge를 실행합니다.
-            // *만약 움직이고 있었다면, 움직이던 방향으로 Lunge 실행*
-            if (lastInputDirection.sqrMagnitude > 0.1f) {
-                lungeDirection = lastInputDirection; // 움직이고 있었으면 그 방향으로 Lunge
-            }
-            
-            // 3. 계산된 방향으로 Lunge 실행
-            if (lungeDirection.sqrMagnitude > 0.1f)
-            {
-                transform.Translate(lungeDirection.normalized * lungeDistance, Space.World);
+                transform.Translate(lastInputDirection.normalized * lungeDistance, Space.World);
             }
         }
 
@@ -570,12 +564,12 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void UpdateAttackRange()
     {
-        // Inventory와 AttackArea가 없으면 리턴
-        if (Inventory.instance == null || attackAreaCollider == null)
-        {
-            Debug.LogWarning("[PlayerController] UpdateAttackRange: Inventory 또는 AttackArea가 없습니다.");
-            return;
-        }
+        // // Inventory와 AttackArea가 없으면 리턴
+        // if (Inventory.instance == null || attackAreaCollider == null)
+        // {
+        //     Debug.LogWarning("[PlayerController] UpdateAttackRange: Inventory 또는 AttackArea가 없습니다.");
+        //     return;
+        // }
 
         // Hotbar 1번 칸(index 0) 체크
         ItemData hotbarSlot0 = null;

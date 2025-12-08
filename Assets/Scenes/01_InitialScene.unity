@@ -2481,6 +2481,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -93.656
       objectReference: {fileID: 0}
+    - target: {fileID: 4974663711061982245, guid: d750908f62aec4a40aa757319780a867, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4974663711061982245, guid: d750908f62aec4a40aa757319780a867, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4974663711061982245, guid: d750908f62aec4a40aa757319780a867, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5179849113971072585, guid: d750908f62aec4a40aa757319780a867, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -3143,14 +3155,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3368031895515340895, guid: d750908f62aec4a40aa757319780a867, type: 3}
-    - {fileID: 5085754474334272426, guid: d750908f62aec4a40aa757319780a867, type: 3}
     - {fileID: 5462599565458149577, guid: d750908f62aec4a40aa757319780a867, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1304195781650458153, guid: d750908f62aec4a40aa757319780a867, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1953337402}
     - targetCorrespondingSourceObject: {fileID: 4908856008027786711, guid: d750908f62aec4a40aa757319780a867, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1622899584}
@@ -3284,29 +3292,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 595308573623239241, guid: d750908f62aec4a40aa757319780a867, type: 3}
   m_PrefabInstance: {fileID: 1953337386}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1953337402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1953337397}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a77194749a329243834e00a2e253c4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SettingsPanelController
-  sliderBrightness: {fileID: 1953337391}
-  sliderBGM: {fileID: 1953337390}
-  sliderSFX: {fileID: 1953337389}
-  audioMixer: {fileID: 0}
-  bgmMixerParameter: BGMVolume
-  sfxMixerParameter: SFXVolume
-  lightReference: {fileID: 0}
-  defaultBrightness: 1
-  defaultBGMVolume: 0.75
-  defaultSFXVolume: 0.75
-  showDebugLogs: 1
 --- !u!1 &1961999689
 GameObject:
   m_ObjectHideFlags: 0

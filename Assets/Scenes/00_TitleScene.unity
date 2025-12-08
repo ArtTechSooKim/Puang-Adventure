@@ -119,6 +119,66 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &13934608
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 13934610}
+  - component: {fileID: 13934609}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &13934609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13934608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8974ba1d3baee0042bf86c74a57fae11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManager
+  bgmController: {fileID: 0}
+  sfxController: {fileID: 0}
+  audioClipData: {fileID: 11400000, guid: 0b57792c372bc614593dd20927106ced, type: 2}
+  masterMixer: {fileID: 24100000, guid: 90ffbe9f85d49de48b5566cbeaf87020, type: 2}
+  bgmMixerGroup: {fileID: 3541144223065690389, guid: 90ffbe9f85d49de48b5566cbeaf87020, type: 2}
+  sfxMixerGroup: {fileID: 8579551225659065949, guid: 90ffbe9f85d49de48b5566cbeaf87020, type: 2}
+  titleBGM: {fileID: 8300000, guid: eab1ae3df1a314219b478ea22cf2ed8d, type: 3}
+  tutorialBGM: {fileID: 8300000, guid: e23b0073d1024488780e04fb8edd2bcb, type: 3}
+  villageBGM: {fileID: 8300000, guid: c9c299010cb884f55ae93f7ee5edef49, type: 3}
+  forestBGM: {fileID: 8300000, guid: c49b4f40398ddbe4c87cab0189c03344, type: 3}
+  caveBGM: {fileID: 8300000, guid: 15b17cb11e66b414e8e1a5425e436397, type: 3}
+  bossIntenseBGM: {fileID: 8300000, guid: 88c545aaaa1a24162a958691e661eb9e, type: 3}
+  bossEpicBGM: {fileID: 8300000, guid: 695d8f09af57141a08eb73efadad010d, type: 3}
+  endingBGM: {fileID: 8300000, guid: 8764ae551aacd48acb8d9c9038763c76, type: 3}
+  sceneTransitionFadeTime: 2
+  showDebugLogs: 1
+--- !u!4 &13934610
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13934608}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &290799010
 GameObject:
   m_ObjectHideFlags: 0
@@ -957,7 +1017,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1402,3 +1462,4 @@ SceneRoots:
   - {fileID: 1737006753}
   - {fileID: 1449992934}
   - {fileID: 1121537503}
+  - {fileID: 13934610}

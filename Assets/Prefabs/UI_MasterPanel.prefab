@@ -1215,7 +1215,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2045605280513592890}
-  - component: {fileID: 5085754474334272426}
+  - component: {fileID: 9016168988776934902}
   m_Layer: 5
   m_Name: SettingsPanel
   m_TagString: Untagged
@@ -1245,7 +1245,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1520, y: 785}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &5085754474334272426
+--- !u!114 &9016168988776934902
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1254,10 +1254,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1304195781650458153}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4cbc5fc6dd055a44a13682109da1b1b, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a77194749a329243834e00a2e253c4b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InventoryUI
-  slotsParent: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::SettingsPanelController
+  sliderBrightness: {fileID: 8108137679826867800}
+  sliderBGM: {fileID: 4974663711061982245}
+  sliderSFX: {fileID: 336630691391312879}
+  audioMixer: {fileID: 24100000, guid: 90ffbe9f85d49de48b5566cbeaf87020, type: 2}
+  bgmMixerParameter: BGMVolume
+  sfxMixerParameter: SFXVolume
+  lightReference: {fileID: 0}
+  defaultBrightness: 1
+  defaultBGMVolume: 1
+  defaultSFXVolume: 1
+  showDebugLogs: 1
 --- !u!1 &1402575063585663416
 GameObject:
   m_ObjectHideFlags: 0
