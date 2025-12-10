@@ -13,6 +13,7 @@ public class TitleSceneManager : MonoBehaviour
 
     [Header("UI References")]
     [SerializeField] private Button playButton;
+    [SerializeField] private Button loadButton; // Load button (handled by TitleSceneLoadButton.cs)
     [SerializeField] private Button quitButton;
 
     [Header("Debug")]
@@ -28,6 +29,12 @@ public class TitleSceneManager : MonoBehaviour
         else
         {
             Debug.LogWarning("⚠️ TitleSceneManager: Play Button is not assigned!");
+        }
+
+        // Load button is handled by TitleSceneLoadButton.cs component on the button itself
+        if (loadButton == null && showDebugLogs)
+        {
+            Debug.Log("ℹ️ TitleSceneManager: Load Button should have TitleSceneLoadButton.cs component");
         }
 
         if (quitButton != null)

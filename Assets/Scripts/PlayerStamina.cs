@@ -211,5 +211,15 @@ public class PlayerStamina : MonoBehaviour
         lastUseTime = -99f;
         UpdateSlider();
     }
+
+    /// <summary>
+    /// Set stamina to a specific value (used by save/load system)
+    /// </summary>
+    public void SetStamina(float value)
+    {
+        currentStamina = Mathf.Clamp(value, 0f, maxStamina);
+        UpdateSlider();
+        Debug.Log($"✅ PlayerStamina: Stamina set to {currentStamina}/{maxStamina}");
+    }
 }
 // ...existing code...

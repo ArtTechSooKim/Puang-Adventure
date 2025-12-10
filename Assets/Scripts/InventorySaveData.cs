@@ -61,20 +61,19 @@ public class InventorySaveData
             if (string.IsNullOrEmpty(itemIDs[i]))
                 continue;
 
-            // TODO: Load actual ItemData from Resources
-            // For now, this is a placeholder - you need to implement item loading
-            // You should create a Resources/Items folder and place ItemData assets there
-            // Then uncomment the following code:
-            //
-            // ItemData loadedItem = Resources.Load<ItemData>("Items/" + itemIDs[i]);
-            // if (loadedItem != null)
-            // {
-            //     ItemData runtimeCopy = loadedItem.CreateRuntimeCopy();
-            //     runtimeCopy.stackCount = stackCounts[i];
-            //     inventory.items[i] = runtimeCopy;
-            // }
-
-            Debug.LogWarning($"⚠ InventorySaveData: Item loading not implemented yet for itemID: {itemIDs[i]}");
+            // Load actual ItemData from Resources
+            ItemData loadedItem = Resources.Load<ItemData>("Items/" + itemIDs[i]);
+            if (loadedItem != null)
+            {
+                ItemData runtimeCopy = loadedItem.CreateRuntimeCopy();
+                runtimeCopy.stackCount = stackCounts[i];
+                inventory.items[i] = runtimeCopy;
+                Debug.Log($"✅ InventorySaveData: Loaded item '{loadedItem.itemName}' (ID: {itemIDs[i]}) at slot {i}");
+            }
+            else
+            {
+                Debug.LogWarning($"⚠ InventorySaveData: Item not found in Resources/Items/{itemIDs[i]}");
+            }
         }
 
         // Refresh UI

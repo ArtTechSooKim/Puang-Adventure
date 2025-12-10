@@ -200,6 +200,17 @@ public class PlayerHealth : MonoBehaviour
     }
 
     /// <summary>
+    /// Set health to a specific value (used by save/load system)
+    /// </summary>
+    public void SetHealth(int value)
+    {
+        currentHealth = Mathf.Clamp(value, 0, maxHealth);
+        isDead = (currentHealth == 0);
+        UpdateUI();
+        Debug.Log($"✅ PlayerHealth: Health set to {currentHealth}/{maxHealth}");
+    }
+
+    /// <summary>
     /// 특수 씬에서 사망 처리를 무시하도록 설정 (UnkillableBossScene 등)
     /// </summary>
     public void SetIgnoreDeathProcessing(bool ignore)
