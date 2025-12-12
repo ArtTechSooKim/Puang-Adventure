@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9740a62f5220b84c9da3bcf71b3aaec, type: 3}
+  m_Name: CaveMapData
+  m_EditorClassIdentifier: Assembly-CSharp::SceneMapData
+  sceneName: 04_CaveScene
+  mapSprite: {fileID: 8438414255999518034, guid: e8332771871c0e945900fe4e106ee2aa, type: 3}
+  calibrationPoints:
+  - worldPosition: {x: -77, y: 47}
+    normalizedPosition: {x: 0, y: 1}
+  - worldPosition: {x: 77, y: -47}
+    normalizedPosition: {x: 1, y: 0}

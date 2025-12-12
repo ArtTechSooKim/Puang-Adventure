@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9740a62f5220b84c9da3bcf71b3aaec, type: 3}
+  m_Name: ForestMapData
+  m_EditorClassIdentifier: Assembly-CSharp::SceneMapData
+  sceneName: 03_ForestScene
+  mapSprite: {fileID: -5301071974452102080, guid: b9cd37159ed4f3f43b053a380ed568a0, type: 3}
+  calibrationPoints:
+  - worldPosition: {x: -40, y: 30}
+    normalizedPosition: {x: 0, y: 1}
+  - worldPosition: {x: 30, y: -30}
+    normalizedPosition: {x: 1, y: 0}
