@@ -42,12 +42,24 @@ public class MapPanelController : MonoBehaviour
     private void Start()
     {
         // 시작 시 플레이어 마커 생성 준비 (아직 활성화하지 않음)
-        if (playerMarkerPrefab != null && mapPanelRect != null)
+        if (playerMarkerPrefab != null && mapImage != null)
         {
-            playerMarkerInstance = Instantiate(playerMarkerPrefab, mapPanelRect);
+            playerMarkerInstance = Instantiate(playerMarkerPrefab, mapImage.transform.parent);
             playerMarkerRect = playerMarkerInstance.GetComponent<RectTransform>();
             playerMarkerInstance.SetActive(false); // 맵이 열릴 때까지 숨김
         }
+    }
+
+    private void OnEnable()
+    {
+        // MapPanel이 활성화될 때마다 맵 업데이트
+        OnMapPanelOpened();
+    }
+
+    private void OnDisable()
+    {
+        // MapPanel이 비활성화될 때
+        OnMapPanelClosed();
     }
 
     /// <summary>

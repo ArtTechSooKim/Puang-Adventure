@@ -3620,6 +3620,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -440
       objectReference: {fileID: 0}
+    - target: {fileID: 8970346474115610186, guid: d750908f62aec4a40aa757319780a867, type: 3}
+      propertyPath: activeMiniMapController
+      value: 
+      objectReference: {fileID: 768416581}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
