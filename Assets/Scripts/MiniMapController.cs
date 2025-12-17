@@ -1,11 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 /// <summary>
 /// 각 씬마다 개별로 만들어지는 MiniMapPanel 컨트롤러
 /// MiniMap은 원형으로 보이며, 플레이어가 중앙에 고정되고 맵이 스크롤됨
+/// MiniMapPanel 클릭 시 UI_MasterController의 MapPanel을 엽니다
 /// </summary>
-public class MiniMapController : MonoBehaviour
+public class MiniMapController : MonoBehaviour, IPointerClickHandler
 {
     [Header("Scene Map Data")]
     [Tooltip("이 미니맵이 표시할 씬의 맵 데이터")]
@@ -155,6 +157,42 @@ public class MiniMapController : MonoBehaviour
             mapPanelController.SetActiveMiniMapController(this);
         }
     }
+
+    #region IPointerClickHandler Implementation
+
+    /// <summary>
+    /// MiniMapPanel 클릭 시 UI_MasterController의 MapPanel을 엽니다
+    /// </summary>
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        // UI_MasterController 찾기
+        UI_MasterController uiMaster = FindObjectOfType<UI_MasterController>();
+        if (uiMaster != null)
+        {
+            // 🔊 클릭 사운드 재생
+            AudioManager.I?.PlayUIClickSound();
+
+            // MapPanel 열기
+            if (uiMaster.IsMasterUIOpen())
+            {
+                // 이미 열려있으면 Map 패널로 전환
+                uiMaster.SwitchPanel(UI_MasterController.PanelType.Map);
+                Debug.Log("[MiniMapController] MiniMap 클릭 → MapPanel로 전환");
+            }
+            else
+            {
+                // 닫혀있으면 Map 패널로 열기
+                uiMaster.OpenMasterUI(UI_MasterController.PanelType.Map);
+                Debug.Log("[MiniMapController] MiniMap 클릭 → UI_MasterPanel 열기 (MapPanel)");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("[MiniMapController] UI_MasterController를 찾을 수 없습니다!");
+        }
+    }
+
+    #endregion
 
     #region Public Methods for MapPanelController
 

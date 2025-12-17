@@ -63,7 +63,7 @@ public class QuestGuiderPanel : MonoBehaviour
             QuestStage.Stage3_CaveExploration,
             new QuestGuideData(
                 "3장: 동굴 탐험",
-                "• 동굴로 이동하세요 (포털 이용)\n• 박쥐 5마리를 처치하세요\n• 해골 5마리를 처치하세요"
+                "• Space 누르면 대시합니다.\n동굴로 이동하세요 (포털 이용)\n• 박쥐 5마리를 처치하세요\n• 해골 5마리를 처치하세요"
             )
         },
         {
@@ -91,7 +91,7 @@ public class QuestGuiderPanel : MonoBehaviour
             QuestStage.Stage7_FinalBoss,
             new QuestGuideData(
                 "7장: 최종 결전",
-                "• 숲에 보스 방을 찾아보세요\n• 거대 버섯 보스를 처치하세요\n• 처치후 고기를 획득하세요\n• 푸앙이에게 고기를 주세요"
+                "• R누르면 궁극기 사용합니다.\n숲에 보스 방을 찾아보세요\n• 거대 버섯 보스를 처치하세요\n• 처치후 고기를 획득하세요\n• 푸앙이에게 고기를 주세요"
             )
         },
         {

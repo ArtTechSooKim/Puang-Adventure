@@ -258,6 +258,13 @@ public class PlayerController : MonoBehaviour
         // 궁극기 사용 중에는 공격 차단
         if (isUltActive) return;
 
+        // Button이나 상호작용 가능한 UI 클릭 중에는 공격 차단
+        if (IsClickingInteractableUI())
+        {
+            Debug.Log("[PlayerController] 공격 입력 차단: 버튼 클릭 중");
+            return;
+        }
+
         if (context.performed)
             Attack();
     }
@@ -310,6 +317,13 @@ public class PlayerController : MonoBehaviour
     public void OnMove(InputValue value) => movementInput = value.Get<Vector2>();
     public void OnAttack(InputValue value)
     {
+        // Button이나 상호작용 가능한 UI 클릭 중에는 공격 차단
+        if (IsClickingInteractableUI())
+        {
+            Debug.Log("[PlayerController] 공격 입력 차단: 버튼 클릭 중");
+            return;
+        }
+
         if (value.Get<float>() > 0f) Attack();
     }
     public void OnDash(InputValue value)
@@ -837,6 +851,47 @@ public class PlayerController : MonoBehaviour
     public bool IsDashEnabled()
     {
         return isDashEnabled;
+    }
+
+    // ===================== UI 상호작용 체크 =====================
+    /// <summary>
+    /// 현재 마우스가 Button, Toggle, Slider 등 상호작용 가능한 UI 위에 있는지 체크
+    /// HUD나 투명 Panel은 무시하고 실제 클릭 가능한 UI 요소만 감지
+    /// </summary>
+    private bool IsClickingInteractableUI()
+    {
+        if (UnityEngine.EventSystems.EventSystem.current == null)
+            return false;
+
+        // 마우스 위치에서 UI Raycast 수행
+        UnityEngine.EventSystems.PointerEventData pointerData = new UnityEngine.EventSystems.PointerEventData(UnityEngine.EventSystems.EventSystem.current)
+        {
+            position = UnityEngine.Input.mousePosition
+        };
+
+        List<UnityEngine.EventSystems.RaycastResult> raycastResults = new List<UnityEngine.EventSystems.RaycastResult>();
+        UnityEngine.EventSystems.EventSystem.current.RaycastAll(pointerData, raycastResults);
+
+        // Raycast 결과에서 상호작용 가능한 UI 요소가 있는지 확인
+        foreach (var result in raycastResults)
+        {
+            if (result.gameObject == null)
+                continue;
+
+            // Button, Toggle, Slider, Dropdown, InputField 등 상호작용 가능한 UI 컴포넌트 체크
+            if (result.gameObject.GetComponent<UnityEngine.UI.Button>() != null ||
+                result.gameObject.GetComponent<UnityEngine.UI.Toggle>() != null ||
+                result.gameObject.GetComponent<UnityEngine.UI.Slider>() != null ||
+                result.gameObject.GetComponent<UnityEngine.UI.Dropdown>() != null ||
+                result.gameObject.GetComponent<UnityEngine.UI.InputField>() != null ||
+                result.gameObject.GetComponent<UnityEngine.UI.Scrollbar>() != null)
+            {
+                Debug.Log($"[PlayerController] 상호작용 가능한 UI 감지: {result.gameObject.name}");
+                return true;
+            }
+        }
+
+        return false;
     }
 }
 // ...existing code...

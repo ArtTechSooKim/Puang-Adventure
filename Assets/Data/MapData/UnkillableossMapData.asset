@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: UnkillableossMapData
   m_EditorClassIdentifier: Assembly-CSharp::SceneMapData
   sceneName: 06_UnkillableBossScene
-  mapSprite: {fileID: 3489437797179964722, guid: 8ce4f483e750299429beb2399d365ebb, type: 3}
-  worldBounds:
-    m_Center: {x: -5, y: -8.5, z: 0}
-    m_Extent: {x: 10.56, y: 9.12, z: 1}
+  mapSprite: {fileID: 21300000, guid: 8ce4f483e750299429beb2399d365ebb, type: 3}
+  calibrationPoints:
+  - worldPosition: {x: -38, y: 20}
+    normalizedPosition: {x: 0, y: 1}
+  - worldPosition: {x: 28, y: -37}
+    normalizedPosition: {x: 1, y: 0}

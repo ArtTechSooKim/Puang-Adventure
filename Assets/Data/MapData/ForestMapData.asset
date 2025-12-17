@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ForestMapData
   m_EditorClassIdentifier: Assembly-CSharp::SceneMapData
   sceneName: 03_ForestScene
-  mapSprite: {fileID: -5301071974452102080, guid: b9cd37159ed4f3f43b053a380ed568a0, type: 3}
+  mapSprite: {fileID: 21300000, guid: b9cd37159ed4f3f43b053a380ed568a0, type: 3}
   calibrationPoints:
   - worldPosition: {x: -40, y: 30}
     normalizedPosition: {x: 0, y: 1}

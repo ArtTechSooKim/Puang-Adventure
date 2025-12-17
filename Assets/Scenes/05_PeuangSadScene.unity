@@ -2526,6 +2526,7 @@ MonoBehaviour:
     \uD4E8\uC559!\""
   - "\"\uC800\uAC8C \uD478\uC559\uC774\uAC00 \uC6D0\uD558\uB358 \uAC70\uB300 \uBC84\uC12F...!
     \uC7AC\uBE68\uB9AC \uD574\uCE58\uC6B0\uC790.\""
+  - "\"Space \uB204\uB974\uACE0 \uACC4\uC18D\""
   nextSceneName: 06_UnkillableBossScene
   dialogueWaitTime: 3
   transitionDelay: 1
@@ -2686,6 +2687,7 @@ MonoBehaviour:
   buttonSave: {fileID: 155655107}
   buttonReturnToTitle: {fileID: 1811381698}
   buttonQuitGame: {fileID: 1811381697}
+  saveDataPanelController: {fileID: 0}
   hudCanvas: {fileID: 403856573}
   defaultPanel: 1
   showDebugLogs: 1

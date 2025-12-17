@@ -67,6 +67,20 @@ public class MapPanelController : MonoBehaviour
     /// </summary>
     public void OnMapPanelOpened()
     {
+        // activeMiniMapController가 없으면 자동으로 찾기
+        if (activeMiniMapController == null)
+        {
+            activeMiniMapController = FindObjectOfType<MiniMapController>();
+            if (activeMiniMapController != null)
+            {
+                Debug.Log($"[MapPanelController] MiniMapController 자동 검색 성공: {activeMiniMapController.gameObject.name}");
+            }
+            else
+            {
+                Debug.LogWarning("[MapPanelController] MiniMapController를 찾을 수 없습니다!");
+            }
+        }
+
         LoadCurrentSceneMap();
         UpdatePlayerMarker();
     }
@@ -76,11 +90,31 @@ public class MapPanelController : MonoBehaviour
     /// </summary>
     private void LoadCurrentSceneMap()
     {
-        string currentSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
-        currentSceneData = sceneMapDataList.Find(data => data.sceneName == currentSceneName);
+        // 먼저 MiniMapController에서 SceneMapData 가져오기 시도
+        if (activeMiniMapController != null)
+        {
+            currentSceneData = activeMiniMapController.GetSceneMapData();
+            if (currentSceneData != null)
+            {
+                Debug.Log($"[MapPanelController] MiniMapController에서 SceneMapData 로드 성공: {currentSceneData.sceneName}");
+            }
+        }
+
+        // MiniMapController에서 못 가져왔으면 sceneMapDataList에서 검색
+        if (currentSceneData == null && sceneMapDataList != null && sceneMapDataList.Count > 0)
+        {
+            string currentSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+            currentSceneData = sceneMapDataList.Find(data => data.sceneName == currentSceneName);
+
+            if (currentSceneData != null)
+            {
+                Debug.Log($"[MapPanelController] sceneMapDataList에서 SceneMapData 로드 성공: {currentSceneData.sceneName}");
+            }
+        }
 
         if (currentSceneData == null)
         {
+            string currentSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
             Debug.LogWarning($"[MapPanelController] SceneMapData not found for scene: {currentSceneName}");
             return;
         }

@@ -21,6 +21,16 @@ public class SavePanelController : MonoBehaviour
     [Header("Debug")]
     [SerializeField] private bool showDebugLogs = true;
 
+    private void OnDisable()
+    {
+        // SavePanel이 비활성화될 때 SaveDataPanel도 함께 닫기
+        if (saveDataPanelController != null)
+        {
+            saveDataPanelController.ClosePanel();
+            LogDebug("📂 SavePanelController: SavePanel 비활성화 - SaveDataPanel도 함께 닫음");
+        }
+    }
+
     private void Start()
     {
         // Auto-find SaveDataPanelController if not assigned

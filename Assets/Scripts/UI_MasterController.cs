@@ -52,6 +52,10 @@ public class UI_MasterController : MonoBehaviour
     [Tooltip("Button to quit game")]
     [SerializeField] private Button buttonQuitGame;
 
+    [Header("=== SaveDataPanel Reference ===")]
+    [Tooltip("Reference to SaveDataPanelController to close it when Master UI closes")]
+    [SerializeField] private SaveDataPanelController saveDataPanelController;
+
     [Header("=== HUD Reference ===")]
     [Tooltip("HUD Canvas - will disable interaction when Master UI is open")]
     [SerializeField] private Canvas hudCanvas;
@@ -167,6 +171,16 @@ public class UI_MasterController : MonoBehaviour
 
         // Note: buttonReturnToTitle and buttonQuitGame are in SavePanel and won't be in UIReferenceManager
 
+        // Auto-find SaveDataPanelController
+        if (saveDataPanelController == null)
+        {
+            saveDataPanelController = FindAnyObjectByType<SaveDataPanelController>(FindObjectsInactive.Include);
+            if (saveDataPanelController != null)
+            {
+                LogDebug("✅ UI_MasterController: Found SaveDataPanelController");
+            }
+        }
+
         LogDebug("✅ UI_MasterController: Auto-found references from UIReferenceManager");
     }
 
@@ -274,6 +288,13 @@ public class UI_MasterController : MonoBehaviour
         {
             Debug.LogError("❌ UI_MasterController.CloseMasterUI: masterPanel is not assigned!");
             return;
+        }
+
+        // SaveDataPanel도 함께 닫기
+        if (saveDataPanelController != null)
+        {
+            saveDataPanelController.ClosePanel();
+            LogDebug("📂 UI_MasterController: SaveDataPanel 닫음");
         }
 
         isMasterUIOpen = false;
@@ -428,6 +449,10 @@ public class UI_MasterController : MonoBehaviour
 
         // Resume time scale before scene transition
         Time.timeScale = 1f;
+
+        // 🔥 게임 상태 리셋 (PlayerPersistent는 TitleScene에서 자동 삭제되므로 여기서는 하지 않음)
+        // TitleScene의 Awake에서 PlayerPersistent.Instance를 삭제함
+        // 다른 매니저들도 TitleScene에서 리셋될 것임
 
         // Load title scene
         UnityEngine.SceneManagement.SceneManager.LoadScene("00_TitleScene");

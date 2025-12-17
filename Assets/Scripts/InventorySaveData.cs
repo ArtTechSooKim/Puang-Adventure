@@ -19,14 +19,22 @@ public class InventorySaveData
         InventorySaveData data = new InventorySaveData();
 
         if (inventory == null || inventory.items == null)
+        {
+            Debug.LogWarning("⚠ InventorySaveData: Inventory or items array is null!");
             return data;
+        }
 
+        Debug.Log($"💾 InventorySaveData: Saving {inventory.items.Length} slots");
+
+        int savedItemCount = 0;
         for (int i = 0; i < inventory.items.Length; i++)
         {
             if (inventory.items[i] != null)
             {
                 data.itemIDs.Add(inventory.items[i].itemID);
                 data.stackCounts.Add(inventory.items[i].stackCount);
+                savedItemCount++;
+                Debug.Log($"   Slot {i}: {inventory.items[i].itemName} (ID: {inventory.items[i].itemID}, Stack: {inventory.items[i].stackCount})");
             }
             else
             {
@@ -34,6 +42,8 @@ public class InventorySaveData
                 data.stackCounts.Add(0);
             }
         }
+
+        Debug.Log($"✅ InventorySaveData: Saved {savedItemCount} items out of {inventory.items.Length} slots");
 
         // Note: Hotbar selection is not saved in this version
         // Hotbar.cs doesn't have a currentSlot field
@@ -47,7 +57,12 @@ public class InventorySaveData
     public void LoadIntoInventory(Inventory inventory)
     {
         if (inventory == null || itemIDs == null)
+        {
+            Debug.LogWarning("⚠ InventorySaveData: Inventory or itemIDs is null!");
             return;
+        }
+
+        Debug.Log($"📂 InventorySaveData: Loading {itemIDs.Count} slots into inventory");
 
         // Clear current inventory
         for (int i = 0; i < inventory.items.Length; i++)
@@ -55,28 +70,23 @@ public class InventorySaveData
             inventory.items[i] = null;
         }
 
+        int loadedItemCount = 0;
+
         // Load items
         for (int i = 0; i < itemIDs.Count && i < inventory.capacity; i++)
         {
             if (string.IsNullOrEmpty(itemIDs[i]))
                 continue;
 
-            // Load actual ItemData from Resources
-            ItemData loadedItem = Resources.Load<ItemData>("Items/" + itemIDs[i]);
+            // Convert saved itemID to correct Resources path
+            string resourcePath = GetCorrectResourcePath(itemIDs[i]);
 
-            // Fallback: Try alternative naming conventions
+            // Load actual ItemData from Resources
+            ItemData loadedItem = Resources.Load<ItemData>("Items/" + resourcePath);
+
             if (loadedItem == null)
             {
-                // Try capitalizing first letter: weapon_tier1 → Weapon_tier1
-                string altID1 = char.ToUpper(itemIDs[i][0]) + itemIDs[i].Substring(1);
-                loadedItem = Resources.Load<ItemData>("Items/" + altID1);
-
-                if (loadedItem == null)
-                {
-                    // Try converting to PascalCase: weapon_tier1 → Item_WeaponTier1
-                    string altID2 = ConvertToPascalCase(itemIDs[i]);
-                    loadedItem = Resources.Load<ItemData>("Items/" + altID2);
-                }
+                Debug.LogWarning($"⚠ InventorySaveData: Item not found in Resources/Items/{resourcePath} (original ID: {itemIDs[i]})");
             }
 
             if (loadedItem != null)
@@ -84,7 +94,8 @@ public class InventorySaveData
                 ItemData runtimeCopy = loadedItem.CreateRuntimeCopy();
                 runtimeCopy.stackCount = stackCounts[i];
                 inventory.items[i] = runtimeCopy;
-                Debug.Log($"✅ InventorySaveData: Loaded item '{loadedItem.itemName}' (ID: {itemIDs[i]}) at slot {i}");
+                loadedItemCount++;
+                Debug.Log($"   Slot {i}: {loadedItem.itemName} (ID: {itemIDs[i]}, Stack: {stackCounts[i]})");
             }
             else
             {
@@ -92,36 +103,55 @@ public class InventorySaveData
             }
         }
 
+        Debug.Log($"✅ InventorySaveData: Loaded {loadedItemCount} items into inventory");
+
         // Refresh UI
         inventory.RefreshUIReferences();
     }
 
     /// <summary>
-    /// Convert snake_case or lowercase to PascalCase with "Item_" prefix
-    /// Example: weapon_tier1 → Item_WeaponTier1
+    /// Map saved itemID to correct Resources path
+    /// Hardcoded mapping for 7 items
     /// </summary>
-    private static string ConvertToPascalCase(string input)
+    private static string GetCorrectResourcePath(string savedItemID)
     {
-        if (string.IsNullOrEmpty(input))
-            return input;
+        if (string.IsNullOrEmpty(savedItemID))
+            return savedItemID;
 
-        // Split by underscore
-        string[] parts = input.Split('_');
-        System.Text.StringBuilder result = new System.Text.StringBuilder("Item_");
-
-        foreach (string part in parts)
+        // Direct mapping for all 7 items
+        switch (savedItemID.ToLower())
         {
-            if (string.IsNullOrEmpty(part))
-                continue;
+            case "batbone":
+            case "bat_bone":
+                return "BatBone";
 
-            // Capitalize first letter of each part
-            result.Append(char.ToUpper(part[0]));
-            if (part.Length > 1)
-            {
-                result.Append(part.Substring(1));
-            }
+            case "bossmeat":
+            case "boss_meat":
+                return "BossMeat";
+
+            case "item_weapontier0":
+            case "weapon_tier0":
+                return "Item_WeaponTier0";
+
+            case "item_weapontier1":
+            case "weapon_tier1":
+                return "Item_WeaponTier1";
+
+            case "item_weapontier2":
+            case "weapon_tier2":
+                return "Item_WeaponTier2";
+
+            case "skeletonbone":
+            case "skeleton_bone":
+                return "SkeletonBone";
+
+            case "slimeresidue":
+            case "slime_residue":
+                return "SlimeResidue";
+
+            default:
+                // Return original if no mapping found
+                return savedItemID;
         }
-
-        return result.ToString();
     }
 }

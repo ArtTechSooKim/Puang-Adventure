@@ -89,8 +89,34 @@ public class EnemyHealth : MonoBehaviour
         // 🎬 사망 애니메이션 재생
         if (anim != null)
         {
-            anim.SetTrigger("Dead");
-            Debug.Log($"✅ EnemyHealth ({gameObject.name}): 사망 애니메이션 트리거 발동");
+            // Animator Controller 확인
+            if (anim.runtimeAnimatorController == null)
+            {
+                Debug.LogError($"❌ EnemyHealth ({gameObject.name}): Animator Controller가 할당되지 않았습니다!");
+            }
+            else
+            {
+                // 현재 Animator 상태 출력
+                AnimatorStateInfo currentState = anim.GetCurrentAnimatorStateInfo(0);
+                Debug.Log($"📊 EnemyHealth ({gameObject.name}): Current Animator State: {currentState.fullPathHash}");
+
+                // Dead 트리거 발동
+                anim.SetTrigger("Dead");
+                Debug.Log($"✅ EnemyHealth ({gameObject.name}): 사망 애니메이션 트리거 'Dead' 발동");
+
+                // 트리거가 실제로 설정되었는지 확인
+                foreach (var param in anim.parameters)
+                {
+                    if (param.name == "Dead")
+                    {
+                        Debug.Log($"✅ EnemyHealth ({gameObject.name}): 'Dead' 트리거 파라미터 존재 확인");
+                    }
+                }
+            }
+        }
+        else
+        {
+            Debug.LogError($"❌ EnemyHealth ({gameObject.name}): Animator 컴포넌트가 없습니다!");
         }
 
         // 🚫 AI 비활성화 (더 이상 움직이지 않음)

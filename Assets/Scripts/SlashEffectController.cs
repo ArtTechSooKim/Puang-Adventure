@@ -19,6 +19,10 @@ public class SlashEffectController : MonoBehaviour
     private bool isPlaying = false;
     private bool useAnimatorTiming = true; // Animator 기반 타이밍 사용 여부
 
+    [Header("Auto-Recovery")]
+    [Tooltip("30초마다 자동으로 sprite를 초기화하여 남아있는 문제 해결")]
+    [SerializeField] private float autoRecoveryInterval = 30f;
+
     private void Awake()
     {
         // 이 GameObject와 직속 자식들의 SpriteRenderer만 가져오기 (Player 제외)
@@ -65,6 +69,9 @@ public class SlashEffectController : MonoBehaviour
 
         // 초기 상태: 모든 SpriteRenderer 비활성화
         HideEffect();
+
+        // 자동 복구 코루틴 시작
+        StartCoroutine(AutoRecoveryCoroutine());
     }
 
     private void OnEnable()
@@ -204,5 +211,27 @@ public class SlashEffectController : MonoBehaviour
 
         if (showDebugMessages)
             Debug.Log($"[SlashEffect] Animator 기반 타이밍 활성화");
+    }
+
+    /// <summary>
+    /// 30초마다 자동으로 sprite를 강제 초기화하는 코루틴
+    /// 공격 중단 시 남아있는 SlashFX를 자동으로 정리
+    /// </summary>
+    private System.Collections.IEnumerator AutoRecoveryCoroutine()
+    {
+        while (true)
+        {
+            yield return new UnityEngine.WaitForSeconds(autoRecoveryInterval);
+
+            // 공격 중이 아닐 때만 강제 초기화
+            if (!isPlaying)
+            {
+                // SpriteRenderer를 비활성화하여 남아있는 이펙트 제거
+                HideEffect();
+
+                if (showDebugMessages)
+                    Debug.Log("[SlashEffect] 🔧 Auto-recovery: 남아있는 이펙트 강제 초기화");
+            }
+        }
     }
 }

@@ -19,7 +19,11 @@ public class UnkillableBossController : MonoBehaviour
     [Header("Transition Settings")]
     [SerializeField] private string returnSceneName = "02_VillageScene";
     [SerializeField] private float deathMessageDuration = 3f; // 사망 메시지 표시 시간
+    [SerializeField] private float fadeInDuration = 2f; // 검은 화면에서 밝아지는 시간
     [SerializeField] private bool showDebugMessages = true;
+
+    [Header("Fade Settings")]
+    [SerializeField] private UnityEngine.UI.Image fadeImage; // 검은 화면용 Image (자동 생성)
 
     private bool playerDied = false;
     private float timer = 0f;
@@ -29,6 +33,9 @@ public class UnkillableBossController : MonoBehaviour
     {
         if (showDebugMessages)
             Debug.Log("💀 UnkillableBossController: Scene started!");
+
+        // Fade Image 자동 생성 (없을 경우)
+        CreateFadeImageIfNeeded();
 
         // PlayerHealth의 일반 사망 처리 비활성화
         DisablePlayerDeathProcessing();
@@ -168,23 +175,24 @@ public class UnkillableBossController : MonoBehaviour
 
         playerDied = true;
 
-        // 사망 메시지 표시
-        if (DialogueManager.Instance != null)
-        {
-            string deathMessage = "\"으아... 꿈 속이었지만 거대 버섯은 정말 무시무시했어..\"\n\"중붕이를 찾아가 마지막 사냥을 준비하자!\"";
-            DialogueManager.Instance.StartDialogue(new System.Collections.Generic.List<string> { deathMessage });
-        }
-
-        // Village로 복귀
+        // Village로 복귀 (사망 메시지는 Village 씬 이동 후 표시)
         StartCoroutine(ReturnToVillage());
     }
 
     /// <summary>
-    /// Village로 복귀
+    /// Village로 복귀 (검은 화면에서 페이드 인 후 메시지 표시)
     /// </summary>
     private IEnumerator ReturnToVillage()
     {
-        yield return new WaitForSeconds(deathMessageDuration);
+        // Village 씬에서 페이드 인 후 사망 메시지를 표시하도록 PlayerPersistent에 미리 저장
+        // PlayerPersistent가 \n으로 구분하여 여러 줄로 표시함
+        PlayerPersistent.Instance?.SetPendingDialogue(
+            "\"으아... 꿈 속이었지만 거대 버섯은 정말 무시무시했어..\"\n\"중붕이를 찾아가 마지막 사냥을 준비하자!\"",
+            withFadeIn: true
+        );
+
+        // 검은 화면으로 페이드 아웃
+        yield return StartCoroutine(FadeToBlack());
 
         // Quest Stage 진행 (Stage5 → Stage6)
         if (QuestManager.Instance != null)
@@ -207,11 +215,26 @@ public class UnkillableBossController : MonoBehaviour
                 if (showDebugMessages)
                     Debug.Log("💚 Player health restored and death processing re-enabled");
             }
+
+            // Player 애니메이션을 Idle 상태로 강제 전환
+            Animator playerAnim = player.GetComponent<Animator>();
+            if (playerAnim != null)
+            {
+                // Dead 트리거 리셋
+                playerAnim.ResetTrigger("Dead");
+
+                // Idle 상태로 전환 (IsWalking = false)
+                playerAnim.SetBool("IsWalking", false);
+
+                if (showDebugMessages)
+                    Debug.Log("✅ Player animation reset to Idle");
+            }
         }
 
         if (showDebugMessages)
             Debug.Log($"🌀 Returning to Village: {returnSceneName}");
 
+        // 씬 로드
         SceneManager.LoadScene(returnSceneName);
     }
 
@@ -231,5 +254,113 @@ public class UnkillableBossController : MonoBehaviour
     {
         StopAllCoroutines();
         SceneManager.LoadScene(returnSceneName);
+    }
+
+    /// <summary>
+    /// Fade Image 자동 생성 (없을 경우)
+    /// </summary>
+    private void CreateFadeImageIfNeeded()
+    {
+        if (fadeImage != null) return;
+
+        // Canvas 찾기 또는 생성
+        Canvas canvas = FindAnyObjectByType<Canvas>();
+        if (canvas == null)
+        {
+            GameObject canvasObj = new GameObject("FadeCanvas");
+            canvas = canvasObj.AddComponent<Canvas>();
+            canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+            canvas.sortingOrder = 9999; // 최상위 레이어
+            canvasObj.AddComponent<UnityEngine.UI.GraphicRaycaster>();
+        }
+
+        // Fade Image 생성
+        GameObject fadeObj = new GameObject("FadeImage");
+        fadeObj.transform.SetParent(canvas.transform, false);
+
+        fadeImage = fadeObj.AddComponent<UnityEngine.UI.Image>();
+        fadeImage.color = new Color(0, 0, 0, 0); // 투명한 검은색
+
+        // 전체 화면 크기로 설정
+        RectTransform rectTransform = fadeObj.GetComponent<RectTransform>();
+        rectTransform.anchorMin = Vector2.zero;
+        rectTransform.anchorMax = Vector2.one;
+        rectTransform.sizeDelta = Vector2.zero;
+        rectTransform.anchoredPosition = Vector2.zero;
+
+        if (showDebugMessages)
+            Debug.Log("✅ UnkillableBossController: Fade Image 자동 생성 완료");
+    }
+
+    /// <summary>
+    /// 검은 화면으로 페이드 아웃
+    /// </summary>
+    private IEnumerator FadeToBlack()
+    {
+        if (fadeImage == null) yield break;
+
+        // 시간 정지
+        Time.timeScale = 0f;
+
+        float elapsed = 0f;
+        Color startColor = fadeImage.color;
+        Color targetColor = new Color(0, 0, 0, 1); // 불투명한 검은색
+
+        while (elapsed < fadeInDuration / 2f)
+        {
+            elapsed += Time.unscaledDeltaTime;
+            float t = elapsed / (fadeInDuration / 2f);
+            fadeImage.color = Color.Lerp(startColor, targetColor, t);
+            yield return null;
+        }
+
+        fadeImage.color = targetColor;
+
+        if (showDebugMessages)
+            Debug.Log("🌑 Faded to black");
+    }
+
+    /// <summary>
+    /// 검은 화면에서 페이드 인
+    /// </summary>
+    private IEnumerator FadeFromBlack()
+    {
+        if (fadeImage == null)
+        {
+            // 씬 전환 후 Fade Image를 다시 찾아야 함
+            CreateFadeImageIfNeeded();
+        }
+
+        if (fadeImage == null)
+        {
+            // 그래도 없으면 시간만 복구하고 종료
+            Time.timeScale = 1f;
+            yield break;
+        }
+
+        // 검은 화면으로 시작
+        fadeImage.color = new Color(0, 0, 0, 1);
+
+        yield return new WaitForSecondsRealtime(0.5f); // 잠깐 대기
+
+        float elapsed = 0f;
+        Color startColor = new Color(0, 0, 0, 1); // 불투명한 검은색
+        Color targetColor = new Color(0, 0, 0, 0); // 투명한 검은색
+
+        while (elapsed < fadeInDuration)
+        {
+            elapsed += Time.unscaledDeltaTime;
+            float t = elapsed / fadeInDuration;
+            fadeImage.color = Color.Lerp(startColor, targetColor, t);
+            yield return null;
+        }
+
+        fadeImage.color = targetColor;
+
+        // 시간 복구
+        Time.timeScale = 1f;
+
+        if (showDebugMessages)
+            Debug.Log("☀ Faded from black - player can now move");
     }
 }

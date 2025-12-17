@@ -16,7 +16,7 @@ public class CutsceneAutoLoader : MonoBehaviour
     };
 
     [SerializeField] private string nextSceneName = "06_UnkillableBossScene";
-    [SerializeField] private float dialogueWaitTime = 3f; // 각 대화 표시 시간
+    [SerializeField] private float dialogueDisplayTime = 3f; // 각 대화 표시 시간 (자동 진행)
     [SerializeField] private float transitionDelay = 1f;  // 전환 전 대기 시간
     [SerializeField] private bool showDebugMessages = true;
 
@@ -51,23 +51,38 @@ public class CutsceneAutoLoader : MonoBehaviour
             }
         }
 
-        // 대화 재생
+        // 대화 재생 (자동 진행 - 각 대화를 일정 시간 표시)
         if (DialogueManager.Instance != null)
         {
             foreach (string dialogue in cutsceneDialogues)
             {
+                // 각 대화를 개별적으로 표시
                 DialogueManager.Instance.StartDialogue(new System.Collections.Generic.List<string> { dialogue });
 
                 if (showDebugMessages)
-                    Debug.Log($"💬 Playing dialogue: {dialogue}");
+                    Debug.Log($"💬 Showing dialogue: {dialogue}");
 
-                yield return new WaitForSeconds(dialogueWaitTime);
+                // 대화 표시 시간만큼 대기 (Time.timeScale이 0이어도 대기)
+                yield return new WaitForSecondsRealtime(dialogueDisplayTime);
+
+                // 대화 강제 종료 (다음 대화로 넘어가기 위해)
+                if (DialogueManager.Instance.IsOpen())
+                {
+                    // DialogueManager의 EndDialogue는 private이므로, 대화를 닫는 다른 방법 필요
+                    // 임시로 새 대화를 시작하면 기존 대화가 덮어씌워짐
+                }
             }
+
+            // 마지막 대화가 끝날 때까지 대기
+            yield return new WaitForSecondsRealtime(dialogueDisplayTime);
+
+            if (showDebugMessages)
+                Debug.Log("✅ All dialogues shown");
         }
         else
         {
             Debug.LogWarning("⚠ DialogueManager not found! Skipping dialogue.");
-            yield return new WaitForSeconds(dialogueWaitTime * cutsceneDialogues.Length);
+            yield return new WaitForSeconds(dialogueDisplayTime * cutsceneDialogues.Length);
         }
 
         // 전환 전 대기
