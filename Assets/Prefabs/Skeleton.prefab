@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -154337448246213723, guid: 736f9b71ad9801640b321998d810cec4, type: 3}
+      propertyPath: maxHealth
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 4772807030945676114, guid: 736f9b71ad9801640b321998d810cec4, type: 3}
       propertyPath: m_Name
       value: Skeleton

@@ -21,6 +21,7 @@ public class QuestManager : MonoBehaviour
         // Singleton pattern
         if (Instance != null && Instance != this)
         {
+            Debug.LogWarning($"⚠ QuestManager: Duplicate instance detected in scene! Destroying this ({gameObject.name}). Existing instance at stage: {Instance.GetCurrentStage()}");
             Destroy(gameObject);
             return;
         }

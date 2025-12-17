@@ -1,0 +1,1457 @@
+총 72개의 C# 파일 검색 중...
+
+=== 한글 문자열 (총 390개) ===
+
+  → {hit.name}: EnemyHealth 컴포넌트 없음
+  → {hit.name}에게 {ultDamage} 데미지!
+1. '모든 한글 폰트 Dynamic으로 설정' 버튼 클릭\n
+1장: 숲의 시련
+1회 타격당 생성할 FX 개수
+2. 또는 특정 폰트를 선택하고 '선택된 폰트 Dynamic으로 설정' 클릭\n\n
+2장: 무기 강화 I
+3D 사운드 감쇠 곡선
+3D 사운드 최대 거리
+3D 사운드 최소 거리
+3장: 동굴 탐험
+4장: 퓨앙이의 슬픔
+5장: 거대 버섯의 위협
+6장: 무기 강화 II
+7장: 최종 결전
+AudioManager의 자동 BGM 시스템 비활성화 (이 씬에서만)
+AudioSource 풀 초기 크기
+BGM 기본 볼륨 (0~1)
+BGM 컨트롤러 (자동 생성됨)
+BGM 페이드 인 시간
+BGM용 AudioMixer Group
+Boss의 체력 (플레이어 공격 10 데미지 기준, 300 = 30대 공격)
+Dynamic으로 설정하면 필요한 글자가 런타임에 자동으로 추가됩니다.
+FX 생성 위치 (Transform)
+HP가 0이되면 GameOver이니 주의하세요.
+Hierarchy의 AttackArea(자식) Collider2D를 할당하세요. Is Trigger 체크 필요
+Idle/Walk 전환을 위한 최소 이동 거리 (프레임당)
+Load 버튼 (자동으로 찾습니다)
+MapPanel 안의 Map Image 컴포넌트
+MapPanel의 RectTransform (크기 제한용)
+MiniMap Image 컴포넌트 (원본 맵 이미지)
+MiniMapCase Image (유리 케이스, 도넛 모양 테두리)
+MiniMapMask RectTransform (Mask 컴포넌트가 있는 부모)
+NPC 머리 위 마커 오프셋 (기본값: Vector3.up * 1.5f)
+Normalized 좌표 (0~1, 맵 이미지 상의 위치)
+Player Collider (난무 시 비활성화)
+Player Collider 비활성화
+Player Collider 활성화
+Player SpriteRenderer (난무 시 숨김)
+Player 외형 복구
+Player 외형 숨김
+PlayerController: Animator 컴포넌트를 찾을 수 없습니다. Player 오브젝트에 Animator 컴포넌트를 추가했는지 확인하세요.
+PlayerIsHere Image (중앙 고정 화살표)
+PlayerStamina 컴포넌트가 없습니다. 스태미나 연동 기능 비활성화됩니다.
+PlayerUlt 초기화 완료
+RenderTexture 방식 사용 시: RawImage 컴포넌트 (자동 생성 가능)
+RenderTexture 방식 사용 시: Sorting Layer 이름
+RenderTexture 방식 사용 시: Sorting Order
+R키를 누르면 궁극기
+SFX 컨트롤러 (자동 생성됨)
+SFX용 AudioMixer Group
+SaveDataPanelController (자동으로 찾습니다)
+Shift로 2초간 달리세요.
+SlashFx 생성: {randomPrefab.name} at {spawnPosition} (offset: {randomOffset})
+Space키를 누르면 대시가 나간다
+TextMeshPro 한글 폰트 업데이터
+Tilemap 또는 Tile이 비어있습니다!
+UI 페이드인 지속 시간 (초)
+UltArea 범위 내 적 발견: {hits.Length}명
+UltArea 비활성화
+UltArea 초기화 완료 (Radius: {ultAreaCollider.radius})
+UltArea 활성화
+WASD로 움직이세요.
+YouHaveToGoHere Image (퀘스트 목표 마커)
+[DialogueManager] CheckForDialogueEvents 호출됨
+[DialogueManager] ⚠ 이벤트 키워드를 찾지 못했습니다.
+[DialogueManager] ✅ Player 오브젝트 발견: {player.name}
+[DialogueManager] ✅ PlayerController 컴포넌트 발견
+[DialogueManager] ✅ PlayerUlt 컴포넌트 발견
+[DialogueManager] ✅ 궁극기 키워드 발견: \"{keyword}\"
+[DialogueManager] ✅ 대시 키워드 발견: \"{keyword}\"
+[DialogueManager] 궁극기 활성화 전 상태: {playerUlt.IsUltEnabled()}
+[DialogueManager] 궁극기 활성화 후 상태: {playerUlt.IsUltEnabled()}
+[DialogueManager] 대시 활성화 전 상태: {playerController.IsDashEnabled()}
+[DialogueManager] 대시 활성화 후 상태: {playerController.IsDashEnabled()}
+[DialogueManager] 플레이어 검색 시작...
+[DialogueManager] 현재 대화 라인: \"{line}\"
+[PlayerController]     목표 색상: RGB({color.r:F2}, {color.g:F2}, {color.b:F2})
+[PlayerController]     크기 배율: {sizeMultiplier:F2}x (localScale: {slashEffect.transform.localScale})
+[PlayerController]     현재 색상: RGB({slashEffect.color.r:F2}, {slashEffect.color.g:F2}, {slashEffect.color.b:F2})
+[PlayerController]   - {renderer.gameObject.name} (Player 본인, 제외)
+[PlayerController]   - {slashEffect.gameObject.name} 비활성화 (무기 없음)
+[PlayerController]   - {slashEffect.gameObject.name} 활성화
+[PlayerController]   - 검사 중: {renderer.gameObject.name}
+[PlayerController] AttackArea가 CircleCollider2D가 아닙니다!
+[PlayerController] DisableDash() 호출됨 - 현재 상태: {isDashEnabled}
+[PlayerController] EnableDash() 호출됨 - 현재 상태: {isDashEnabled}
+[PlayerController] Hotbar 1번 칸 비어있음: Attack Radius = {newRadius}
+[PlayerController] ⚠ 검기 이펙트를 찾지 못했습니다. Player의 자식 오브젝트 이름에 'slash', 'effect', 'sword', 'attack' 등을 포함시키거나 Inspector에서 수동으로 할당하세요.
+[PlayerController] ⚠ 유효한 검기 이펙트를 찾지 못했습니다.
+[PlayerController] ✅ {colorChangedCount}개 검기 이펙트 활성화 및 색상 변경 완료: RGB({color.r:F2}, {color.g:F2}, {color.b:F2})
+[PlayerController] ✅ 검기 이펙트 발견: {renderer.gameObject.name} (활성화: {renderer.gameObject.activeSelf})
+[PlayerController] ✅ 검기 이펙트 비활성화 완료 (무기 없음)
+[PlayerController] ✅ 대시 기능이 활성화되었습니다! 새 상태: {isDashEnabled}
+[PlayerController] ✅ 총 {swordSlashEffects.Length}개의 검기 이펙트를 자동으로 찾았습니다.
+[PlayerController] ❌ 대시 기능이 비활성화되었습니다. 새 상태: {isDashEnabled}
+[PlayerController] 검기 이펙트 Animator 발견: {animator.gameObject.name}
+[PlayerController] 검기 이펙트 Animator를 찾지 못했습니다. SlashEffect 오브젝트의 Animator를 Inspector에서 수동으로 할당하세요.
+[PlayerController] 검기 이펙트 SpriteRenderer가 할당되지 않았습니다.
+[PlayerController] 검기 이펙트 검색 시작... 총 {allRenderers.Length}개의 SpriteRenderer 발견
+[PlayerController] 검기 이펙트 애니메이션 트리거 발동!
+[PlayerController] 궁극기 상태 변경: {active}
+[PlayerController] 대시 입력 수신 - TryDash() 호출
+[PlayerController] 대시 입력 차단: 대시 기능 비활성화 상태 (isDashEnabled={isDashEnabled})
+[PlayerController] 대시 입력 차단: 대화 중
+[PlayerController] 무기 Tier 0 (칼자루) 장착: Attack Radius = {newRadius}, 검기 색상 = 흰색
+[PlayerController] 무기 Tier 1 (숲의 검) 장착: Attack Radius = {newRadius}, 검기 색상 = 초록색
+[PlayerController] 무기 Tier 2 (중붕이의 검) 장착: Attack Radius = {newRadius}, 검기 색상 = 금색
+[PlayerController] 무기가 아닌 아이템 장착 ({currentWeapon.itemName}): Attack Radius = {newRadius}
+[PlayerController] 무기가 없어서 검기 이펙트를 재생하지 않습니다.
+[PlayerController] 알 수 없는 무기 Tier ({currentWeapon.weaponTier}): Attack Radius = {newRadius}
+[PlayerController] 이제 Space 키를 눌러 대시를 사용할 수 있습니다.
+[PlayerController] 🔄 무기 변경 감지: {currentWeapon?.itemName ?? 
+[PlayerHealth] 데미지 {amount} 받음, 남은 체력: {currentHealth - amount}
+[PlayerUlt] EnableUlt() 호출됨 - 현재 상태: {isUltEnabled}
+[PlayerUlt] TryActivateUlt() 호출됨
+[PlayerUlt] UltArea에 CircleCollider2D가 없습니다!
+[PlayerUlt] slashFxPrefabs가 비어있습니다!
+[PlayerUlt] ultAreaCollider가 없습니다!
+[PlayerUlt] ultAreaCollider가 할당되지 않았습니다!
+[PlayerUlt] ultEffect가 할당되지 않았습니다!
+[PlayerUlt] ✅ 궁극기 기능이 활성화되었습니다! 새 상태: {isUltEnabled}
+[PlayerUlt] ✅ 궁극기 활성화 체크 통과!
+[PlayerUlt] ❌ 궁극기 입력 차단: 궁극기 기능 비활성화 상태 (isUltEnabled={isUltEnabled})
+[PlayerUlt] ❌ 궁극기 쿨타임 중! 남은 시간: {remainingCooldown:F1}초
+[PlayerUlt] 이제 R 키를 눌러 궁극기 'Blade Dance'를 사용할 수 있습니다.
+[PlayerUlt] 현재 isUltEnabled 상태: {isUltEnabled}
+[PlayerUlt] 🔥 궁극기 'Blade Dance' 발동!
+[SceneMapData] Calibration Points가 최소 2개 필요합니다!
+[TMPFontFallbackManager] koreanFallbackFont가 설정되지 않았습니다!
+\"R\" 키를 누르면 궁극기
+\"R\"키를 누르면 궁극기
+\"Space\"키를 누르면 대시가 나간다
+\"누가 쓰다 버린 칼이라 그런가.. 많이 무딘것 같아. 마을에 가서 무기를 강화시키자.\"
+\"머리가 어지러워.. 사냥을 너무 많이 했나... 잠깐 쉬도록 하자..\"
+\"으아... 꿈 속이었지만 거대 버섯은 정말 무시무시했어..\"\n\"중붕이를 찾아가 마지막 사냥을 준비하자!\"
+\"이제 푸앙이에게 이걸 가져다 주자..!\"
+\"저 거대 버섯 고기가 그렇게 맛있다던데.. 푸앙이는 힘이 없어 사냥도 못한다 퓨앙!\"
+\"저게 푸앙이가 원하던 거대 버섯...! 재빨리 해치우자.\"
+emote21 스프라이트를 할당하세요 (느낌표 말풍선)
+playerCollider 자동 할당
+playerSprite 자동 할당
+tab 토글로 설정 창을 열 수 있습니다.
+ultEffect 자동 할당
+{data.itemName} 획득!
+{npcData.npcName}: 지금은 할 말이 없어요...
+{successCount}개의 한글 폰트를 Dynamic으로 설정했습니다.\n이제 한글이 깨지지 않습니다!
+• 거대 버섯 보스와 조우
+• 동굴로 이동하세요 (포털 이용)\n• 박쥐 5마리를 처치하세요\n• 해골 5마리를 처치하세요
+• 마을의 대장장이 찾아가세요\n• 숲의 검으로 무기를 강화하세요\n• 더 강한 전투를 준비하세요
+• 숲에 보스 방을 찾아보세요\n• 거대 버섯 보스를 처치하세요\n• 처치후 고기를 획득하세요\n• 푸앙이에게 고기를 주세요
+• 숲으로 이동하세요 (포털 찾기)\n• 슬라임 2마리를 처치하세요\n• 박쥐 2마리를 처치하세요
+• 중붕이 NPC를 찾아가세요\n• 중붕이의 검으로 무기를 강화하세요\n• 최종 전투를 준비하세요
+• 푸앙NPC를 찾아가세요\n• 칼자루를 찾으세요\n• 무기를 장착하고 숲을 탐험하세요
+⏰ BossWakeUp ({gameObject.name}): WakeUpSequence 시작 - {delayBeforeWakeUp}초 대기 중...
+⏱️ BossAttack ({gameObject.name}): 쿨다운 중! (남은 시간: {(lastAttackTime + attackCooldown - Time.time):F2}초)
+⏱️ EnemyAttack ({gameObject.name}): 쿨다운 중! (남은 시간: {(lastHitTime + hitCooldown - Time.time):F2}초)
+⏳ BossWakeUp ({gameObject.name}): 깨어나기 애니메이션 재생 중... ({wakeUpDuration}초 대기)
+⚔ 난무 {i + 1}/{slashCount} 타격!
+⚔️ BossAttack ({gameObject.name}): 공격 시작!
+⚔️ BossAttack ({gameObject.name}): 이미 공격 중!
+⚠ BossAttack ({gameObject.name}): Animator를 찾을 수 없습니다.
+⚠ BossAttack ({gameObject.name}): EnemyAI를 찾을 수 없습니다.
+⚠ BossWakeUp ({gameObject.name}): Animator를 찾을 수 없습니다.
+⚠ BrightnessController: brightnessOverlay가 연결되지 않았습니다! Inspector에서 Image를 연결해주세요.
+⚠ EnemyAI ({gameObject.name}): Animator를 찾을 수 없습니다. 애니메이션이 재생되지 않습니다.
+⚠ EnemyAI ({gameObject.name}): Player를 찾을 수 없습니다!
+⚠ EnemyAttack ({gameObject.name}): Animator를 찾을 수 없습니다. 공격 애니메이션이 재생되지 않습니다.
+⚠ EnemyHealth ({gameObject.name}): Animator를 찾을 수 없습니다. 사망 애니메이션이 재생되지 않습니다.
+⚠ PlayerHealth: Animator를 찾을 수 없습니다. 사망 애니메이션이 재생되지 않습니다.
+⚠ PlayerHealth: PlayerController를 찾을 수 없습니다.
+⚠ PlayerInput 컴포넌트가 없습니다. 새 Input System 사용 시 PlayerInput 추가를 권장합니다.
+⚠ {col.name}에 EnemyHealth 컴포넌트가 없습니다!
+⚠️ BossAttack ({gameObject.name}): PlayerHealth를 찾을 수 없습니다.
+⚠️ BossAttack ({gameObject.name}): 애니메이션 재생 실패! anim: {(anim != null)}, enemyAI: {(enemyAI != null)}
+⚠️ BossWakeUp ({gameObject.name}): EnemyAI가 null이어서 활성화할 수 없습니다!
+⚠️ BossWakeUp ({gameObject.name}): EnemyAI를 찾을 수 없습니다!
+⚠️ EnemyAttack ({gameObject.name}): 애니메이션 재생 실패! playAttackAnimation: {playAttackAnimation}, anim: {(anim != null)}, enemyAI: {(enemyAI != null)}
+✅ BossAttack ({gameObject.name}): 공격 애니메이션 트리거 발동! 방향: ({snappedDir.x}, {snappedDir.y})
+✅ BossAttack ({gameObject.name}): 공격 조건 통과! 공격 시작
+✅ BossAttack ({gameObject.name}): 공격 종료
+✅ BossWakeUp ({gameObject.name}): Boss AI 비활성화 (잠든 상태)
+✅ BossWakeUp ({gameObject.name}): Boss AI 활성화 (깨어남) - 이제 Player를 추적합니다!
+✅ BossWakeUp ({gameObject.name}): WakeUp 트리거 발동! (Animator: {anim.name})
+✅ BossWakeUp ({gameObject.name}): 즉시 깨어남!
+✅ EnemyAttack ({gameObject.name}): 공격 애니메이션 트리거 발동! 방향: ({snappedDir.x}, {snappedDir.y})
+✅ EnemyAttack ({gameObject.name}): 공격 조건 통과! 데미지 적용 시작
+✅ EnemyHealth ({gameObject.name}): 사망 애니메이션 트리거 발동
+✅ Gave: 박쥐 뼈
+✅ Gave: 슬라임 잔해
+✅ PlayerHealth: GameManager.OnPlayerDeath() 호출됨
+✅ PlayerHealth: PlayerController 비활성화
+✅ PlayerHealth: 사망 애니메이션 트리거 발동
+✅ {font.name}를 Dynamic으로 설정했습니다.
+✅ {fontAsset.name}를 Dynamic으로 설정했습니다.
+✅ 궁극기 종료! 쿨타임 시작
+✅ 총 {successCount}개의 한글 폰트를 Dynamic으로 설정했습니다.
+❌ BossAttack ({gameObject.name}): Player 태그가 아님! (Tag: {target.tag})
+❌ BossWakeUp ({gameObject.name}): Animator가 null입니다! WakeUp 애니메이션을 재생할 수 없습니다.
+❌ DialogueManager: Player 태그를 가진 오브젝트를 찾을 수 없습니다!
+❌ DialogueManager: PlayerController를 찾을 수 없습니다!
+❌ DialogueManager: PlayerUlt를 찾을 수 없습니다!
+❌ EnemyAttack ({gameObject.name}): Player 태그가 아님! (Tag: {target.tag})
+각 슬래시 간격 (초)
+개발 빌드에서 로그 활성화
+걷기 발소리
+검 휘두르기 소리 (공격 시)
+검기 이펙트 Animator (SlashEffect 오브젝트의 Animator)
+검기 이펙트 SpriteRenderer들을 할당하세요 (여러 방향별 이펙트 가능)
+검은 반드시 아이템 슬롯 1번에 위치해야 사용할 수 있습니다.
+게임 오버 사운드
+게임을 시작합니다
+공격 성공 (fallback): {enemy.name} (데미지: {damage})
+공격 성공: {col.name} (데미지: {damage})
+공격 실패: 스태미나 부족
+공격 애니메이션 재생 여부
+궁극기 1회 타격 데미지
+궁극기 공격 범위 (CircleCollider2D 포함)
+궁극기 기능이 비활성화되었습니다.
+궁극기 설정
+궁극기 슬래시 소리 (8연속 베기)
+궁극기 쿨타임 (초)
+궁극기가 나가는
+궁극기를 사용할 수 있다
+기본 페이드 시간 (초)
+기본 한글 폰트 (Fallback으로 사용)
+깨어나기 애니메이션 재생 시간 (초)
+난무 타격 횟수
+난무를 사용할 수 있다
+능력 해금 소리 (Dash/Ultimate 획득 시)
+다가가서 검을 획득하세요
+다음 목표를 찾아보세요.
+다이얼로그 중 BGM 감소 비율 (0~1)
+다이얼로그 창 닫기
+다이얼로그 창 열기
+다이얼로그 텍스트 진행 (띡)
+달리기 발소리
+달리기와 공격은 스테미나를 소모합니다.
+대시 실패: 스태미나 부족
+대시 효과음 (휙~ 하는 소리)
+대시가 나간다
+대화 텍스트 크기 배율 (1 = 기본, 2 = 2배)
+동굴 씬 BGM
+동굴 주변 소리 (물방울 등)
+동적으로 생성되는 TMP도 자동 설정
+드래그해서 아이템을 월드에 배치하거나 \n아이템 슬롯을 바꿀 수 있습니다.
+디버그
+디버그 로그 출력
+렌더링 방식 선택
+로그 설정
+루프 재생할 비디오 클립
+릴리즈 빌드에서 로그 활성화
+마을 씬 BGM
+마을 주변 소리 (새소리 등)
+마커 Sorting Order (기본값: 100)
+마커 SortingLayer 이름 (기본값: Default)
+마커 위치 (Transform)
+마커 이름 (설명용)
+마커 크기 (기본값: 0.5f)
+맵 이미지 최대 가로 크기
+맵 이미지 최대 세로 크기
+맵 전체 이미지 (항공뷰)
+메인 AudioMixer (SettingsPanelController와 동일한 것 사용)
+메인 BGM AudioSource
+모든 씬의 맵 데이터 목록
+모든 오디오 클립을 담은 ScriptableObject
+모든 한글 폰트 Dynamic으로 설정
+목표를 달성했습니다!
+무기 장착 소리
+미니맵 반지름 (픽셀) - MiniMapMask 크기의 절반
+미니맵 컨트롤러 (플레이어 위치 정보 가져오기용)
+밝기 조절용 검은 이미지 (Canvas Overlay)
+버튼 클릭 소리
+보스 등장 팡파레
+보스 사망 소리
+보스 사망/승리 음악
+보스 씬 BGM (긴장감)
+불러오기
+비디오 시작 후 UI 페이드인까지 대기 시간 (초)
+비디오 시작 후 페이드인할 UI CanvasGroup (Play, Load, Save 버튼 등)
+비디오 오디오 볼륨 (0-1)
+비디오 오디오 활성화
+비디오 재생 속도 (1.0 = 정상 속도)
+비디오 준비 완료 전까지 대기
+비디오 페이드 인 시간 (초)
+선택된 폰트 Dynamic으로 설정
+숲 씬 BGM
+숲 주변 소리 (바람 소리 등)
+스태미나 0일 때 걷기 속도에 곱할 계수 (조금 느리게)
+스태미나 소진 경고음
+스테미나가 소모되지 않는 행동을 하면 자동으로\n조금씩 회복하지만 0이되면 느리게 회복되니 주의하세요!
+스페이스바로 영상 스킵 허용
+슬라이더 조정 소리
+슬래시 FX 프리팹 배열 (랜덤 선택)
+슬롯 관련 설정
+슬롯 배치 위치
+씬 로드 시 자동으로 설정
+씬 시작 시 자동으로 BGM 재생
+씬 시작 시 주변음 재생
+씬 시작 후 깨어나기까지 대기 시간 (초)
+씬 이름 (SceneManager.GetActiveScene().name과 일치해야 함)
+씬 전환 소리 (트랜지션)
+씬 전환 시 BGM 페이드 시간
+아이템 드롭 소리
+아이템 획득 소리 (반짝!)
+에디터에서 로그 활성화
+엔딩
+엔딩 씬 BGM
+영상 스킵 가능 시작 시간 (초)
+영상 스킵 가능 시작 시간 (초) - 처음 N초는 스킵 불가
+영상 재생 후 이동할 씬 이름
+영상 종료 후 대기 시간 (초)
+영상 종료 후 동작
+영상 종료 후 씬 전환까지의 대기 시간 (초)
+영상 종료 후 표시할 UI (선택사항)
+오브젝트 참조
+오브젝트가 생성된 후 파괴되기까지의 시간 (초)
+옵션
+완료
+월드 좌표 (실제 게임 위치)
+월드에서 보여줄 반경 (world units)
+이 마커가 활성화될 퀘스트 스테이지
+이 미니맵이 표시할 씬의 맵 데이터
+이 씬에서 재생할 BGM (비어있으면 AudioManager의 기본 BGM 사용)
+이미 슬롯이 존재하면 GenerateSlots는 아무 작업도 하지 않습니다. 강제 재생성하려면 ForceGenerateSlots() 호출
+자동 업데이트 주기 (초)
+재생할 비디오 클립
+재생할 엔딩 비디오 클립
+저장
+적 공격 소리
+적 사망 소리
+적 피격음
+적이 있습니다! 좌클릭으로 공격하세요.
+정확한 위치 매핑을 위한 캘리브레이션 포인트들 (최소 2개 필수)
+좋습니다!
+주변음 볼륨
+주변음/환경음 (루프)
+진행 중
+처치했습니다!
+체크하면 이 적은 절대 죽지 않습니다
+최대 밝기
+최소 밝기 (0 = 가장 어두움, 1 = 가장 밝음)
+최종 보스 씬 BGM (서사적)
+퀘스트 마커 표시 여부
+퀘스트 목표 위치 (월드 좌표)
+퀘스트 안내 텍스트
+퀘스트 제목 텍스트
+퀘스트 진행/완료 소리
+크로스페이드용 보조 AudioSource
+타이틀 씬 BGM
+타이틀 씬 이름 (ReturnToTitle 선택 시)
+탭 전환 소리
+튜토리얼
+튜토리얼 씬 BGM
+튜토리얼 완료!
+패널 닫기 소리
+패널 열기 소리
+포털 진입 소리
+폰트를 먼저 선택해주세요.
+풀이 가득 찰 때 자동으로 확장할지 여부
+프롤로그: 칼자루 획득
+플레이어 Transform
+플레이어 사망 소리
+플레이어 위치 표시 Prefab
+플레이어 피격음 (아파!)
+한글 폰트가 깨지는 경우:\n
+현재 씬의 퀘스트 목표 위치들
+확인
+회복 소리 (힐링 효과음)
+🌙 BossWakeUp ({gameObject.name}): Start 호출됨 - Boss 잠들어있는 상태
+🎉 BossWakeUp ({gameObject.name}): Boss 완전히 깨어남! (hasWokenUp = true)
+🎉 Stage1 목표 달성! Village로 복귀합니다.
+🎉 Stage3 목표 달성! PeuangSadScene으로 이동합니다.
+🎯 BossAttack ({gameObject.name}): TryAttack 호출됨! Target: {target.name}
+🎯 EnemyAttack ({gameObject.name}): TryHit 호출됨! Target: {target.name}
+🎯 대화 이벤트: 궁극기 'Blade Dance' 활성화!
+🎯 대화 이벤트: 대시 기능 활성화!
+🎯 칼자루 획득! ({item.itemName}) Stage0 → Stage1 자동 진행
+👁️ BossWakeUp ({gameObject.name}): 깨어나기 애니메이션 완료!
+💤 BossWakeUp ({gameObject.name}): 대기 완료 - 이제 깨어나기 시작!
+💥 BossAttack ({gameObject.name}): Player에게 {damage} 데미지 적용!
+💥 EnemyAttack ({gameObject.name}): Player에게 {damage} 데미지 적용!
+💪 BossWakeUp ({gameObject.name}): Boss 체력을 {bossHealth}로 설정했습니다.
+🔧 Stage1 아이템 추가 완료!
+🔧 Stage3 아이템 추가 완료!
+🔵 BossAttack ({gameObject.name}): OnCollisionEnter2D - 충돌 감지됨! Target: {collision.gameObject.name}, Tag: {collision.gameObject.tag}
+🔵 BossAttack ({gameObject.name}): OnTriggerEnter2D - 트리거 감지됨! Target: {other.gameObject.name}, Tag: {other.gameObject.tag}
+🔵 EnemyAttack ({gameObject.name}): OnCollisionEnter2D - 충돌 감지됨! Target: {collision.gameObject.name}, Tag: {collision.gameObject.tag}
+🔵 EnemyAttack ({gameObject.name}): OnTriggerEnter2D - 트리거 감지됨! Target: {other.gameObject.name}, Tag: {other.gameObject.tag}
+😴 BossAttack ({gameObject.name}): Boss가 아직 깨어나지 않아서 공격하지 않음
+
+
+=== 영어/기타 문자열 (총 1053개) ===
+
+   HP: {saveData.playerHealth}, Stamina: {saveData.playerStamina:F1}
+   Position: {saveData.playerPosition}
+   Scene: {saveData.sceneName}
+   Time: {saveData.saveTime}
+   → RefreshUIReferences() may have failed to find DialoguePanel
+   └─ Added one more (should stack)
+   └─ Has Ultimate: {weapon0.hasUltimate}
+   └─ Is Quest Item: {weapon0.isQuestItem}
+   └─ Weapon Tier: {weapon0.weaponTier}
+  - {System.IO.Path.GetFileNameWithoutExtension(scene.path)}
+  - {item.itemName} (ID: {item.itemID}){weaponInfo}{questInfo}{ultimateInfo}
+  Slot {i}: {item.itemName}{stackInfo}
+  Source: {source.slotType}[{source.index}] = {(Inventory.instance?.items[source.index]?.itemName ?? 
+  Target: {target.slotType}[{target.index}] = {(Inventory.instance?.items[target.index]?.itemName ?? 
+ : 
+ [Quest Item]
+ [Ultimate]
+ [Weapon Tier {item.weaponTier}]
+ x{item.stackCount}
+) : 
+)}
+)} Added {batBone.itemName}
+)} Added {bossMeat.itemName}
+)} Added {skeletonBone.itemName}
+)} Added {slimeResidue.itemName} (Stackable: {slimeResidue.isStackable})
+)} Added {weapon0.itemName} (Tier {weapon0.weaponTier})
+)} Added {weapon1.itemName} (Tier {weapon1.weaponTier})
+)} Added {weapon2.itemName} (Tier {weapon2.weaponTier}, Ultimate: {weapon2.hasUltimate})
+)})
+, 
+00_TitleScene
+01_InitialScene
+02_VillageScene
+03_ForestScene
+04_CaveScene
+05_PeuangSadScene
+06_UnkillableBossScene
+07_BossScene
+08_EndingScene
+1. Assign all Tilemap references and Tile assets in the inspector above\n
+2. Adjust portal positions and generation settings\n
+3. Click 'Generate Forest Map' to create the forest\n
+3D Audio Settings
+4. Further customize tiles manually in the Scene view
+=== All Save Files ===
+=== Ambient Sounds ===
+=== Audio Manager Status ===
+=== Auto-Reference Settings ===
+=== Current Settings ===
+=== Debug Settings ===
+=== Enemy Sounds ===
+=== Gameplay Sounds ===
+=== HUD Canvas References (Always Visible) ===
+=== HUD Reference ===
+=== Inventory Contents ===
+=== Master Panel Reference ===
+=== Master Panel References (Tab/ESC Toggle) ===
+=== Panel References ===
+=== Player Sounds ===
+=== Player State ===
+=== SFX Controller Statistics ===
+=== Save Panel UI Elements ===
+=== Settings ===
+=== Settings Panel UI Elements ===
+=== Top Buttons (Panel Switchers) ===
+=== Top Buttons ===
+=== UI Sounds ===
+=== UIReferenceManager References ===
+=== {npcData.npcName} at Stage {stage} ===
+=== ✅ Inventory Test Completed ===
+=== 📦 Inventory Test Started ===
+===================
+=====================
+=======================
+============================
+==================================
+====================================
+Active Sounds: {activeSounds}
+Add All Scenes in Assets/Scenes
+Advance quest stage after this interaction?
+Advanced
+Advances Stage: {dialogueSet.advanceStageOnComplete}
+After Ending
+Ambient Sounds
+AmbientSound
+Animation
+Assets/Scenes
+Assets/TextMesh Pro/Resources/Fonts & Materials/Maplestory Bold SDF.asset
+Assets/TextMesh Pro/Resources/Fonts & Materials/Maplestory Light SDF.asset
+Assets/TextMesh Pro/Resources/Fonts & Materials/NotoSansKR-Black SDF.asset
+Assets/TextMesh Pro/Resources/Fonts & Materials/NotoSansKR-Bold SDF.asset
+Assets/TextMesh Pro/Resources/Fonts & Materials/NotoSansKR-ExtraBold SDF.asset
+Attack
+Attack Animation
+Attack Damage by Weapon Tier
+Attack Effect (Sword Slash)
+Attack Range by Weapon Tier
+Attack Settings
+Audio Clips
+Audio Mixer
+Audio Mixer (optional, for advanced volume control)
+Audio Settings
+Audio Sources
+Audio/Audio Clip Data
+AudioClipData
+AudioClipData Assigned: {audioClipData != null}
+Auto Load
+Auto-Find Quest Markers
+Automatically find UIReferenceManager and use its references
+Automatically load the first scene on Start
+BGM AudioMixer Group
+BGM AudioMixer parameter name
+BGM Playing: {(bgmController != null ? bgmController.IsPlaying() : false)}
+BGM Volume: {bgm:F2}
+BGM volume slider
+BGM volume slider in Settings Panel
+BGMController
+BGMVolume
+Basic Info
+Bat Bone: {CountItemInInventory(batBoneItem)}
+Blade Dance
+Boss
+Boss Health Settings
+Boss Settings
+Brightness Settings
+Brightness slider
+Brightness slider in Settings Panel
+Brightness: {brightness:F2}
+Build Settings Helper
+Build Settings Scenes
+Button to switch to Inventory Panel
+Button to switch to Map Panel
+Button to switch to Save Panel
+Button to switch to Settings Panel
+Button_Inventory
+Button_Map
+Button_Save
+Button_Settings
+CM vcam1
+Calibration Points
+Camera
+Cancel
+Canvas
+Cave
+Cave map generated!
+Check Settings
+Cinemachine
+Cinemachine.CinemachineTransposer
+Cinemachine.CinemachineVirtualCamera
+CinemachineVirtualCamera
+CinematicVideoRenderTexture
+Clear All Tilemaps
+Clear Forest Tilemaps
+Clear Inventory
+Controllers
+Current BGM: {(currentSceneBGM != null ? currentSceneBGM.name : 
+Current Quest Stage: {currentStage} (Index: {(int)currentStage})
+Current Scene: {currentSceneName}
+CurrentScene
+Custom message if player doesn't have required items
+Cutscene Settings
+Dash
+Dead
+Death Animation
+Debug
+Debug Settings
+Debug: Advance Stage
+Debug: Close Master UI
+Debug: Delete All Saves
+Debug: Force Boss Defeat
+Debug: Give Required Items
+Debug: List All Saves
+Debug: Log All References
+Debug: Log Audio System Status
+Debug: Log Current Settings
+Debug: Log Player State
+Debug: Log SFX Statistics
+Debug: Open Load Mode
+Debug: Open Master UI (Inventory)
+Debug: Open Save Mode
+Debug: Print Current Stage
+Debug: Print Current Stage Dialogue
+Debug: Print Inventory
+Debug: Refresh Slots UI
+Debug: Reset Quest
+Debug: Reset Settings to Defaults
+Debug: Restart Video
+Debug: Return to Village
+Debug: Show Save Directory
+Debug: Skip Cutscene
+Debug: Skip to Next Scene
+Debug: Skip to Title
+Debug: Stop All Audio
+Debug: Stop All SFX
+Debug: Test Interaction
+Debug: Test Load Button
+Debug: Toggle Master UI
+Debug: Toggle Pause
+Debug: Validate All References
+Debug: Wake Up Now
+DebugLogsEnabled
+Default
+Default Values
+Default panel to show when opening Master UI with Tab key
+Default prefab if ItemData doesn't have worldPrefab assigned
+Delay before item can be picked up again
+Dialogue Lines
+Dialogue Lines: {dialogueSet.dialogueLines.Count}
+Dialogue Panel (optional)
+DialoguePanel
+Does this NPC give items during quest progression?
+Does this NPC require items to progress?
+DragIcon
+Drop Settings
+Drop chance (0-1). 1 = always drop, 0.5 = 50% chance
+Empty
+EndingVideoRenderTexture
+Enemy
+Fallback Fonts
+Fallback Prefab
+First Scene to Load
+Follow
+Font Asset
+ForestTilemapGenerator setup complete!\n\n
+Game State
+GameObject/2D Object/Forest Tilemap Generator
+Generate Forest Map
+Generate Map
+Generate Village Map
+Generation Controls
+Generation Settings
+GetCinemachineComponent
+Give Quest Items
+Grid
+Grid Not Found
+HP
+HP Slider in HUD_Canvas/HPBar
+HP Slider: {(hpSlider != null ? hpSlider.name : 
+HUD Canvas - will disable interaction when Master UI is open
+HUD Canvas: {(hudCanvas != null ? hudCanvas.name : 
+HUD_Canvas
+HUD_Canvas/HPBar
+HUD_Canvas/Hotbar
+HUD_Canvas/STBar
+Has saved position: {hasPositionData}
+Health
+Health: {(playerHealth != null ? playerHealth.GetCurrentHealth().ToString() : 
+Hotbar Parent: {(hotbarParent != null ? hotbarParent.name : 
+Hotbar parent transform (contains Hotbar slots)
+Hotkeys
+House Settings
+If true, player position will be saved and restored between scenes
+InitialScene name - loads DontDestroyOnLoad objects first
+Input
+Interaction Settings
+Inventory Panel
+Inventory Panel (contains SlotGrid)
+Inventory Panel: {(inventoryPanel != null ? inventoryPanel.name : 
+Inventory Settings
+Inventory Slot Grid: {(inventorySlotGrid != null ? inventorySlotGrid.name : 
+Inventory Slots Parent (SlotGrid)
+Inventory full!
+Inventory.AddItem: item is null.
+Inventory.DropItemToWorld: Player not found. Spawning at origin.
+Inventory.DropItemToWorld: itemWorldPrefab not assigned.
+InventoryGridGenerator: slotPrefab or slotParent not assigned.
+InventoryGridGenerator: slots already exist - skip generation
+InventoryPanel
+InventoryUI: slotsParent is not assigned. Cannot initialize slots.
+InventoryUI: synced Inventory.capacity to {total} (hotbar {hotSlots} + inventory {invSlots})
+Invincibility Settings
+IsWalking
+Item Drop Position
+Item.OnTriggerEnter2D: Inventory.instance is null. Cannot add item.
+Item/Basic Item
+Items
+Items given to player after dialogue/interaction
+Items required from player to progress (consumed on interaction)
+Items/
+Items/BatBone
+Items/BossMeat
+Items/Item_WeaponTier0
+Items/Item_WeaponTier1
+Items/Item_WeaponTier2
+Items/SkeletonBone
+Items/SlimeResidue
+Legacy Spawn Settings (Deprecated)
+List of dialogue sets for different quest stages
+Load First Scene
+Load button - opens SaveDataPanel in Load mode
+Load button in Save Panel
+Main HUD Canvas - contains HP, Stamina, Hotbar, Dialogue
+Main Master Panel GameObject - parent of all tabbed panels
+Main Master Panel GameObject - will be toggled on/off
+Map Images
+Map Panel
+Map Panel: {(mapPanel != null ? mapPanel.name : 
+Map Settings
+Map Size
+Map Size Constraints
+Map/Scene Map Data
+MapPanel
+Master Panel: {(masterPanel != null ? masterPanel.name : 
+Message to show when player doesn't meet stage requirement
+MiniMap Reference
+MiniMap Settings
+Minimum quest stage required to use this portal
+MoveX
+MoveY
+Movement
+NPC
+NPC Configuration
+NPC Info
+NPC/NPC Data
+NPC: 
+NPC: {npcData.npcName}
+NPCData not assigned!
+Name of the GameObject in target scene to spawn at (e.g., 'Portal_ToVillage'). Leave empty to use PlayerSpawn tag.
+Name of the Initial Scene (loads DontDestroyOnLoad objects)
+Name of the first gameplay scene to load after initialization
+Name of the scene to load (must be added in Build Settings)
+NewItem
+NewNPC
+No Grid GameObject found in the current scene. Please open the Forest Scene first.
+No scenes found in Assets/Scenes
+No scenes in Build Settings!
+None
+OK
+Offset from this GameObject's position in LOCAL space (e.g., Vector3.down spawns below, Vector3.forward spawns in front)
+Open Build Settings Window
+Optional visual effect or sprite renderer to highlight the portal
+Optional: Reference to Light2D or PostProcessing for brightness control
+Optional: Specific spawn position in target scene. If empty, uses PlayerSpawn tag.
+Options
+Panel Settings
+Persistence Settings
+Play Ambient Sound Now
+Play Scene BGM Now
+Player
+Player Death Settings
+Player Marker
+Player Reference
+Player References
+Player Spawn\nOffset: {localOffset}
+Player died
+PlayerSpawn
+Pool Size: {sfxPool.Count}
+Pooling Settings
+Portal Locations
+Portal Settings
+Portal Visual (Optional)
+Portal → {targetSceneName}
+Portal: 
+PortalToForest
+Position: {transform.position}
+Prefabs
+Preview
+Quest Interactions
+Quest Item Requirements (Optional)
+Quest Item Rewards (Optional)
+Quest Marker
+Quest Progress
+Quest Properties
+Quest Stage Requirements
+QuestManager not found!
+QuestMarker
+Reference to SaveDataPanelController
+References
+References (Auto-cached on Awake)
+Rendering
+Require a specific quest stage to use this portal?
+Required Items: {dialogueSet.GetRequiredItemsText()}
+Reward Items: {dialogueSet.GetRewardItemsText()}
+Run Test
+SFX AudioMixer Group
+SFX AudioMixer parameter name
+SFX Volume: {sfx:F2}
+SFX volume slider
+SFX volume slider in Settings Panel
+SFXController
+SFXVolume
+SFX_AudioSource_{sfxPool.Count}
+ST
+Save Panel
+Save Panel: {(savePanel != null ? savePanel.name : 
+Save Settings
+Save button - opens SaveDataPanel in Save mode
+Save button in Save Panel
+Save directory: {saveDirectory}
+SaveData
+SaveDataPanel Reference
+SavePanel
+SaveTime
+Scene BGM Mapping
+Scene Info
+Scene Map Data
+Scene Quest Markers
+Scene Settings
+Scene Transition
+Scene-Specific BGM
+SceneMapData
+Score: {score}
+Settings
+Settings Panel
+Settings Panel: {(settingsPanel != null ? settingsPanel.name : 
+SettingsPanel
+Settings_BGM
+Settings_Brightness
+Settings_SFX
+Setup Complete
+Should the player face the same direction as this GameObject when spawning?
+Show debug logs
+Skeleton Bone: {CountItemInInventory(skeletonBoneItem)}
+Skip Settings
+SlashFx Prefabs
+Slime Residue: {CountItemInInventory(slimeResidueItem)}
+Slot Buttons (Auto-find if not assigned)
+Slot Configuration
+Slot {i}: Empty
+Slot {i}: {data.sceneName} | {data.saveTime}
+SlotButton({i + 1})
+SlotGrid
+Slot_{i + 1}
+Slots Parent (Grid Layout Object)
+Spawn
+Spawn Direction
+Spawn Offset
+Spawn Position\n{spawnPosition}
+Spawn Settings
+Stacking
+Stage 1 - Forest Requirements
+Stage 3 - Cave Requirements
+Stage Configuration
+Stage Progression
+Stage-Based Dialogues
+Stamina
+Stamina Slider in HUD_Canvas/STBar
+Stamina Slider: {(staminaSlider != null ? staminaSlider.name : 
+Stamina: {(playerStamina != null ? playerStamina.GetCurrentStamina().ToString(
+Sword Slash Effect Colors by Weapon Tier
+TMP Font Updater
+TargetSpawnPoint
+Terrain Tiles
+Test Items
+Test Settings
+Test: Load Initial Scene
+Text Settings
+The dialogue lines to display
+The world item prefab to spawn when this enemy dies (e.g., Item_BatBone_World)
+This will clear all existing tiles and generate a new forest map. Continue?
+This will remove all tiles from all tilemaps. This action can be undone. Continue?
+Tile Assets - Ground
+Tile Assets - Nature
+Tile Assets - Special
+Tilemap Reference
+Tilemap References
+Tilemaps
+Title scene name - if loading from this scene, go through InitialScene first
+TitleVideoRenderTexture
+Tools/Build Settings Helper
+Tools/Debug Logs/Disable All Debug Logs
+Tools/Debug Logs/Enable All Debug Logs
+Tools/Debug Logs/Toggle Debug Logs
+Tools/Puang Adventure/Setup Forest Tilemap Generator
+Tools/TMP Font Auto Updater
+TopButtonsPanel
+Total Sounds Played: {totalSoundsPlayed}
+Transition Settings
+Tree Settings
+TutorialManager: Failed to find Player references! Make sure Player is loaded from DontDestroyOnLoad.
+TutorialScene
+UI
+UI Fade In
+UI References
+UI_MasterPanel
+UNITY_EDITOR
+UltEffect
+Ultimate
+UnityEditor.BuildPlayerWindow,UnityEditor
+Use specific spawn position instead of PlayerSpawn tag
+Vertical offset from enemy position where item spawns (e.g., -0.3)
+Vertical offset from player position (negative = below player)
+Video Settings
+VideoCanvas
+VideoRawImage
+Village
+Village Area
+Virtual Camera
+Visual Feedback (Optional)
+Wake Up Settings
+WakeUp
+Weapon Properties
+Which quest stage this dialogue belongs to
+World Item Settings
+World Object
+Yes, Clear
+Yes, Generate
+You cannot enter this area yet. Complete the required quest first.
+You need: {dialogueSet.GetRequiredItemsText()}
+[EnemyItemDropper] Cannot drop item - itemPrefabToDrop is null on {gameObject.name}
+[EnemyItemDropper] Configured dropped item with 0.5s pickup delay
+[EnemyItemDropper] Dropped item '{droppedItem.name}' has no Item component!
+[EnemyItemDropper] {gameObject.name} did not drop item (chance check failed)
+[EnemyItemDropper] {gameObject.name} dropping item '{itemPrefabToDrop.name}' at {dropPosition}
+[EnemyItemDropper] {gameObject.name} has no itemPrefabToDrop assigned!
+[EnemyItemDropper] ✅ Successfully dropped '{itemPrefabToDrop.name}' from {gameObject.name}
+[Hotbar]   Slot {i}: Empty
+[Hotbar]   Slot {i}: {Inventory.instance.items[i].itemName}
+[Hotbar] Updating {slots.Length} slots
+[Hotbar] ⚠ UpdateUI: Inventory.instance is null.
+[Hotbar] ⚠ UpdateUI: slotsParent not assigned.
+[Hotbar] ✅ UpdateUI complete
+[Hotbar] 🔄 UpdateUI called
+[InventoryUI]   Slot {i} (idx={idx}): Empty
+[InventoryUI]   Slot {i} (idx={idx}): {Inventory.instance.items[idx].itemName}
+[InventoryUI] Updating {slots.Length} slots (hotOffset={hotOffset})
+[InventoryUI] ⚠ UpdateUI: Inventory.instance is null. Skipping UI update.
+[InventoryUI] ⚠ UpdateUI: slots not initialized. Skipping UI update.
+[InventoryUI] ✅ UpdateUI complete
+[InventoryUI] 🔄 UpdateUI called
+[Inventory] '{item.itemName}' added to Hotbar slot {hotIndex}
+[Inventory] '{item.itemName}' added to Inventory slot {i}
+[ItemSlot] Added '{newItem.itemName}' to {slotType} slot {index}
+[ItemSlot] CreateDragIcon: No Canvas found!
+[ItemSlot] Created drag icon on canvas '{targetCanvas.name}'
+[ItemSlot] DropItemToWorld: Missing source or item
+[ItemSlot] Dropped on same slot, no action needed
+[ItemSlot] Dropping '{draggingItem.itemName}' to world from slot {dragSourceSlot.index}
+[ItemSlot] Inventory.instance is null!
+[ItemSlot] Neither ItemWorldSpawner nor Inventory available!
+[ItemSlot] OnBeginDrag: Slot {index} is empty, cannot drag
+[ItemSlot] OnBeginDrag: Started dragging '{currentItem.itemName}' from {slotType} slot {index}
+[ItemSlot] OnDrop: No dragging item
+[ItemSlot] OnEndDrag: Drop already handled by OnDrop, skipping
+[ItemSlot] OnEndDrag: Dropped outside UI, spawning in world
+[ItemSlot] OnEndDrag: Ending drag for '{draggingItem?.itemName}' (dropHandled={dropHandled})
+[ItemSlot] OnEndDrag: No dragging item or source slot
+[ItemSlot] OnEndDrag: Not dropped on valid slot, restoring source
+[ItemSlot] ⚠ Cannot refresh InventoryUI (inventoryUI is still null after RefreshUIReferences)
+[ItemSlot] ⚠ Hotbar.instance is null
+[ItemSlot] ✅ Hotbar.UpdateUI() called
+[ItemSlot] ✅ InventoryUI.UpdateUI() called
+[ItemSlot] 🎯 OnDrop: Dropped '{draggingItem.itemName}' on {slotType} slot {index} (Current item: {(currentItem != null ? currentItem.itemName : 
+[ItemSlot] 🔄 AFTER SWAP:
+[ItemSlot] 🔄 BEFORE SWAP:
+[ItemSlot] 🔄 RefreshAllUI called
+[ItemSlot] 🔍 Auto-found InventoryUI via RefreshUIReferences()
+[ItemWorldSpawner] Cannot spawn null ItemData
+[ItemWorldSpawner] Configured Item component with pickup delay {pickupIgnoreDuration}s
+[ItemWorldSpawner] Configured Rigidbody2D
+[ItemWorldSpawner] Configured SpriteRenderer
+[ItemWorldSpawner] No prefab available for '{itemData.itemName}'
+[ItemWorldSpawner] Player not found! Cannot spawn item.
+[ItemWorldSpawner] Spawned '{itemData.itemName}' at custom position {position}
+[ItemWorldSpawner] Spawned item '{spawnedItem.name}' has no Item component!
+[ItemWorldSpawner] Spawning '{itemData.itemName}' at {spawnPosition}
+[ItemWorldSpawner] Successfully spawned '{itemData.itemName}'
+[ItemWorldSpawner] Using Inventory.itemWorldPrefab for '{itemData.itemName}'
+[ItemWorldSpawner] Using ItemData.worldPrefab for '{itemData.itemName}'
+[ItemWorldSpawner] Using defaultWorldItemPrefab for '{itemData.itemName}'
+[MapPanelController] Map resized to {targetWidth} x {targetHeight} (Original: {spriteWidth} x {spriteHeight})
+[MapPanelController] Player marker updated at {localPos} (World: {playerWorldPos}, Normalized: {normalizedPos})
+[MapPanelController] SceneMapData not found for scene: {currentSceneName}
+[MapPanelController] activeMiniMapController is not assigned!
+[MapPanelController] mapImage is not assigned!
+[PlayerController]     Material: {slashEffect.material.name}, Shader: {slashEffect.material.shader.name}
+[PlayerUlt] {message}
+\"Space\"
+\n--- Inventory Status ---
+\n--- Test 1: ItemData Loading ---
+\n--- Test 2: Adding Weapons ---
+\n--- Test 3: Adding Consumables ---
+\n📍 Spawn at: PlayerSpawn (default)
+\n📍 Spawn at: {targetSpawnPointName}
+\n🔒 Requires: {requiredStage}
+_Color
+_MainColor
+_TintColor
+attack
+background
+backgroundTilemap
+collision
+collisionTilemap
+deco
+decoTilemap
+effect
+ground
+groundTilemap
+m_AtlasPopulationMode
+m_ClearDynamicDataOnBuild
+m_FollowOffset
+save_slot_{slotIndex}.json
+slash
+sword
+t:Scene
+walkBehindTilemap
+walkbehind
+yyyy-MM-dd HH:mm:ss
+{(success ? 
+{i}: {System.IO.Path.GetFileNameWithoutExtension(scenes[i].path)}
+}
+} (applied to {sfxPool.Count} sources)
+} → {hotbarSlot0?.itemName ?? 
+• Next step: Assign tile assets in the Inspector\n
+• Then click 'Generate Forest Map' button
+• Tilemaps auto-assigned: {assignedCount}/5\n
+ℹ️ TitleSceneManager: Load Button should have TitleSceneLoadButton.cs component
+⏭ Ending video skipped by user
+⏭ Video skipped by user
+⏰ Auto death timer expired ({autoDeathTime}s). Forcing death...
+⏳ Preparing video...
+⏳ Waiting {uiFadeInDelay}s before fading in title UI...
+⏸ Dialogue already open, ignoring interaction
+⏸ Dialogue started - Time.timeScale: {previousTimeScale} → 0 (saved: {previousTimeScale})
+⏸ Stage remains at Stage7 - will advance when talking to NPC_Puangi
+⏸ UI_MasterController: Cannot open UI while dialogue is active
+⏸ Waiting for stage advance, ignoring interaction
+⏸ {npcData.npcName} has no dialogue for current stage {lockedStageForDialogue} - interaction blocked
+▶ Playing ending video: {videoClip.name}
+▶ Playing video immediately: {videoClip.name}
+▶ Playing video: {videoClip.name}
+▶ Video started playing in loop mode
+⚙ UI_MasterController: Switched to Settings panel
+⚠ BatBone not found in Resources/Items/
+⚠ Boss GameObject with tag '{bossTag}' not found!
+⚠ BossMeat not found in Resources/Items/
+⚠ DialogueManager not found! Skipping dialogue.
+⚠ DialogueManager.StartDialogue: dialogueLines is null or empty
+⚠ DialogueManager: DialoguePanel not found in {canvas.name}
+⚠ DialogueManager: DialogueText not found in DialoguePanel
+⚠ DialogueManager: Duplicate instance detected - destroying
+⚠ DialogueManager: Neither HUD_Canvas nor Canvas found in scene
+⚠ EndingVideoPlayer: Ending UI is not assigned!
+⚠ ForestTilemapGenerator already exists on Grid GameObject.
+⚠ GameManager: Duplicate instance detected - destroying
+⚠ Inventory full! Dropping {reward.itemName} in front of NPC
+⚠ Inventory items array is null
+⚠ Inventory: Duplicate instance detected - destroying
+⚠ InventorySaveData: Item not found in Resources/Items/{itemIDs[i]}
+⚠ ItemWorldSpawner: Duplicate instance destroyed
+⚠ Item_WeaponTier0 not found in Resources/Items/
+⚠ No Grid found in scene. Please add a Grid GameObject with Tilemaps first.
+⚠ No ItemData found in Resources/Items folder!
+⚠ No dark forest tiles assigned - skipping background layer
+⚠ No decoration tiles assigned - skipping decoration layer
+⚠ No dialogue found for {npcName} at stage {stage}. Using first available dialogue.
+⚠ No grass tiles assigned - skipping ground layer
+⚠ No mystical tiles assigned - skipping boss zone
+⚠ No rock tiles assigned - skipping cave zone
+⚠ No tree tiles assigned - skipping village zone
+⚠ PlayerHealth: Death processing ignored (special scene handling)
+⚠ PlayerHealth: Death processing will be ignored
+⚠ PlayerHealth: HPBar not found in scene at HUD_Canvas/HPBar. Make sure UI structure is correct.
+⚠ PlayerHealth: hpSlider is still null after RefreshUIReference. UI will not update.
+⚠ PlayerPersistent: '{component.name}' has no writable 'Follow' property
+⚠ PlayerPersistent: Custom spawn point '{targetSpawnPointName}' not found in scene - falling back to PlayerSpawn tag
+⚠ PlayerPersistent: Duplicate Player '{gameObject.name}' detected - destroying (Instance: '{Instance.gameObject.name}')
+⚠ PlayerPersistent: No 'PlayerSpawn' tag found in scene - player position unchanged
+⚠ PlayerPersistent: No Cinemachine cameras found in scene. Camera may not follow player.
+⚠ PlayerPersistent: No GameObject with 'Player' tag found
+⚠ PlayerPersistent: PlayerController not found
+⚠ PlayerPersistent: PlayerHealth not found
+⚠ PlayerPersistent: PlayerHealth reference is null
+⚠ PlayerPersistent: PlayerStamina not found
+⚠ PlayerPersistent: PlayerStamina reference is null
+⚠ PlayerStamina: STBar not found in scene at HUD_Canvas/STBar. Make sure UI structure is correct.
+⚠ PlayerStamina: staminaSlider is still null after RefreshUIReference. UI will not update.
+⚠ PortalTrigger: Collider on '{gameObject.name}' was not set to IsTrigger. Auto-fixing.
+⚠ PortalTrigger: DialogueManager not found - cannot show blocked message
+⚠ PortalTrigger: QuestManager not found - allowing portal access
+⚠ QuestManager: Already at final stage, cannot advance further.
+⚠ SaveDataPanelController: Cannot load - Slot {slotIndex} is empty!
+⚠ SaveDataPanelController: SaveManager.Instance is null!
+⚠ SaveDataPanelController: Text components not found for SlotButton({slotIndex})
+⚠ SaveDataPanelController: {targetName} not found!
+⚠ SaveManager: Duplicate instance detected - destroying
+⚠ SaveManager: Invalid slot index {slotIndex}
+⚠ SaveManager: Invalid slot index {slotIndex}. Must be between 1 and {maxSlots}
+⚠ SaveManager: Inventory.instance is null! Inventory will not be saved.
+⚠ SaveManager: No save file found for slot {slotIndex}
+⚠ SaveManager: No save file to delete for slot {slotIndex}
+⚠ SaveManager: PlayerPersistent.Instance is null! Using default values.
+⚠ SaveManager: Scene load already in progress, ignoring request
+⚠ SavePanelController: SaveDataPanelController not found in scene!
+⚠ SavePanelController: buttonLoad is not assigned!
+⚠ SavePanelController: buttonSave is not assigned!
+⚠ SettingsPanelController: sliderBGM is not assigned!
+⚠ SettingsPanelController: sliderBrightness is not assigned!
+⚠ SettingsPanelController: sliderSFX is not assigned!
+⚠ SkeletonBone not found in Resources/Items/
+⚠ SlimeResidue not found in Resources/Items/
+⚠ TitleSceneLoadButton: Load button is not assigned!
+⚠ TitleSceneLoadButton: SaveDataPanelController not found in scene!
+⚠ UIReferenceManager.GetHPSlider: hpSlider is null!
+⚠ UIReferenceManager.GetInventorySlotGrid: inventorySlotGrid is null!
+⚠ UIReferenceManager.GetStaminaSlider: staminaSlider is null!
+⚠ UIReferenceManager: Duplicate instance detected - destroying
+⚠ UIReferenceManager: Some references are missing. Check Inspector or enable autoFindReferences.
+⚠ UIReferenceManager: hpSlider is not assigned! PlayerHealth will not update UI.
+⚠ UIReferenceManager: inventoryPanel is not assigned!
+⚠ UIReferenceManager: inventorySlotGrid is not assigned! InventoryUI will not work.
+⚠ UIReferenceManager: staminaSlider is not assigned! PlayerStamina will not update UI.
+⚠ UI_MasterController: UIReferenceManager.Instance is null. Cannot auto-find references.
+⚠ UI_MasterController: buttonInventory is not assigned!
+⚠ UI_MasterController: buttonMap is not assigned!
+⚠ UI_MasterController: buttonSave is not assigned!
+⚠ UI_MasterController: buttonSettings is not assigned!
+⚠ UI_MasterController: inventoryPanel is null!
+⚠ UI_MasterController: mapPanel is null!
+⚠ UI_MasterController: savePanel is null!
+⚠ UI_MasterController: settingsPanel is null!
+⚠ UnkillableBossController: Boss GameObject is not assigned!
+⚠ UnkillableBossController: Boss has no EnemyHealth component!
+⚠ UnkillableBossController: Player GameObject not found!
+⚠ UnkillableBossController: PlayerHealth not found on Player!
+⚠ {npcData.npcName} has no dialogue lines for stage {currentStage}
+⚠ {npcData?.npcName ?? gameObject.name}: questMarkerSprite not assigned
+⚠️ AudioManager: AudioClipData is not assigned! Please assign it in the Inspector.
+⚠️ AudioManager: No BGM assigned for scene '{scene.name}'
+⚠️ AudioManager: bgmMixerGroup is null! BGM volume control will not work.
+⚠️ AudioManager: masterMixer is null! Cannot set BGM volume.
+⚠️ AudioManager: masterMixer is null! Cannot set SFX volume.
+⚠️ AudioManager: sfxMixerGroup is null! SFX volume control will not work.
+⚠️ BGMController: AudioClip is null!
+⚠️ EnemyAttack ({gameObject.name}): PlayerHealth component not found on Player object.
+⚠️ EnemyHealth: OnDeath event has no subscribers for {name}!
+⚠️ Inventory not found!
+⚠️ QuestManager not found - cannot advance stage
+⚠️ SFXController: AudioClip is null!
+⚠️ SFXController: Clips array is null or empty!
+⚠️ SFXController: Pool exhausted, creating new AudioSource (Total: {sfxPool.Count + 1})
+⚠️ SceneBGMController: AudioManager not found!
+⚠️ StageCompletionTracker: Inventory.instance is null!
+⚠️ StageCompletionTracker: QuestManager.Instance is null!
+⚠️ StageCompletionTracker: Required ItemData not assigned in Inspector!
+⚠️ TitleSceneManager: Play Button is not assigned!
+⚠️ TutorialManager: Bat prefab is null!
+⚠️ TutorialManager: Cannot access Cinemachine components
+⚠️ TutorialManager: Cannot access m_FollowOffset field
+⚠️ TutorialManager: Cannot find CinemachineTransposer type
+⚠️ TutorialManager: Cannot move camera - Cinemachine Virtual Camera not found
+⚠️ TutorialManager: Cinemachine Virtual Camera not found! Camera work will not function.
+⚠️ TutorialManager: GameObject search failed - no 'Cinemachine', 'CM vcam1', or 'Virtual Camera' found
+⚠️ TutorialManager: Listing all GameObjects in scene...
+⚠️ TutorialManager: Make sure TutorialScene has a Cinemachine Virtual Camera in the scene.
+⚠️ TutorialManager: No Follow target set on Virtual Camera
+⚠️ TutorialManager: No Transposer component found on Virtual Camera
+⚠️ TutorialManager: Try naming it 'Cinemachine', 'CM vcam1', or 'Virtual Camera'
+⚠️ TutorialManager: Virtual Camera has no Transposer component
+⚡ Stamina restored to {data.playerStamina:F1}
+✅ Added {buildScenes.Length} scenes to Build Settings:
+✅ AudioManager: Assigned bgmMixerGroup '{bgmMixerGroup.name}' to BGMController
+✅ AudioManager: Assigned sfxMixerGroup '{sfxMixerGroup.name}' to SFXController
+✅ AudioManager: Created BGMController
+✅ AudioManager: Created SFXController
+✅ AudioManager: Initialized and persisting across scenes
+✅ Auto-assigned: {child.name} → backgroundTilemap
+✅ Auto-assigned: {child.name} → collisionTilemap
+✅ Auto-assigned: {child.name} → decoTilemap
+✅ Auto-assigned: {child.name} → groundTilemap
+✅ Auto-assigned: {child.name} → walkBehindTilemap
+✅ BGMController: MixerGroup set to {mixerGroup?.name ?? 
+✅ Background layer generated
+✅ Boss zone generated at {bossPortalPosition}
+✅ Cave zone generated at {cavePortalPosition}
+✅ CinematicVideoPlayer: Auto-created Canvas and RawImage for video
+✅ CinematicVideoPlayer: Canvas setup - Layer: {sortingLayerName}, Order: {sortingOrder}
+✅ CinematicVideoPlayer: Video playback completed
+✅ Collision layer generated
+✅ Created quest marker for {npcData?.npcName ?? gameObject.name} (Layer: {markerSortingLayer}, Order: {markerSortingOrder})
+✅ Debug logs enabled
+✅ Decoration layer generated
+✅ Development Build - Debug logs will be enabled
+✅ DialogueManager: Found DialoguePanel in {canvas.name}
+✅ DialogueManager: Found DialogueText (Original size: {originalFontSize}, New size: {dialogueText.fontSize})
+✅ DialogueManager: Initialized and persisting across scenes
+✅ DialoguePanel activated
+✅ EndingVideoPlayer: Auto-created Canvas and RawImage for video
+✅ EndingVideoPlayer: Canvas setup - Layer: {sortingLayerName}, Order: {sortingOrder}
+✅ EndingVideoPlayer: Video playback completed
+✅ Forest Map Generation Complete!
+✅ ForestTilemapGenerator added to Grid! Please assign tile assets in the Inspector.
+✅ ForestTilemapGenerator component added to Grid
+✅ Found HPBar slider
+✅ Found HPBar slider (alternative): {slider.name}
+✅ Found HUD_Canvas: {hudCanvasObj.name}
+✅ Found Hotbar parent
+✅ Found InventoryPanel
+✅ Found InventoryPanel/SlotGrid
+✅ Found MapPanel
+✅ Found STBar slider
+✅ Found STBar slider (alternative): {slider.name}
+✅ Found SavePanel
+✅ Found SettingsPanel
+✅ Found UI_MasterPanel
+✅ Found boss: {bossGameObject.name}
+✅ Found {allItems.Length} ItemData(s) in Resources/Items:
+✅ Found {targetName}
+✅ Game loaded from Slot {slotIndex}!
+✅ Game saved to Slot {slotIndex}!
+✅ GameManager: Initialized and persisting across scenes
+✅ Ground layer generated
+✅ Inventory instance found
+✅ Inventory: Found InventoryUI in current scene
+✅ Inventory: Initialized and persisting across scenes
+✅ InventorySaveData: Loaded item '{loadedItem.itemName}' (ID: {itemIDs[i]}) at slot {i}
+✅ ItemWorldSpawner: Initialized
+✅ PlayerHealth: Connected to HPBar via UIReferenceManager
+✅ PlayerHealth: Death processing re-enabled
+✅ PlayerHealth: Health set to {currentHealth}/{maxHealth}
+✅ PlayerHealth: Reconnected to HPBar in HUD_Canvas
+✅ PlayerPersistent: Connected '{component.name}' to follow Player '{player.name}'
+✅ PlayerPersistent: Player '{gameObject.name}' persistence enabled - moved to DontDestroyOnLoad
+✅ PlayerStamina: Connected to STBar via UIReferenceManager
+✅ PlayerStamina: Reconnected to STBar in HUD_Canvas
+✅ PlayerStamina: Stamina set to {currentStamina}/{maxStamina}
+✅ Portal access granted - Stage requirement met ({requiredStage})
+✅ QuestManager initialized at Stage: {currentStage}
+✅ Release Build - Debug logs will be disabled
+✅ SFXController: Initialized pool with {poolSize} AudioSources
+✅ SFXController: MixerGroup set to {mixerGroup?.name ?? 
+✅ SaveDataPanelController: Found {foundCount}/8 slot buttons
+✅ SaveDataPanelController: Initialization complete
+✅ SaveDataPanelController: Slot button listeners setup complete
+✅ SaveDataPanelController: Using self as SaveDataPanel ('{gameObject.name}')
+✅ SaveManager: All save data applied successfully
+✅ SaveManager: InitialScene loaded, now loading target scene: {pendingSaveData.sceneName}
+✅ SaveManager: Initialized and persisting across scenes
+✅ SaveManager: Scene '{data.sceneName}' loaded
+✅ SavePanelController: Found SaveDataPanelController ('{saveDataPanelController.gameObject.name}')
+✅ SavePanelController: Initialized
+✅ SettingsPanelController: Auto-found sliders from UIReferenceManager
+✅ SettingsPanelController: BGM slider listener added
+✅ SettingsPanelController: Brightness slider listener added
+✅ SettingsPanelController: Initialized and settings loaded
+✅ SettingsPanelController: SFX slider listener added
+✅ Setup complete! {assignedCount} tilemaps auto-assigned. Please assign tile assets in Inspector.
+✅ StageCompletionTracker initialized for Scene: {SceneManager.GetActiveScene().name}
+✅ Successfully dropped '{itemData.itemName}' in front of {npcData.npcName}
+✅ Themed zones generated
+✅ Title UI fade in completed!
+✅ TitleLoopVideoPlayer: Auto-created Canvas and RawImage for video
+✅ TitleLoopVideoPlayer: Canvas setup - Layer: {sortingLayerName}, Order: {sortingOrder}
+✅ TitleLoopVideoPlayer: Title UI set to invisible (will fade in after video)
+✅ TitleSceneLoadButton: Found Button component
+✅ TitleSceneLoadButton: Found SaveDataPanelController ('{saveDataPanelController.gameObject.name}')
+✅ TitleSceneLoadButton: Load button listener setup complete
+✅ TutorialManager: All 3 enemies killed! Proceeding to next step.
+✅ TutorialManager: Enemy spawned at {position} (Name: {enemy.name})
+✅ TutorialManager: Found Cinemachine Virtual Camera component!
+✅ TutorialManager: Found GameObject: {cameraObj.name}
+✅ TutorialManager: Inventory cleared
+✅ TutorialManager: Original Follow target: {originalCameraFollow?.name ?? 
+✅ TutorialManager: Player health reset
+✅ TutorialManager: Player references found successfully!
+✅ TutorialManager: Player stamina reset
+✅ TutorialManager: Stored original Transposer offset: {originalTransposerOffset}
+✅ UIReferenceManager: All critical references validated successfully
+✅ UIReferenceManager: Auto-find complete
+✅ UIReferenceManager: Initialized as singleton
+✅ UI_MasterController: Auto-found references from UIReferenceManager
+✅ UI_MasterController: Button listeners setup complete
+✅ UnkillableBossController: Disabled normal death processing
+✅ Video prepared: {videoClip.name}
+✅ Village zone generated at {villagePortalPosition}
+✓
+✗
+✨ Fading in title UI over {uiFadeInDuration}s...
+❌ CinematicVideoPlayer: Cannot play - no video clip assigned!
+❌ CinematicVideoPlayer: Next scene name is not set!
+❌ CinematicVideoPlayer: Video clip is not assigned!
+❌ CinematicVideoPlayer: Video error - {message}
+❌ DialogueManager.StartDialogue: dialoguePanel is NULL!
+❌ EndingVideoPlayer: Cannot play - no video clip assigned!
+❌ EndingVideoPlayer: Title scene name is not set!
+❌ EndingVideoPlayer: Video clip is not assigned!
+❌ EndingVideoPlayer: Video error - {message}
+❌ Inventory not found!
+❌ Inventory.instance is null! Make sure Inventory GameObject exists in scene.
+❌ NPCController on '{gameObject.name}': NPCData is not assigned!
+❌ NPCController: Cannot drop null ItemData
+❌ NPCController: DialogueManager not found!
+❌ NPCController: Inventory not found!
+❌ NPCController: ItemWorldSpawner.Instance not found!
+❌ NPCController: QuestManager not found!
+❌ Player missing required item: {requiredItem.itemName}
+❌ Portal access denied - Stage {requiredStage} required
+❌ PortalTrigger: Scene '{targetSceneName}' not found in Build Settings! Add it via File → Build Settings.
+❌ PortalTrigger: Target scene name is empty on '{gameObject.name}'
+❌ SaveDataPanelController: Panel closed
+❌ SaveDataPanelController: SaveManager.Instance is null!
+❌ SaveManager: Cannot apply save data - PlayerPersistent.Instance is null!
+❌ SaveManager: Failed to preview slot {slotIndex}! {e.Message}
+❌ SaveManager: Load from slot {slotIndex} failed! {e.Message}\n{e.StackTrace}
+❌ SaveManager: Save to slot {slotIndex} failed! {e.Message}\n{e.StackTrace}
+❌ SavePanelController: SaveDataPanelController is null!
+❌ SceneInitializer: First scene name is not set!
+❌ SceneInitializer: Scene '{firstSceneName}' not found in Build Settings! Add it via File → Build Settings.
+❌ StageCompletionTracker: batBoneItem or skeletonBoneItem is not assigned in Inspector!
+❌ StageCompletionTracker: slimeResidueItem or batBoneItem is not assigned in Inspector!
+❌ This means Cinemachine is either not installed or no Virtual Camera exists in TutorialScene
+❌ Tilemap references are missing! Please assign all tilemaps in the inspector.
+❌ TitleLoopVideoPlayer: Cannot play - no video clip assigned!
+❌ TitleLoopVideoPlayer: Video clip is not assigned!
+❌ TitleLoopVideoPlayer: Video error - {message}
+❌ TitleSceneLoadButton: SaveDataPanelController is null!
+❌ TitleSceneManager: Scene '{initialSceneName}' not found in Build Settings!
+❌ TutorialManager: NO Cinemachine components found in scene at all!
+❌ UIReferenceManager: hudCanvas is not assigned!
+❌ UIReferenceManager: masterPanel is not assigned!
+❌ UI_MasterController.CloseMasterUI: masterPanel is not assigned!
+❌ UI_MasterController.OpenMasterUI: masterPanel is not assigned!
+❌ {npcName} has no dialogue sets configured!
+❤️ Health restored to {data.playerHealth}
+🌀 CinematicVideoPlayer: Loading next scene - {nextSceneName}
+🌀 EndingVideoPlayer: Returning to title - {titleSceneName}
+🌀 Loading EndingScene...
+🌀 PortalTrigger: Player entered portal '{gameObject.name}' → Loading scene '{targetSceneName}'
+🌀 Returning to Village: {returnSceneName}
+🌀 Transitioning to Scene: {targetScene}
+🌀 Transitioning to: {nextSceneName}
+🌲 Generate Forest Map
+🌲 Starting Forest Map Generation...
+🎁 Dropping '{itemData.itemName}' at NPC position {dropPosition}
+🎁 Gave player: {reward.itemName}
+🎉 Boss defeated! Returning to Village...
+🎉 TutorialManager: All 3 enemies killed! WaitUntil should complete now.
+🎥 Found component: {component.name} (Type: {typeName})
+🎥 TutorialManager: Found Cinemachine Virtual Camera via component search: {component.name}
+🎥 TutorialManager: Moving camera to {targetPosition}, offset from {startOffset} to {endOffset}
+🎥 TutorialManager: Returning camera to original offset: {originalTransposerOffset}
+🎬 CinematicVideoPlayer: Starting cinematic video...
+🎬 Current Stage: {currentStage}
+🎬 CutsceneAutoLoader: Starting cutscene...
+🎬 DialogueManager.StartDialogue called with {dialogueLines.Length} lines
+🎬 EndingVideoPlayer: Starting ending video...
+🎬 SceneInitializer: Loading first scene '{firstSceneName}'
+🎬 Stage8 reached! Loading EndingScene...
+🎬 TitleLoopVideoPlayer: Initializing looping background video...
+🎬 TitleScene: Loading '{initialSceneName}'...
+🎮 TitleScene: Ready
+🎯 Current Stage: {currentStage}
+🎯 PortalTrigger: Set target spawn point to '{targetSpawnPointName}'
+🎯 PortalTrigger: Using default PlayerSpawn tag
+🎯 Quest Stage Set: {previousStage} → {currentStage}
+🎯 Target spawn point set: {spawnPointName}
+🎯 TutorialManager: Waiting for 3 enemies to be killed. Current: {enemiesKilled}/3
+🎵 AudioManager: BGM volume set to {volume:F2} ({volumeDB:F1} dB)
+🎵 AudioManager: Playing BGM for scene '{scene.name}'
+🎵 Playing '{sceneBGM.name}'
+🎵 SceneBGMController: Playing scene-specific BGM '{sceneBGM.name}'
+🎵 SettingsPanelController: BGM volume changed to {value:F2}
+🏆 BossDefeatHandler: Monitoring boss...
+👋 EndingVideoPlayer: Quitting game...
+👋 TitleScene: Quitting game...
+💀 EnemyHealth: Enemy died: {name}
+💀 GameManager: Player died - Game Over
+💀 UnkillableBossController: Scene started!
+💔 Player took damage! Forcing death...
+💚 Player health restored and death processing re-enabled
+💚 PlayerPersistent: Reconnected Health and Stamina UI
+💡 Tip: Move your ItemData assets to Assets/Resources/Items/
+💪 Boss set to invincible!
+💬 Dialogue ended - Time.timeScale restored from {previousTimeScale} to {Time.timeScale}
+💬 Playing dialogue: {dialogue}
+💬 Started dialogue with {npcData.npcName} (Locked Stage: {lockedStageForDialogue})
+💬 Trigger event: Player entered {npcData.npcName}'s collider area
+💬 Trigger event: Player left {npcData.npcName}'s collider area
+💾 PlayerPersistent: Position saved: {savedPosition}
+💾 SaveManager: Game saved to slot {slotIndex}
+💾 SavePanelController: Save button clicked
+💾 Saved to slot {slotIndex}
+💾 UI_MasterController: Switched to Save panel
+📁 SaveManager: Created save directory at {saveDirectory}
+📂 Loaded from slot {slotIndex}
+📂 SaveManager: Loading game from slot {slotIndex}
+📂 SaveManager: Preview loaded slot {slotIndex} - Scene: {data.sceneName}, Time: {data.saveTime}
+📂 SavePanelController: Load button clicked
+📂 SettingsPanelController: Loaded settings - Brightness: {brightness:F2}, BGM: {bgmVolume:F2}, SFX: {sfxVolume:F2}
+📂 TitleSceneLoadButton: Load button clicked
+📂 UI_MasterController: Master UI closed
+📂 UI_MasterController: Master UI opened with {panelType} panel
+📈 Advanced to Stage4_PeuangSadCutscene
+📈 Advanced to Stage5_UnkillableBoss
+📈 Advanced to Stage6_WeaponUpgrade2
+📈 Quest Advanced: {previousStage} → {currentStage}
+📈 Quest Stage advanced: Stage1 → Stage2
+📈 Quest Stage advanced: Stage3 → Stage4
+📈 Quest advanced by {npcData.npcName}
+📊 Total Items: {itemCount} / {Inventory.instance.capacity}
+📋 EndingVideoPlayer: Showing ending UI
+📋 Stage1 Goal: Slime Residue x{stage1_RequiredSlimeResidue}, Bat Bone x{stage1_RequiredBatBone}
+📋 Stage3 Goal: Bat Bone x{stage3_RequiredBatBone}, Skeleton Bone x{stage3_RequiredSkeletonBone}
+📍 PlayerPersistent: Moved to PlayerSpawn at {defaultSpawnPoint.transform.position}
+📍 PlayerPersistent: Moved to PlayerSpawn with offset at {portalSpawn.GetSpawnPosition()}
+📍 PlayerPersistent: Moved to custom spawn point '{targetSpawnPointName}' at {spawnPoint.transform.position} (no PortalSpawnPoint component)
+📍 PlayerPersistent: Moved to custom spawn point '{targetSpawnPointName}' with offset at {portalSpawn.GetSpawnPosition()}
+📍 PlayerPersistent: Position set to {newPosition}
+📍 PlayerPersistent: Restored position to {savedPosition}
+📍 Position restored to {data.playerPosition}
+📍 Quest marker hidden for {npcData.npcName} (Stage: {currentStage}, Player in marker range: {playerInMarkerRange})
+📍 Quest marker shown for {npcData.npcName} (Stage: {currentStage}, Player in marker range)
+📝 DialogueManager: Font size multiplier set to {fontSizeMultiplier}x (Size: {dialogueText?.fontSize})
+📦 Inventory Check - Bat: {batCount}/{stage3_RequiredBatBone}, Skeleton: {skeletonCount}/{stage3_RequiredSkeletonBone}
+📦 Inventory Check - Slime: {slimeCount}/{stage1_RequiredSlimeResidue}, Bat: {batCount}/{stage1_RequiredBatBone}
+📦 Inventory restored
+📦 PlayerPersistent: Reconnected Inventory UI
+📦 UI_MasterController: Switched to Inventory panel
+📷 PlayerPersistent: Successfully connected {cameraCount} Cinemachine camera(s)
+🔄 DialogueManager: Scene '{scene.name}' loaded, refreshing UI references...
+🔄 GameManager: Game restarted
+🔄 PlayerPersistent: Player state reset
+🔄 PlayerPersistent: Scene '{scene.name}' loaded
+🔄 Quest Reset to Stage0_VillageTutorial
+🔄 SaveDataPanelController: All slots UI refreshed
+🔄 SaveManager: Loading from TitleScene - going through InitialScene first
+🔄 SaveManager: Scene change needed: {currentScene} → {saveData.sceneName}
+🔄 SettingsPanelController: Settings reset to defaults
+🔆 SettingsPanelController: Brightness changed to {value:F2}
+🔇 All Debug logs have been disabled for this build
+🔇 All SFX stopped
+🔇 All audio stopped
+🔇 Debug logs disabled
+🔇 DebugLogRemover: Disabling Debug.Log for build...
+🔊 AudioManager: SFX volume set to {volume:F2} ({volumeDB:F1} dB)
+🔊 SceneBGMController: Playing ambient sound '{ambientSound.name}'
+🔊 SettingsPanelController: SFX volume changed to {value:F2}
+🔍 Component on {cameraObj.name}: {typeName}
+🔍 Found Cinemachine component: GameObject={component.name}, Type={typeName}, Full={fullTypeName}
+🔍 PlayerPersistent: Searching for Cinemachine cameras to connect to Player '{player.name}'
+🔍 Root GameObject: {root.name}
+🔍 TutorialManager: Found {allComponents.Length} MonoBehaviour components to check
+🔍 TutorialManager: GameObject search failed, trying component search...
+🔍 TutorialManager: Searching for Cinemachine Virtual Camera...
+🔍 TutorialManager: Total Cinemachine components found: {cinemachineComponentCount}
+🔍 UIReferenceManager: Auto-finding UI references...
+🔒 Locked stage for dialogue: {lockedStageForDialogue}
+🔔 EnemyHealth: OnDeath has {OnDeath.GetInvocationList().Length} subscriber(s). Invoking...
+🔥 TutorialManager: Enemy killed via EnemyItemDropper! Total: {enemiesKilled}/3
+🔧 SaveDataPanelController: Mode set to {modeText} mode
+🖱 SaveDataPanelController: Slot {slotIndex} clicked (Mode: {currentMode})
+🗑 All save files deleted
+🗑 Consumed item: {item.itemName}
+🗑 Inventory cleared
+🗑 PlayerPersistent: Duplicate Player '{gameObject.name}' destroyed as expected
+🗑 PlayerPersistent: Player '{gameObject.name}' is being destroyed
+🗑 SaveManager: Deleted save file for slot {slotIndex}
+🗺 UI_MasterController: Switched to Map panel
+🚀 SceneInitializer: Initialization started in '{SceneManager.GetActiveScene().name}'
+🚫 Portal Blocked: {blockedMessage}
+🚫 Portal blocked: {blockedMessage}
+🧹 Clear All Tilemaps
+🧹 Clearing all tilemaps...
+
+
+=== 통계 ===
+총 고유 문자열 수: 1443
+한글 문자열: 390
+영어/기타 문자열: 1053

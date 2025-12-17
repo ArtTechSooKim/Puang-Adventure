@@ -4,7 +4,11 @@
       "Bash(cat:*)",
       "Bash(find:*)",
       "Bash(git restore:*)",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "Bash(python extract_strings.py:*)",
+      "Bash(if [ -f \"f:\\GitHub\\Puang-Adventure\\Assets\\Scripts\\QuestMarkerManager.cs.meta\" ])",
+      "Bash(then rm \"f:\\GitHub\\Puang-Adventure\\Assets\\Scripts\\QuestMarkerManager.cs.meta\")",
+      "Bash(fi)"
     ],
     "deny": [],
     "ask": []

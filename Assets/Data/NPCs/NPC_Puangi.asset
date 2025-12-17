@@ -32,7 +32,7 @@ MonoBehaviour:
       \uAC04 \uCE7C\uC790\uB8E8\uB97C \uBCF8\uC801\uC774 \uC788\uB2E4 \uD478\uC559..\""
     requiredItems: []
     rewardItems: []
-    advanceStageOnComplete: 1
+    advanceStageOnComplete: 0
     insufficientItemsMessage: 
   - questStage: 7
     dialogueLines:
@@ -45,6 +45,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 5e11a077d864f304f98727b15c578643, type: 2}
     rewardItems: []
     advanceStageOnComplete: 1
-    insufficientItemsMessage: 
+    insufficientItemsMessage: "\"\uBD80\uD0C1\uC774\uC57C \uBC84\uC12F \uACE0\uAE30\uB97C
+      \uAD6C\uD574\uC918...\""
   givesQuestItems: 1
-  requiresQuestItems: 0
+  requiresQuestItems: 1

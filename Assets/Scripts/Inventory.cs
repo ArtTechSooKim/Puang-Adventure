@@ -95,6 +95,10 @@ public class Inventory : MonoBehaviour
                 items[hotIndex] = item;
                 Debug.Log($"[Inventory] '{item.itemName}' added to Hotbar slot {hotIndex}");
                 RefreshUI();
+
+                // 🎯 칼자루 획득 시 Stage0 → Stage1 자동 진행
+                CheckQuestItemAcquisition(item);
+
                 return true;
             }
         }
@@ -108,12 +112,37 @@ public class Inventory : MonoBehaviour
                 items[i] = item;
                 Debug.Log($"[Inventory] '{item.itemName}' added to Inventory slot {i}");
                 RefreshUI();
+
+                // 🎯 칼자루 획득 시 Stage0 → Stage1 자동 진행
+                CheckQuestItemAcquisition(item);
+
                 return true;
             }
         }
 
         Debug.Log("Inventory full!");
         return false;
+    }
+
+    /// <summary>
+    /// 특정 퀘스트 아이템 획득 시 자동으로 스테이지 진행
+    /// </summary>
+    private void CheckQuestItemAcquisition(ItemData item)
+    {
+        if (QuestManager.Instance == null) return;
+
+        QuestStage currentStage = QuestManager.Instance.GetCurrentStage();
+
+        // Stage0: 칼자루 획득 시 Stage1로 진행
+        if (currentStage == QuestStage.Stage0_VillageTutorial)
+        {
+            // 칼자루 아이템인지 확인: weaponTier = 0인 무기 (Item_WeaponTier0_World)
+            if (item.isWeapon && item.weaponTier == 0)
+            {
+                QuestManager.Instance.AdvanceStage();
+                Debug.Log($"🎯 칼자루 획득! ({item.itemName}) Stage0 → Stage1 자동 진행");
+            }
+        }
     }
 
     // 아이템 제거

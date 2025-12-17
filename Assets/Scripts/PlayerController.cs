@@ -36,12 +36,20 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private SpriteRenderer[] swordSlashEffects;
     [Tooltip("검기 이펙트 Animator (SlashEffect 오브젝트의 Animator)")]
     [SerializeField] private Animator slashEffectAnimator;
+    [Tooltip("검기 이펙트 컨트롤러 (자동으로 이펙트 숨김 처리)")]
+    [SerializeField] private SlashEffectController slashEffectController;
 
     [Header("Attack Range by Weapon Tier")]
     [SerializeField] private float defaultAttackRadius = 0.7f;  // 무기 없거나 다른 아이템일 때
     [SerializeField] private float tier0AttackRadius = 1.0f;    // Tier 0 무기 (칼자루 - Item_WeaponTier0)
     [SerializeField] private float tier1AttackRadius = 1.2f;    // Tier 1 무기 (숲의 검 - Item_WeaponTier1)
     [SerializeField] private float tier2AttackRadius = 1.5f;    // Tier 2 무기 (중붕이의 검 - Item_WeaponTier2)
+
+    [Header("Attack Damage by Weapon Tier")]
+    [SerializeField] private int defaultAttackDamage = 5;       // 무기 없거나 다른 아이템일 때 (주먹)
+    [SerializeField] private int tier0AttackDamage = 10;        // Tier 0 무기 (칼자루)
+    [SerializeField] private int tier1AttackDamage = 20;        // Tier 1 무기 (숲의 검)
+    [SerializeField] private int tier2AttackDamage = 35;        // Tier 2 무기 (중붕이의 검)
 
     [Header("Sword Slash Effect Colors by Weapon Tier")]
     [SerializeField] private Color tier0SlashColor = Color.white;           // Tier 0 검기 색상 (흰색)
@@ -119,6 +127,12 @@ public class PlayerController : MonoBehaviour
         if (slashEffectAnimator == null)
         {
             AutoFindSlashEffectAnimator();
+        }
+
+        // 검기 이펙트 컨트롤러 자동 찾기 (할당되지 않은 경우)
+        if (slashEffectController == null)
+        {
+            AutoFindSlashEffectController();
         }
     }
 
@@ -202,6 +216,25 @@ public class PlayerController : MonoBehaviour
         }
 
         Debug.LogWarning("[PlayerController] 검기 이펙트 Animator를 찾지 못했습니다. SlashEffect 오브젝트의 Animator를 Inspector에서 수동으로 할당하세요.");
+    }
+
+    /// <summary>
+    /// 자식 오브젝트에서 검기 이펙트 컨트롤러를 자동으로 찾습니다.
+    /// </summary>
+    private void AutoFindSlashEffectController()
+    {
+        // 모든 자식 오브젝트의 SlashEffectController 검색
+        SlashEffectController[] allControllers = GetComponentsInChildren<SlashEffectController>(true);
+
+        if (allControllers.Length > 0)
+        {
+            slashEffectController = allControllers[0];
+            Debug.Log($"[PlayerController] 검기 이펙트 컨트롤러 발견: {slashEffectController.gameObject.name}");
+        }
+        else
+        {
+            Debug.LogWarning("[PlayerController] 검기 이펙트 컨트롤러를 찾지 못했습니다. SlashEffect 오브젝트에 SlashEffectController를 추가하세요.");
+        }
     }
 
     private void Update()
@@ -486,6 +519,7 @@ public class PlayerController : MonoBehaviour
 
         // 🔹 검기 이펙트 Animator 트리거 (SlashEffect)
         // 무기가 있을 때만 검기 이펙트 재생
+        // SlashEffectController가 Animator 애니메이션을 자동으로 감지하여 표시/숨김 처리
         if (slashEffectAnimator != null && currentWeapon != null && currentWeapon.isWeapon)
         {
             slashEffectAnimator.SetTrigger("Attack");
@@ -517,6 +551,9 @@ public class PlayerController : MonoBehaviour
             rb.bodyType = RigidbodyType2D.Dynamic; // 물리 시스템 복구
         }
 
+        // 현재 무기에 따른 공격력 계산
+        int damage = GetCurrentWeaponDamage();
+
         // 공격 판정: AttackArea 콜라이더 범위 내의 적 검색
         if (attackAreaCollider != null)
         {
@@ -526,23 +563,62 @@ public class PlayerController : MonoBehaviour
             foreach (var col in overlapResults)
             {
                 if (col == null) continue;
-                Debug.Log("공격 성공: " + col.name);
-                // 실제로는 EnemyHealth.TakeDamage(...) 호출 권장
-                Destroy(col.gameObject);
+
+                EnemyHealth enemyHealth = col.GetComponent<EnemyHealth>();
+                if (enemyHealth != null)
+                {
+                    enemyHealth.TakeDamage(damage);
+                    Debug.Log($"공격 성공: {col.name} (데미지: {damage})");
+                }
+                else
+                {
+                    Debug.LogWarning($"⚠ {col.name}에 EnemyHealth 컴포넌트가 없습니다!");
+                }
             }
         }
         else
         {
-            // fallback: 기존 방식
+            // fallback: 기존 방식 (AttackArea가 없을 때)
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, 1.0f, enemyLayer);
             foreach (var enemy in hitEnemies)
             {
-                Debug.Log("공격 성공 (fallback): " + enemy.name);
-                Destroy(enemy.gameObject);
+                EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
+                if (enemyHealth != null)
+                {
+                    enemyHealth.TakeDamage(damage);
+                    Debug.Log($"공격 성공 (fallback): {enemy.name} (데미지: {damage})");
+                }
             }
         }
 
         isAttacking = false;
+    }
+
+    /// <summary>
+    /// 현재 장착된 무기에 따른 공격력 반환
+    /// </summary>
+    private int GetCurrentWeaponDamage()
+    {
+        // 무기가 있고 isWeapon이 true인 경우
+        if (currentWeapon != null && currentWeapon.isWeapon)
+        {
+            switch (currentWeapon.weaponTier)
+            {
+                case 0:
+                    return tier0AttackDamage; // 칼자루: 10 데미지
+                case 1:
+                    return tier1AttackDamage; // 숲의 검: 20 데미지
+                case 2:
+                    return tier2AttackDamage; // 중붕이의 검: 35 데미지
+                default:
+                    return defaultAttackDamage; // 알 수 없는 티어: 기본 데미지
+            }
+        }
+        else
+        {
+            // 무기가 없거나 무기가 아닌 아이템: 주먹 공격 (5 데미지)
+            return defaultAttackDamage;
+        }
     }
 
     private void OnDrawGizmosSelected()

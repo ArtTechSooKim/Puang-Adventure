@@ -24,9 +24,6 @@ public class MiniMapController : MonoBehaviour
     [Tooltip("PlayerIsHere Image (중앙 고정 화살표)")]
     [SerializeField] private Image playerIsHere;
 
-    [Tooltip("YouHaveToGoHere Image (퀘스트 목표 마커)")]
-    [SerializeField] private Image youHaveToGoHere;
-
     [Header("MiniMap Settings")]
     [Tooltip("미니맵 반지름 (픽셀) - MiniMapMask 크기의 절반")]
     [SerializeField] private float miniMapRadius = 175f;
@@ -38,17 +35,9 @@ public class MiniMapController : MonoBehaviour
     [Tooltip("플레이어 Transform")]
     [SerializeField] private Transform playerTransform;
 
-    [Header("Quest Marker")]
-    [Tooltip("퀘스트 목표 위치 (월드 좌표)")]
-    [SerializeField] private Vector3 questTargetWorldPosition;
-
-    [Tooltip("퀘스트 마커 표시 여부")]
-    [SerializeField] private bool showQuestMarker = false;
-
     // Runtime
     private RectTransform miniMapRect;
     private RectTransform playerMarkerRect;
-    private RectTransform questMarkerRect;
     private float currentPlayerRotation;
 
     private void Start()
@@ -79,12 +68,6 @@ public class MiniMapController : MonoBehaviour
             playerMarkerRect = playerIsHere.rectTransform;
         }
 
-        if (youHaveToGoHere != null)
-        {
-            questMarkerRect = youHaveToGoHere.rectTransform;
-            youHaveToGoHere.gameObject.SetActive(showQuestMarker);
-        }
-
         // MapPanelController에 이 컨트롤러 등록
         RegisterToMapPanel();
     }
@@ -94,11 +77,6 @@ public class MiniMapController : MonoBehaviour
         if (playerTransform == null || sceneMapData == null) return;
 
         UpdateMiniMap();
-
-        if (showQuestMarker)
-        {
-            UpdateQuestMarker();
-        }
     }
 
     private void LateUpdate()
@@ -167,41 +145,6 @@ public class MiniMapController : MonoBehaviour
     }
 
     /// <summary>
-    /// 퀘스트 목표 마커 위치 업데이트
-    /// </summary>
-    private void UpdateQuestMarker()
-    {
-        if (questMarkerRect == null || playerTransform == null) return;
-
-        Vector3 playerWorldPos = playerTransform.position;
-
-        // 퀘스트 목표까지의 상대 벡터
-        Vector3 directionToQuest = questTargetWorldPosition - playerWorldPos;
-        float distanceToQuest = directionToQuest.magnitude;
-
-        // 거리가 worldViewRadius를 넘으면 경계에 고정
-        if (distanceToQuest > worldViewRadius)
-        {
-            directionToQuest = directionToQuest.normalized * worldViewRadius;
-        }
-
-        // 상대 위치를 미니맵 UI 좌표로 변환
-        float pixelPerWorldUnit = miniMapRadius / worldViewRadius;
-        Vector2 markerPos = new Vector2(
-            directionToQuest.x * pixelPerWorldUnit,
-            directionToQuest.y * pixelPerWorldUnit
-        );
-
-        // 마커가 반지름 120을 넘지 않도록 클램프
-        if (markerPos.magnitude > miniMapRadius)
-        {
-            markerPos = markerPos.normalized * miniMapRadius;
-        }
-
-        questMarkerRect.anchoredPosition = markerPos;
-    }
-
-    /// <summary>
     /// MapPanelController에 이 미니맵 컨트롤러 등록
     /// </summary>
     private void RegisterToMapPanel()
@@ -232,17 +175,27 @@ public class MiniMapController : MonoBehaviour
     }
 
     /// <summary>
-    /// 퀘스트 목표 위치 설정 (외부에서 호출)
+    /// 미니맵 반지름 반환 (QuestMarkerManager에서 사용)
     /// </summary>
-    public void SetQuestTarget(Vector3 worldPosition, bool show)
+    public float GetMiniMapRadius()
     {
-        questTargetWorldPosition = worldPosition;
-        showQuestMarker = show;
+        return miniMapRadius;
+    }
 
-        if (youHaveToGoHere != null)
-        {
-            youHaveToGoHere.gameObject.SetActive(show);
-        }
+    /// <summary>
+    /// 월드 뷰 반지름 반환 (QuestMarkerManager에서 사용)
+    /// </summary>
+    public float GetWorldViewRadius()
+    {
+        return worldViewRadius;
+    }
+
+    /// <summary>
+    /// SceneMapData 반환
+    /// </summary>
+    public SceneMapData GetSceneMapData()
+    {
+        return sceneMapData;
     }
 
     #endregion

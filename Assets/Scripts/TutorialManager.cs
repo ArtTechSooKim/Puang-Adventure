@@ -272,20 +272,20 @@ public class TutorialManager : MonoBehaviour
         yield return null;
 
         // Show attack message directly (skip camera work if Cinemachine not found)
-        if (cinemachineVirtualCamera != null)
-        {
-            // Pause time for camera work
-            Time.timeScale = 0f;
+        // if (cinemachineVirtualCamera != null)
+        // {
+        //     // Pause time for camera work
+        //     Time.timeScale = 0f;
 
-            // Show camera work for each enemy position
-            foreach (var pos in enemyPositions)
-            {
-                yield return StartCoroutine(MoveCameraTo(pos, 1f));
-            }
+        //     // Show camera work for each enemy position
+        //     foreach (var pos in enemyPositions)
+        //     {
+        //         yield return StartCoroutine(MoveCameraTo(pos, 1f));
+        //     }
 
-            // Resume time
-            Time.timeScale = 1f;
-        }
+        //     // Resume time
+        //     Time.timeScale = 1f;
+        // }
 
         yield return ShowMessage("적이 있습니다! 좌클릭으로 공격하세요.", 1f, true);
 

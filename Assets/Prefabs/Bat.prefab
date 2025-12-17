@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 1126390892248253005}
   - component: {fileID: 1298258288885792456}
   - component: {fileID: 4396810666266184259}
+  - component: {fileID: 7163533632863698116}
   m_Layer: 3
   m_Name: Bat
   m_TagString: Enemy
@@ -110,6 +111,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
   speed: 2
+  detectionRange: 5
+  deactivationRange: 7
+  walkThreshold: 0.01
+  invertFlipX: 0
+  showDebugGizmos: 0
 --- !u!50 &5264137604676988030
 Rigidbody2D:
   serializedVersion: 5
@@ -151,6 +157,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   maxHealth: 30
   scoreValue: 1
+  isInvincible: 0
+  deathAnimationDuration: 1
 --- !u!58 &1103327034646310914
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -201,6 +209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   damage: 10
   hitCooldown: 0.5
+  playAttackAnimation: 1
 --- !u!58 &1298258288885792456
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -253,3 +262,25 @@ MonoBehaviour:
   dropOffsetY: -0.3
   dropChance: 1
   showDebugMessages: 1
+--- !u!95 &7163533632863698116
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5080206473680205166}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 32747be8a5cc1466d9630b29790bbc4b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

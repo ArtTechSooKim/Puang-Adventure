@@ -186,6 +186,12 @@ public class PlayerUlt : MonoBehaviour
             DebugLog("UltArea 활성화");
         }
 
+        // 궁극기 슬래시 소리 재생 (첫 타격 시작 시 1회만)
+        if (AudioManager.I != null)
+        {
+            AudioManager.I.PlayUltimateSlashSound();
+        }
+
         // 3. 8회 슬래시 FX + 타격
         for (int i = 0; i < slashCount; i++)
         {

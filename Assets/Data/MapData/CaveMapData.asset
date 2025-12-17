@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CaveMapData
   m_EditorClassIdentifier: Assembly-CSharp::SceneMapData
   sceneName: 04_CaveScene
-  mapSprite: {fileID: 8438414255999518034, guid: e8332771871c0e945900fe4e106ee2aa, type: 3}
+  mapSprite: {fileID: 21300000, guid: e8332771871c0e945900fe4e106ee2aa, type: 3}
   calibrationPoints:
   - worldPosition: {x: -77, y: 47}
     normalizedPosition: {x: 0, y: 1}

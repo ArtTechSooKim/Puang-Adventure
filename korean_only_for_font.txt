@@ -1,0 +1,395 @@
+=== 한글 문자열 (총 390개) ===
+
+  → {hit.name}: EnemyHealth 컴포넌트 없음
+  → {hit.name}에게 {ultDamage} 데미지!
+1. '모든 한글 폰트 Dynamic으로 설정' 버튼 클릭\n
+1장: 숲의 시련
+1회 타격당 생성할 FX 개수
+2. 또는 특정 폰트를 선택하고 '선택된 폰트 Dynamic으로 설정' 클릭\n\n
+2장: 무기 강화 I
+3D 사운드 감쇠 곡선
+3D 사운드 최대 거리
+3D 사운드 최소 거리
+3장: 동굴 탐험
+4장: 퓨앙이의 슬픔
+5장: 거대 버섯의 위협
+6장: 무기 강화 II
+7장: 최종 결전
+AudioManager의 자동 BGM 시스템 비활성화 (이 씬에서만)
+AudioSource 풀 초기 크기
+BGM 기본 볼륨 (0~1)
+BGM 컨트롤러 (자동 생성됨)
+BGM 페이드 인 시간
+BGM용 AudioMixer Group
+Boss의 체력 (플레이어 공격 10 데미지 기준, 300 = 30대 공격)
+Dynamic으로 설정하면 필요한 글자가 런타임에 자동으로 추가됩니다.
+FX 생성 위치 (Transform)
+HP가 0이되면 GameOver이니 주의하세요.
+Hierarchy의 AttackArea(자식) Collider2D를 할당하세요. Is Trigger 체크 필요
+Idle/Walk 전환을 위한 최소 이동 거리 (프레임당)
+Load 버튼 (자동으로 찾습니다)
+MapPanel 안의 Map Image 컴포넌트
+MapPanel의 RectTransform (크기 제한용)
+MiniMap Image 컴포넌트 (원본 맵 이미지)
+MiniMapCase Image (유리 케이스, 도넛 모양 테두리)
+MiniMapMask RectTransform (Mask 컴포넌트가 있는 부모)
+NPC 머리 위 마커 오프셋 (기본값: Vector3.up * 1.5f)
+Normalized 좌표 (0~1, 맵 이미지 상의 위치)
+Player Collider (난무 시 비활성화)
+Player Collider 비활성화
+Player Collider 활성화
+Player SpriteRenderer (난무 시 숨김)
+Player 외형 복구
+Player 외형 숨김
+PlayerController: Animator 컴포넌트를 찾을 수 없습니다. Player 오브젝트에 Animator 컴포넌트를 추가했는지 확인하세요.
+PlayerIsHere Image (중앙 고정 화살표)
+PlayerStamina 컴포넌트가 없습니다. 스태미나 연동 기능 비활성화됩니다.
+PlayerUlt 초기화 완료
+RenderTexture 방식 사용 시: RawImage 컴포넌트 (자동 생성 가능)
+RenderTexture 방식 사용 시: Sorting Layer 이름
+RenderTexture 방식 사용 시: Sorting Order
+R키를 누르면 궁극기
+SFX 컨트롤러 (자동 생성됨)
+SFX용 AudioMixer Group
+SaveDataPanelController (자동으로 찾습니다)
+Shift로 2초간 달리세요.
+SlashFx 생성: {randomPrefab.name} at {spawnPosition} (offset: {randomOffset})
+Space키를 누르면 대시가 나간다
+TextMeshPro 한글 폰트 업데이터
+Tilemap 또는 Tile이 비어있습니다!
+UI 페이드인 지속 시간 (초)
+UltArea 범위 내 적 발견: {hits.Length}명
+UltArea 비활성화
+UltArea 초기화 완료 (Radius: {ultAreaCollider.radius})
+UltArea 활성화
+WASD로 움직이세요.
+YouHaveToGoHere Image (퀘스트 목표 마커)
+[DialogueManager] CheckForDialogueEvents 호출됨
+[DialogueManager] ⚠ 이벤트 키워드를 찾지 못했습니다.
+[DialogueManager] ✅ Player 오브젝트 발견: {player.name}
+[DialogueManager] ✅ PlayerController 컴포넌트 발견
+[DialogueManager] ✅ PlayerUlt 컴포넌트 발견
+[DialogueManager] ✅ 궁극기 키워드 발견: \"{keyword}\"
+[DialogueManager] ✅ 대시 키워드 발견: \"{keyword}\"
+[DialogueManager] 궁극기 활성화 전 상태: {playerUlt.IsUltEnabled()}
+[DialogueManager] 궁극기 활성화 후 상태: {playerUlt.IsUltEnabled()}
+[DialogueManager] 대시 활성화 전 상태: {playerController.IsDashEnabled()}
+[DialogueManager] 대시 활성화 후 상태: {playerController.IsDashEnabled()}
+[DialogueManager] 플레이어 검색 시작...
+[DialogueManager] 현재 대화 라인: \"{line}\"
+[PlayerController]     목표 색상: RGB({color.r:F2}, {color.g:F2}, {color.b:F2})
+[PlayerController]     크기 배율: {sizeMultiplier:F2}x (localScale: {slashEffect.transform.localScale})
+[PlayerController]     현재 색상: RGB({slashEffect.color.r:F2}, {slashEffect.color.g:F2}, {slashEffect.color.b:F2})
+[PlayerController]   - {renderer.gameObject.name} (Player 본인, 제외)
+[PlayerController]   - {slashEffect.gameObject.name} 비활성화 (무기 없음)
+[PlayerController]   - {slashEffect.gameObject.name} 활성화
+[PlayerController]   - 검사 중: {renderer.gameObject.name}
+[PlayerController] AttackArea가 CircleCollider2D가 아닙니다!
+[PlayerController] DisableDash() 호출됨 - 현재 상태: {isDashEnabled}
+[PlayerController] EnableDash() 호출됨 - 현재 상태: {isDashEnabled}
+[PlayerController] Hotbar 1번 칸 비어있음: Attack Radius = {newRadius}
+[PlayerController] ⚠ 검기 이펙트를 찾지 못했습니다. Player의 자식 오브젝트 이름에 'slash', 'effect', 'sword', 'attack' 등을 포함시키거나 Inspector에서 수동으로 할당하세요.
+[PlayerController] ⚠ 유효한 검기 이펙트를 찾지 못했습니다.
+[PlayerController] ✅ {colorChangedCount}개 검기 이펙트 활성화 및 색상 변경 완료: RGB({color.r:F2}, {color.g:F2}, {color.b:F2})
+[PlayerController] ✅ 검기 이펙트 발견: {renderer.gameObject.name} (활성화: {renderer.gameObject.activeSelf})
+[PlayerController] ✅ 검기 이펙트 비활성화 완료 (무기 없음)
+[PlayerController] ✅ 대시 기능이 활성화되었습니다! 새 상태: {isDashEnabled}
+[PlayerController] ✅ 총 {swordSlashEffects.Length}개의 검기 이펙트를 자동으로 찾았습니다.
+[PlayerController] ❌ 대시 기능이 비활성화되었습니다. 새 상태: {isDashEnabled}
+[PlayerController] 검기 이펙트 Animator 발견: {animator.gameObject.name}
+[PlayerController] 검기 이펙트 Animator를 찾지 못했습니다. SlashEffect 오브젝트의 Animator를 Inspector에서 수동으로 할당하세요.
+[PlayerController] 검기 이펙트 SpriteRenderer가 할당되지 않았습니다.
+[PlayerController] 검기 이펙트 검색 시작... 총 {allRenderers.Length}개의 SpriteRenderer 발견
+[PlayerController] 검기 이펙트 애니메이션 트리거 발동!
+[PlayerController] 궁극기 상태 변경: {active}
+[PlayerController] 대시 입력 수신 - TryDash() 호출
+[PlayerController] 대시 입력 차단: 대시 기능 비활성화 상태 (isDashEnabled={isDashEnabled})
+[PlayerController] 대시 입력 차단: 대화 중
+[PlayerController] 무기 Tier 0 (칼자루) 장착: Attack Radius = {newRadius}, 검기 색상 = 흰색
+[PlayerController] 무기 Tier 1 (숲의 검) 장착: Attack Radius = {newRadius}, 검기 색상 = 초록색
+[PlayerController] 무기 Tier 2 (중붕이의 검) 장착: Attack Radius = {newRadius}, 검기 색상 = 금색
+[PlayerController] 무기가 아닌 아이템 장착 ({currentWeapon.itemName}): Attack Radius = {newRadius}
+[PlayerController] 무기가 없어서 검기 이펙트를 재생하지 않습니다.
+[PlayerController] 알 수 없는 무기 Tier ({currentWeapon.weaponTier}): Attack Radius = {newRadius}
+[PlayerController] 이제 Space 키를 눌러 대시를 사용할 수 있습니다.
+[PlayerController] 🔄 무기 변경 감지: {currentWeapon?.itemName ?? 
+[PlayerHealth] 데미지 {amount} 받음, 남은 체력: {currentHealth - amount}
+[PlayerUlt] EnableUlt() 호출됨 - 현재 상태: {isUltEnabled}
+[PlayerUlt] TryActivateUlt() 호출됨
+[PlayerUlt] UltArea에 CircleCollider2D가 없습니다!
+[PlayerUlt] slashFxPrefabs가 비어있습니다!
+[PlayerUlt] ultAreaCollider가 없습니다!
+[PlayerUlt] ultAreaCollider가 할당되지 않았습니다!
+[PlayerUlt] ultEffect가 할당되지 않았습니다!
+[PlayerUlt] ✅ 궁극기 기능이 활성화되었습니다! 새 상태: {isUltEnabled}
+[PlayerUlt] ✅ 궁극기 활성화 체크 통과!
+[PlayerUlt] ❌ 궁극기 입력 차단: 궁극기 기능 비활성화 상태 (isUltEnabled={isUltEnabled})
+[PlayerUlt] ❌ 궁극기 쿨타임 중! 남은 시간: {remainingCooldown:F1}초
+[PlayerUlt] 이제 R 키를 눌러 궁극기 'Blade Dance'를 사용할 수 있습니다.
+[PlayerUlt] 현재 isUltEnabled 상태: {isUltEnabled}
+[PlayerUlt] 🔥 궁극기 'Blade Dance' 발동!
+[SceneMapData] Calibration Points가 최소 2개 필요합니다!
+[TMPFontFallbackManager] koreanFallbackFont가 설정되지 않았습니다!
+\"R\" 키를 누르면 궁극기
+\"R\"키를 누르면 궁극기
+\"Space\"키를 누르면 대시가 나간다
+\"누가 쓰다 버린 칼이라 그런가.. 많이 무딘것 같아. 마을에 가서 무기를 강화시키자.\"
+\"머리가 어지러워.. 사냥을 너무 많이 했나... 잠깐 쉬도록 하자..\"
+\"으아... 꿈 속이었지만 거대 버섯은 정말 무시무시했어..\"\n\"중붕이를 찾아가 마지막 사냥을 준비하자!\"
+\"이제 푸앙이에게 이걸 가져다 주자..!\"
+\"저 거대 버섯 고기가 그렇게 맛있다던데.. 푸앙이는 힘이 없어 사냥도 못한다 퓨앙!\"
+\"저게 푸앙이가 원하던 거대 버섯...! 재빨리 해치우자.\"
+emote21 스프라이트를 할당하세요 (느낌표 말풍선)
+playerCollider 자동 할당
+playerSprite 자동 할당
+tab 토글로 설정 창을 열 수 있습니다.
+ultEffect 자동 할당
+{data.itemName} 획득!
+{npcData.npcName}: 지금은 할 말이 없어요...
+{successCount}개의 한글 폰트를 Dynamic으로 설정했습니다.\n이제 한글이 깨지지 않습니다!
+• 거대 버섯 보스와 조우
+• 동굴로 이동하세요 (포털 이용)\n• 박쥐 5마리를 처치하세요\n• 해골 5마리를 처치하세요
+• 마을의 대장장이 찾아가세요\n• 숲의 검으로 무기를 강화하세요\n• 더 강한 전투를 준비하세요
+• 숲에 보스 방을 찾아보세요\n• 거대 버섯 보스를 처치하세요\n• 처치후 고기를 획득하세요\n• 푸앙이에게 고기를 주세요
+• 숲으로 이동하세요 (포털 찾기)\n• 슬라임 2마리를 처치하세요\n• 박쥐 2마리를 처치하세요
+• 중붕이 NPC를 찾아가세요\n• 중붕이의 검으로 무기를 강화하세요\n• 최종 전투를 준비하세요
+• 푸앙NPC를 찾아가세요\n• 칼자루를 찾으세요\n• 무기를 장착하고 숲을 탐험하세요
+⏰ BossWakeUp ({gameObject.name}): WakeUpSequence 시작 - {delayBeforeWakeUp}초 대기 중...
+⏱️ BossAttack ({gameObject.name}): 쿨다운 중! (남은 시간: {(lastAttackTime + attackCooldown - Time.time):F2}초)
+⏱️ EnemyAttack ({gameObject.name}): 쿨다운 중! (남은 시간: {(lastHitTime + hitCooldown - Time.time):F2}초)
+⏳ BossWakeUp ({gameObject.name}): 깨어나기 애니메이션 재생 중... ({wakeUpDuration}초 대기)
+⚔ 난무 {i + 1}/{slashCount} 타격!
+⚔️ BossAttack ({gameObject.name}): 공격 시작!
+⚔️ BossAttack ({gameObject.name}): 이미 공격 중!
+⚠ BossAttack ({gameObject.name}): Animator를 찾을 수 없습니다.
+⚠ BossAttack ({gameObject.name}): EnemyAI를 찾을 수 없습니다.
+⚠ BossWakeUp ({gameObject.name}): Animator를 찾을 수 없습니다.
+⚠ BrightnessController: brightnessOverlay가 연결되지 않았습니다! Inspector에서 Image를 연결해주세요.
+⚠ EnemyAI ({gameObject.name}): Animator를 찾을 수 없습니다. 애니메이션이 재생되지 않습니다.
+⚠ EnemyAI ({gameObject.name}): Player를 찾을 수 없습니다!
+⚠ EnemyAttack ({gameObject.name}): Animator를 찾을 수 없습니다. 공격 애니메이션이 재생되지 않습니다.
+⚠ EnemyHealth ({gameObject.name}): Animator를 찾을 수 없습니다. 사망 애니메이션이 재생되지 않습니다.
+⚠ PlayerHealth: Animator를 찾을 수 없습니다. 사망 애니메이션이 재생되지 않습니다.
+⚠ PlayerHealth: PlayerController를 찾을 수 없습니다.
+⚠ PlayerInput 컴포넌트가 없습니다. 새 Input System 사용 시 PlayerInput 추가를 권장합니다.
+⚠ {col.name}에 EnemyHealth 컴포넌트가 없습니다!
+⚠️ BossAttack ({gameObject.name}): PlayerHealth를 찾을 수 없습니다.
+⚠️ BossAttack ({gameObject.name}): 애니메이션 재생 실패! anim: {(anim != null)}, enemyAI: {(enemyAI != null)}
+⚠️ BossWakeUp ({gameObject.name}): EnemyAI가 null이어서 활성화할 수 없습니다!
+⚠️ BossWakeUp ({gameObject.name}): EnemyAI를 찾을 수 없습니다!
+⚠️ EnemyAttack ({gameObject.name}): 애니메이션 재생 실패! playAttackAnimation: {playAttackAnimation}, anim: {(anim != null)}, enemyAI: {(enemyAI != null)}
+✅ BossAttack ({gameObject.name}): 공격 애니메이션 트리거 발동! 방향: ({snappedDir.x}, {snappedDir.y})
+✅ BossAttack ({gameObject.name}): 공격 조건 통과! 공격 시작
+✅ BossAttack ({gameObject.name}): 공격 종료
+✅ BossWakeUp ({gameObject.name}): Boss AI 비활성화 (잠든 상태)
+✅ BossWakeUp ({gameObject.name}): Boss AI 활성화 (깨어남) - 이제 Player를 추적합니다!
+✅ BossWakeUp ({gameObject.name}): WakeUp 트리거 발동! (Animator: {anim.name})
+✅ BossWakeUp ({gameObject.name}): 즉시 깨어남!
+✅ EnemyAttack ({gameObject.name}): 공격 애니메이션 트리거 발동! 방향: ({snappedDir.x}, {snappedDir.y})
+✅ EnemyAttack ({gameObject.name}): 공격 조건 통과! 데미지 적용 시작
+✅ EnemyHealth ({gameObject.name}): 사망 애니메이션 트리거 발동
+✅ Gave: 박쥐 뼈
+✅ Gave: 슬라임 잔해
+✅ PlayerHealth: GameManager.OnPlayerDeath() 호출됨
+✅ PlayerHealth: PlayerController 비활성화
+✅ PlayerHealth: 사망 애니메이션 트리거 발동
+✅ {font.name}를 Dynamic으로 설정했습니다.
+✅ {fontAsset.name}를 Dynamic으로 설정했습니다.
+✅ 궁극기 종료! 쿨타임 시작
+✅ 총 {successCount}개의 한글 폰트를 Dynamic으로 설정했습니다.
+❌ BossAttack ({gameObject.name}): Player 태그가 아님! (Tag: {target.tag})
+❌ BossWakeUp ({gameObject.name}): Animator가 null입니다! WakeUp 애니메이션을 재생할 수 없습니다.
+❌ DialogueManager: Player 태그를 가진 오브젝트를 찾을 수 없습니다!
+❌ DialogueManager: PlayerController를 찾을 수 없습니다!
+❌ DialogueManager: PlayerUlt를 찾을 수 없습니다!
+❌ EnemyAttack ({gameObject.name}): Player 태그가 아님! (Tag: {target.tag})
+각 슬래시 간격 (초)
+개발 빌드에서 로그 활성화
+걷기 발소리
+검 휘두르기 소리 (공격 시)
+검기 이펙트 Animator (SlashEffect 오브젝트의 Animator)
+검기 이펙트 SpriteRenderer들을 할당하세요 (여러 방향별 이펙트 가능)
+검은 반드시 아이템 슬롯 1번에 위치해야 사용할 수 있습니다.
+게임 오버 사운드
+게임을 시작합니다
+공격 성공 (fallback): {enemy.name} (데미지: {damage})
+공격 성공: {col.name} (데미지: {damage})
+공격 실패: 스태미나 부족
+공격 애니메이션 재생 여부
+궁극기 1회 타격 데미지
+궁극기 공격 범위 (CircleCollider2D 포함)
+궁극기 기능이 비활성화되었습니다.
+궁극기 설정
+궁극기 슬래시 소리 (8연속 베기)
+궁극기 쿨타임 (초)
+궁극기가 나가는
+궁극기를 사용할 수 있다
+기본 페이드 시간 (초)
+기본 한글 폰트 (Fallback으로 사용)
+깨어나기 애니메이션 재생 시간 (초)
+난무 타격 횟수
+난무를 사용할 수 있다
+능력 해금 소리 (Dash/Ultimate 획득 시)
+다가가서 검을 획득하세요
+다음 목표를 찾아보세요.
+다이얼로그 중 BGM 감소 비율 (0~1)
+다이얼로그 창 닫기
+다이얼로그 창 열기
+다이얼로그 텍스트 진행 (띡)
+달리기 발소리
+달리기와 공격은 스테미나를 소모합니다.
+대시 실패: 스태미나 부족
+대시 효과음 (휙~ 하는 소리)
+대시가 나간다
+대화 텍스트 크기 배율 (1 = 기본, 2 = 2배)
+동굴 씬 BGM
+동굴 주변 소리 (물방울 등)
+동적으로 생성되는 TMP도 자동 설정
+드래그해서 아이템을 월드에 배치하거나 \n아이템 슬롯을 바꿀 수 있습니다.
+디버그
+디버그 로그 출력
+렌더링 방식 선택
+로그 설정
+루프 재생할 비디오 클립
+릴리즈 빌드에서 로그 활성화
+마을 씬 BGM
+마을 주변 소리 (새소리 등)
+마커 Sorting Order (기본값: 100)
+마커 SortingLayer 이름 (기본값: Default)
+마커 위치 (Transform)
+마커 이름 (설명용)
+마커 크기 (기본값: 0.5f)
+맵 이미지 최대 가로 크기
+맵 이미지 최대 세로 크기
+맵 전체 이미지 (항공뷰)
+메인 AudioMixer (SettingsPanelController와 동일한 것 사용)
+메인 BGM AudioSource
+모든 씬의 맵 데이터 목록
+모든 오디오 클립을 담은 ScriptableObject
+모든 한글 폰트 Dynamic으로 설정
+목표를 달성했습니다!
+무기 장착 소리
+미니맵 반지름 (픽셀) - MiniMapMask 크기의 절반
+미니맵 컨트롤러 (플레이어 위치 정보 가져오기용)
+밝기 조절용 검은 이미지 (Canvas Overlay)
+버튼 클릭 소리
+보스 등장 팡파레
+보스 사망 소리
+보스 사망/승리 음악
+보스 씬 BGM (긴장감)
+불러오기
+비디오 시작 후 UI 페이드인까지 대기 시간 (초)
+비디오 시작 후 페이드인할 UI CanvasGroup (Play, Load, Save 버튼 등)
+비디오 오디오 볼륨 (0-1)
+비디오 오디오 활성화
+비디오 재생 속도 (1.0 = 정상 속도)
+비디오 준비 완료 전까지 대기
+비디오 페이드 인 시간 (초)
+선택된 폰트 Dynamic으로 설정
+숲 씬 BGM
+숲 주변 소리 (바람 소리 등)
+스태미나 0일 때 걷기 속도에 곱할 계수 (조금 느리게)
+스태미나 소진 경고음
+스테미나가 소모되지 않는 행동을 하면 자동으로\n조금씩 회복하지만 0이되면 느리게 회복되니 주의하세요!
+스페이스바로 영상 스킵 허용
+슬라이더 조정 소리
+슬래시 FX 프리팹 배열 (랜덤 선택)
+슬롯 관련 설정
+슬롯 배치 위치
+씬 로드 시 자동으로 설정
+씬 시작 시 자동으로 BGM 재생
+씬 시작 시 주변음 재생
+씬 시작 후 깨어나기까지 대기 시간 (초)
+씬 이름 (SceneManager.GetActiveScene().name과 일치해야 함)
+씬 전환 소리 (트랜지션)
+씬 전환 시 BGM 페이드 시간
+아이템 드롭 소리
+아이템 획득 소리 (반짝!)
+에디터에서 로그 활성화
+엔딩
+엔딩 씬 BGM
+영상 스킵 가능 시작 시간 (초)
+영상 스킵 가능 시작 시간 (초) - 처음 N초는 스킵 불가
+영상 재생 후 이동할 씬 이름
+영상 종료 후 대기 시간 (초)
+영상 종료 후 동작
+영상 종료 후 씬 전환까지의 대기 시간 (초)
+영상 종료 후 표시할 UI (선택사항)
+오브젝트 참조
+오브젝트가 생성된 후 파괴되기까지의 시간 (초)
+옵션
+완료
+월드 좌표 (실제 게임 위치)
+월드에서 보여줄 반경 (world units)
+이 마커가 활성화될 퀘스트 스테이지
+이 미니맵이 표시할 씬의 맵 데이터
+이 씬에서 재생할 BGM (비어있으면 AudioManager의 기본 BGM 사용)
+이미 슬롯이 존재하면 GenerateSlots는 아무 작업도 하지 않습니다. 강제 재생성하려면 ForceGenerateSlots() 호출
+자동 업데이트 주기 (초)
+재생할 비디오 클립
+재생할 엔딩 비디오 클립
+저장
+적 공격 소리
+적 사망 소리
+적 피격음
+적이 있습니다! 좌클릭으로 공격하세요.
+정확한 위치 매핑을 위한 캘리브레이션 포인트들 (최소 2개 필수)
+좋습니다!
+주변음 볼륨
+주변음/환경음 (루프)
+진행 중
+처치했습니다!
+체크하면 이 적은 절대 죽지 않습니다
+최대 밝기
+최소 밝기 (0 = 가장 어두움, 1 = 가장 밝음)
+최종 보스 씬 BGM (서사적)
+퀘스트 마커 표시 여부
+퀘스트 목표 위치 (월드 좌표)
+퀘스트 안내 텍스트
+퀘스트 제목 텍스트
+퀘스트 진행/완료 소리
+크로스페이드용 보조 AudioSource
+타이틀 씬 BGM
+타이틀 씬 이름 (ReturnToTitle 선택 시)
+탭 전환 소리
+튜토리얼
+튜토리얼 씬 BGM
+튜토리얼 완료!
+패널 닫기 소리
+패널 열기 소리
+포털 진입 소리
+폰트를 먼저 선택해주세요.
+풀이 가득 찰 때 자동으로 확장할지 여부
+프롤로그: 칼자루 획득
+플레이어 Transform
+플레이어 사망 소리
+플레이어 위치 표시 Prefab
+플레이어 피격음 (아파!)
+한글 폰트가 깨지는 경우:\n
+현재 씬의 퀘스트 목표 위치들
+확인
+회복 소리 (힐링 효과음)
+🌙 BossWakeUp ({gameObject.name}): Start 호출됨 - Boss 잠들어있는 상태
+🎉 BossWakeUp ({gameObject.name}): Boss 완전히 깨어남! (hasWokenUp = true)
+🎉 Stage1 목표 달성! Village로 복귀합니다.
+🎉 Stage3 목표 달성! PeuangSadScene으로 이동합니다.
+🎯 BossAttack ({gameObject.name}): TryAttack 호출됨! Target: {target.name}
+🎯 EnemyAttack ({gameObject.name}): TryHit 호출됨! Target: {target.name}
+🎯 대화 이벤트: 궁극기 'Blade Dance' 활성화!
+🎯 대화 이벤트: 대시 기능 활성화!
+🎯 칼자루 획득! ({item.itemName}) Stage0 → Stage1 자동 진행
+👁️ BossWakeUp ({gameObject.name}): 깨어나기 애니메이션 완료!
+💤 BossWakeUp ({gameObject.name}): 대기 완료 - 이제 깨어나기 시작!
+💥 BossAttack ({gameObject.name}): Player에게 {damage} 데미지 적용!
+💥 EnemyAttack ({gameObject.name}): Player에게 {damage} 데미지 적용!
+💪 BossWakeUp ({gameObject.name}): Boss 체력을 {bossHealth}로 설정했습니다.
+🔧 Stage1 아이템 추가 완료!
+🔧 Stage3 아이템 추가 완료!
+🔵 BossAttack ({gameObject.name}): OnCollisionEnter2D - 충돌 감지됨! Target: {collision.gameObject.name}, Tag: {collision.gameObject.tag}
+🔵 BossAttack ({gameObject.name}): OnTriggerEnter2D - 트리거 감지됨! Target: {other.gameObject.name}, Tag: {other.gameObject.tag}
+🔵 EnemyAttack ({gameObject.name}): OnCollisionEnter2D - 충돌 감지됨! Target: {collision.gameObject.name}, Tag: {collision.gameObject.tag}
+🔵 EnemyAttack ({gameObject.name}): OnTriggerEnter2D - 트리거 감지됨! Target: {other.gameObject.name}, Tag: {other.gameObject.tag}
+😴 BossAttack ({gameObject.name}): Boss가 아직 깨어나지 않아서 공격하지 않음
+
+
+=== 영어/기타 문자열 (총 1053개) ===

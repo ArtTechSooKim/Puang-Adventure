@@ -177,21 +177,14 @@ public class SettingsPanelController : MonoBehaviour
         // Clamp value between 0 and 1
         value = Mathf.Clamp01(value);
 
-        // Option 1: Use Light reference
+        // Use BrightnessController for screen brightness
+        BrightnessController.SetGlobalBrightness(value);
+
+        // Option 1: Use Light reference (legacy support)
         if (lightReference != null)
         {
-            lightReference.intensity = value * 2f; // Adjust multiplier as needed
+            lightReference.intensity = value * 2f;
         }
-
-        // Option 2: Use RenderSettings (for global ambient light)
-        RenderSettings.ambientIntensity = value;
-
-        // TODO: If using Post Processing Volume, adjust exposure here
-        // Example:
-        // if (postProcessVolume != null && postProcessVolume.profile.TryGet<AutoExposure>(out var exposure))
-        // {
-        //     exposure.keyValue.value = value;
-        // }
     }
 
     /// <summary>

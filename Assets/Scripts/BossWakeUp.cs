@@ -14,18 +14,31 @@ public class BossWakeUp : MonoBehaviour
     [Tooltip("씬 시작 후 깨어나기까지 대기 시간 (초)")]
     [SerializeField] private float delayBeforeWakeUp = 0.5f;
 
+    [Header("Boss Health Settings")]
+    [Tooltip("Boss의 체력 (플레이어 공격 10 데미지 기준, 300 = 30대 공격)")]
+    [SerializeField] private int bossHealth = 300;
+
     [Header("References")]
     private Animator anim;
     private EnemyAI enemyAI;
+    private EnemyHealth enemyHealth;
     private bool hasWokenUp = false;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
         enemyAI = GetComponent<EnemyAI>();
+        enemyHealth = GetComponent<EnemyHealth>();
 
         if (anim == null)
             Debug.LogWarning($"⚠ BossWakeUp ({gameObject.name}): Animator를 찾을 수 없습니다.");
+
+        // Boss 체력 설정
+        if (enemyHealth != null)
+        {
+            enemyHealth.SetMaxHealth(bossHealth);
+            Debug.Log($"💪 BossWakeUp ({gameObject.name}): Boss 체력을 {bossHealth}로 설정했습니다.");
+        }
     }
 
     private void Start()

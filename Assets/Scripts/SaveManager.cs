@@ -194,8 +194,9 @@ public class SaveManager : MonoBehaviour
             }
             else
             {
-                // Same scene - apply immediately
-                ApplySaveData(saveData);
+                // Same scene - apply with slight delay to ensure all systems are ready
+                LogDebug($"🔄 SaveManager: Same scene - applying save data with delay");
+                StartCoroutine(ApplySaveDataDelayed(saveData));
             }
 
             Debug.Log($"✅ Game loaded from Slot {slotIndex}!");
@@ -252,6 +253,21 @@ public class SaveManager : MonoBehaviour
             {
                 data.playerStamina = PlayerPersistent.Instance.Stamina.GetCurrentStamina();
             }
+
+            // Save player abilities (Dash, Ultimate)
+            PlayerController playerController = PlayerPersistent.Instance.GetComponent<PlayerController>();
+            if (playerController != null)
+            {
+                data.isDashEnabled = playerController.IsDashEnabled();
+                LogDebug($"💾 Dash enabled: {data.isDashEnabled}");
+            }
+
+            PlayerUlt playerUlt = PlayerPersistent.Instance.GetComponent<PlayerUlt>();
+            if (playerUlt != null)
+            {
+                data.isUltEnabled = playerUlt.IsUltEnabled();
+                LogDebug($"💾 Ult enabled: {data.isUltEnabled}");
+            }
         }
         else
         {
@@ -269,7 +285,31 @@ public class SaveManager : MonoBehaviour
             data.inventoryData = new InventorySaveData();
         }
 
+        // Save quest stage
+        if (QuestManager.Instance != null)
+        {
+            data.questStage = (int)QuestManager.Instance.GetCurrentStage();
+            LogDebug($"💾 Quest Stage saved: {QuestManager.Instance.GetCurrentStage()}");
+        }
+        else
+        {
+            Debug.LogWarning("⚠ SaveManager: QuestManager.Instance is null! Quest progress will not be saved.");
+            data.questStage = 0;
+        }
+
         return data;
+    }
+
+    /// <summary>
+    /// Apply save data with a slight delay (for same-scene loads)
+    /// </summary>
+    private IEnumerator ApplySaveDataDelayed(SaveData data)
+    {
+        // Wait one frame to ensure all managers are initialized
+        yield return new WaitForEndOfFrame();
+
+        LogDebug("🔄 SaveManager: Applying save data after delay");
+        ApplySaveData(data);
     }
 
     /// <summary>
@@ -301,11 +341,72 @@ public class SaveManager : MonoBehaviour
             LogDebug($"⚡ Stamina restored to {data.playerStamina:F1}");
         }
 
+        // Restore player abilities (Dash, Ultimate)
+        PlayerController playerController = PlayerPersistent.Instance.GetComponent<PlayerController>();
+        if (playerController != null)
+        {
+            if (data.isDashEnabled)
+            {
+                playerController.EnableDash();
+                LogDebug("🏃 Dash enabled");
+            }
+            else
+            {
+                playerController.DisableDash();
+                LogDebug("🚫 Dash disabled");
+            }
+        }
+
+        PlayerUlt playerUlt = PlayerPersistent.Instance.GetComponent<PlayerUlt>();
+        if (playerUlt != null)
+        {
+            if (data.isUltEnabled)
+            {
+                playerUlt.EnableUlt();
+                LogDebug("⚡ Ultimate enabled");
+            }
+            else
+            {
+                playerUlt.DisableUlt();
+                LogDebug("🚫 Ultimate disabled");
+            }
+        }
+
         // Restore inventory data
         if (Inventory.instance != null && data.inventoryData != null)
         {
             data.inventoryData.LoadIntoInventory(Inventory.instance);
             LogDebug("📦 Inventory restored");
+
+            // 강제로 UI 갱신 (Hotbar + InventoryUI)
+            Inventory.instance.RefreshUIReferences();
+        }
+        else
+        {
+            Debug.LogWarning("⚠ SaveManager: Cannot restore inventory - Inventory.instance or inventoryData is null");
+        }
+
+        // Restore quest stage
+        LogDebug($"🔍 Attempting to restore quest stage (saved value: {data.questStage})");
+
+        if (QuestManager.Instance != null)
+        {
+            QuestStage currentStageBeforeLoad = QuestManager.Instance.GetCurrentStage();
+            QuestStage targetStage = (QuestStage)data.questStage;
+
+            LogDebug($"📜 Quest Stage before load: {currentStageBeforeLoad}");
+            LogDebug($"📜 Quest Stage from save: {targetStage}");
+
+            QuestManager.Instance.SetStage(targetStage);
+
+            QuestStage currentStageAfterLoad = QuestManager.Instance.GetCurrentStage();
+            LogDebug($"📜 Quest Stage after SetStage: {currentStageAfterLoad}");
+
+            Debug.Log($"✅ Quest Stage restored: {currentStageBeforeLoad} → {targetStage}");
+        }
+        else
+        {
+            Debug.LogWarning("⚠ SaveManager: Cannot restore quest progress - QuestManager.Instance is null");
         }
 
         LogDebug("✅ SaveManager: All save data applied successfully");

@@ -16,11 +16,15 @@ public class SaveData
     public int playerHealth;
     public float playerStamina;
 
+    // Player abilities
+    public bool isDashEnabled;
+    public bool isUltEnabled;
+
     // Inventory
     public InventorySaveData inventoryData;
 
-    // Quest progress (optional - can be added later)
-    // public int questStage;
+    // Quest progress
+    public int questStage; // QuestStage enum을 int로 저장
 
     /// <summary>
     /// Create default empty save data
@@ -32,7 +36,10 @@ public class SaveData
         playerPosition = Vector3.zero;
         playerHealth = 100;
         playerStamina = 100f;
+        isDashEnabled = false;
+        isUltEnabled = false;
         inventoryData = new InventorySaveData();
+        questStage = 0; // QuestStage.Stage0_VillageTutorial
     }
 
     /// <summary>

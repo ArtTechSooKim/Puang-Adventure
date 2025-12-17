@@ -13,6 +13,10 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private int maxHealth = 30;
     [SerializeField] private int scoreValue = 1; // 죽였을 때 올릴 점수
 
+    [Header("Invincibility Settings")]
+    [Tooltip("체크하면 이 적은 절대 죽지 않습니다")]
+    [SerializeField] private bool isInvincible = false;
+
     [Header("Death Animation")]
     [SerializeField] private float deathAnimationDuration = 1.0f; // 사망 애니메이션 길이
 
@@ -39,9 +43,29 @@ public class EnemyHealth : MonoBehaviour
         // 이미 죽었으면 추가 데미지 무시
         if (isDead) return;
 
+        // 무적이면 데미지 무시
+        if (isInvincible) return;
+
         if (amount <= 0) return;
         currentHealth = Mathf.Max(0, currentHealth - amount);
         if (currentHealth == 0) Die();
+    }
+
+    /// <summary>
+    /// 무적 상태 설정
+    /// </summary>
+    public void SetInvincible(bool invincible)
+    {
+        isInvincible = invincible;
+    }
+
+    /// <summary>
+    /// 최대 체력 설정
+    /// </summary>
+    public void SetMaxHealth(int health)
+    {
+        maxHealth = health;
+        currentHealth = maxHealth;
     }
 
     private void Die()

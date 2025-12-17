@@ -36,14 +36,22 @@ public class UnkillableBossController : MonoBehaviour
         // Boss를 무적으로 설정
         if (bossGameObject != null)
         {
-            // Boss의 Health 컴포넌트를 찾아서 무적 체력 설정
+            // Boss의 Health 컴포넌트를 찾아서 무적으로 설정
             var bossHealth = bossGameObject.GetComponent<EnemyHealth>();
             if (bossHealth != null)
             {
-                // 체력을 엄청나게 높게 설정하거나 무적 플래그 추가
+                bossHealth.SetInvincible(true);
                 if (showDebugMessages)
                     Debug.Log($"💪 Boss set to invincible!");
             }
+            else
+            {
+                Debug.LogWarning("⚠ UnkillableBossController: Boss has no EnemyHealth component!");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("⚠ UnkillableBossController: Boss GameObject is not assigned!");
         }
 
         // Stage 확인 및 진행

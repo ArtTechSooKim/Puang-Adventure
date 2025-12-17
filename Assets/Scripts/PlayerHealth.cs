@@ -102,16 +102,6 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public void Heal(int amount)
-    {
-        if (amount <= 0) return;
-        currentHealth = Mathf.Min(maxHealth, currentHealth + amount);
-        UpdateUI();
-
-        // 🔊 회복 사운드 재생
-        AudioManager.I?.PlayPlayerHealSound();
-    }
-
     private void UpdateUI()
     {
         if (hpSlider != null) hpSlider.value = currentHealth;
@@ -167,6 +157,14 @@ public class PlayerHealth : MonoBehaviour
         // 사망 애니메이션이 재생될 시간 확보 (애니메이션 길이에 맞춰 조정)
         yield return new WaitForSeconds(1.5f);
 
+        // UnkillableBossScene에서는 GameManager 호출하지 않음 (ignoreDeathProcessing으로 이미 처리됨)
+        string currentScene = SceneManager.GetActiveScene().name;
+        if (currentScene == "05_UnkillableBossScene" || ignoreDeathProcessing)
+        {
+            Debug.Log("⚠ PlayerHealth: 특수 씬 또는 ignoreDeathProcessing으로 GameManager.OnPlayerDeath() 호출 건너뜀");
+            yield break;
+        }
+
         // GameManager에 사망 알림
         GameManager.I?.OnPlayerDeath();
         Debug.Log("✅ PlayerHealth: GameManager.OnPlayerDeath() 호출됨");
@@ -177,16 +175,56 @@ public class PlayerHealth : MonoBehaviour
         return currentHealth;
     }
 
+    /// <summary>
+    /// 체력 회복
+    /// </summary>
+    public void Heal(int amount)
+    {
+        if (amount <= 0) return;
+        if (isDead) return; // 사망 상태에서는 회복 불가
+
+        int previousHealth = currentHealth;
+        currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
+        int actualHealed = currentHealth - previousHealth;
+
+        Debug.Log($"💊 PlayerHealth: 체력 {actualHealed} 회복! ({previousHealth} → {currentHealth})");
+
+        UpdateUI();
+    }
+
+    /// <summary>
+    /// 체력이 최대치인지 확인
+    /// </summary>
+    public bool IsFullHealth()
+    {
+        return currentHealth >= maxHealth;
+    }
+
     public void ResetHealth()
     {
         currentHealth = maxHealth;
-        isDead = false; // 부활 시 사망 상태 해제
+        isDead = false;
         UpdateUI();
 
-        // PlayerController 재활성화
+        // PlayerController 재활성화 및 궁극기 상태 복구
         if (playerController != null)
         {
             playerController.enabled = true;
+            playerController.SetUltActive(false);
+        }
+
+        // SpriteRenderer 복구 (궁극기로 투명해진 경우)
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        if (sr != null)
+        {
+            sr.enabled = true;
+        }
+
+        // Collider 복구
+        Collider2D col = GetComponent<Collider2D>();
+        if (col != null)
+        {
+            col.enabled = true;
         }
 
         // Rigidbody2D 복구
@@ -195,8 +233,6 @@ public class PlayerHealth : MonoBehaviour
         {
             rb.bodyType = RigidbodyType2D.Dynamic;
         }
-
-        Debug.Log("✅ PlayerHealth: 체력 리셋 및 부활");
     }
 
     /// <summary>

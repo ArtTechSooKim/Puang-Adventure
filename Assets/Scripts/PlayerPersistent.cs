@@ -25,6 +25,16 @@ public class PlayerPersistent : MonoBehaviour
 
     private void Awake()
     {
+        // TitleScene에서는 기존 Instance를 삭제하고 새로운 Player로 교체
+        string currentScene = SceneManager.GetActiveScene().name;
+        if (currentScene == "00_TitleScene" && Instance != null)
+        {
+            Debug.Log($"🔄 PlayerPersistent: TitleScene에서 기존 Player 삭제 - 새로운 게임 시작");
+            SceneManager.sceneLoaded -= OnSceneLoaded; // 이벤트 구독 해제
+            Destroy(Instance.gameObject);
+            Instance = null;
+        }
+
         // Singleton pattern
         if (Instance == null)
         {

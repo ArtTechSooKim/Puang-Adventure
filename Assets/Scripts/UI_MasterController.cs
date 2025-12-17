@@ -45,6 +45,13 @@ public class UI_MasterController : MonoBehaviour
     [Tooltip("Button to switch to Save Panel")]
     [SerializeField] private Button buttonSave;
 
+    [Header("=== SavePanel Buttons ===")]
+    [Tooltip("Button to return to title scene")]
+    [SerializeField] private Button buttonReturnToTitle;
+
+    [Tooltip("Button to quit game")]
+    [SerializeField] private Button buttonQuitGame;
+
     [Header("=== HUD Reference ===")]
     [Tooltip("HUD Canvas - will disable interaction when Master UI is open")]
     [SerializeField] private Canvas hudCanvas;
@@ -158,6 +165,8 @@ public class UI_MasterController : MonoBehaviour
         if (buttonSave == null)
             buttonSave = manager.buttonSave;
 
+        // Note: buttonReturnToTitle and buttonQuitGame are in SavePanel and won't be in UIReferenceManager
+
         LogDebug("✅ UI_MasterController: Auto-found references from UIReferenceManager");
     }
 
@@ -186,6 +195,17 @@ public class UI_MasterController : MonoBehaviour
         else
             Debug.LogWarning("⚠ UI_MasterController: buttonSave is not assigned!");
 
+        // Setup SavePanel buttons
+        if (buttonReturnToTitle != null)
+            buttonReturnToTitle.onClick.AddListener(() => { AudioManager.I?.PlayUIClickSound(); OnReturnToTitleClicked(); });
+        else
+            Debug.LogWarning("⚠ UI_MasterController: buttonReturnToTitle is not assigned!");
+
+        if (buttonQuitGame != null)
+            buttonQuitGame.onClick.AddListener(() => { AudioManager.I?.PlayUIClickSound(); OnQuitGameClicked(); });
+        else
+            Debug.LogWarning("⚠ UI_MasterController: buttonQuitGame is not assigned!");
+
         LogDebug("✅ UI_MasterController: Button listeners setup complete");
     }
 
@@ -194,6 +214,13 @@ public class UI_MasterController : MonoBehaviour
     /// </summary>
     private void ToggleMasterUI()
     {
+        // Block UI opening if in GameOver state
+        if (GameManager.I != null && GameManager.I.IsGameOver())
+        {
+            LogDebug("⏸ UI_MasterController: Cannot open UI during GameOver - user must return to TitleScene");
+            return;
+        }
+
         if (isMasterUIOpen)
         {
             CloseMasterUI();
@@ -267,6 +294,13 @@ public class UI_MasterController : MonoBehaviour
     /// </summary>
     private void OpenInventoryDirect()
     {
+        // Block UI opening if in GameOver state
+        if (GameManager.I != null && GameManager.I.IsGameOver())
+        {
+            LogDebug("⏸ UI_MasterController: Cannot open Inventory during GameOver - user must return to TitleScene");
+            return;
+        }
+
         if (isMasterUIOpen)
         {
             // If already open, switch to Inventory panel
@@ -383,6 +417,37 @@ public class UI_MasterController : MonoBehaviour
     public PanelType GetCurrentActivePanel()
     {
         return currentActivePanel;
+    }
+
+    /// <summary>
+    /// Called when Return to Title button is clicked
+    /// </summary>
+    private void OnReturnToTitleClicked()
+    {
+        LogDebug("🏠 UI_MasterController: Return to Title button clicked");
+
+        // Resume time scale before scene transition
+        Time.timeScale = 1f;
+
+        // Load title scene
+        UnityEngine.SceneManagement.SceneManager.LoadScene("00_TitleScene");
+    }
+
+    /// <summary>
+    /// Called when Quit Game button is clicked
+    /// </summary>
+    private void OnQuitGameClicked()
+    {
+        LogDebug("👋 UI_MasterController: Quit Game button clicked");
+
+        // Resume time scale before quitting
+        Time.timeScale = 1f;
+
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 
     /// <summary>

@@ -55,7 +55,57 @@ public class SaveDataPanelController : MonoBehaviour
             saveDataPanel.SetActive(false);
         }
 
+        // 씬 로드 시 저장 데이터 UI 최신화 (패널이 닫혀있어도 실행)
+        RefreshSlotsUIIfReady();
+
         LogDebug("✅ SaveDataPanelController: Initialization complete");
+    }
+
+    private void OnEnable()
+    {
+        // 씬 전환 이벤트 구독
+        UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        // 씬 전환 이벤트 구독 해제
+        UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    /// <summary>
+    /// 씬이 로드될 때마다 저장 데이터 UI 최신화
+    /// </summary>
+    private void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode)
+    {
+        LogDebug($"🔄 SaveDataPanelController: Scene '{scene.name}' loaded - refreshing slots UI");
+
+        // 약간의 딜레이 후 최신화 (SaveManager가 완전히 초기화될 때까지 대기)
+        StartCoroutine(DelayedRefresh());
+    }
+
+    /// <summary>
+    /// 딜레이 후 슬롯 UI 최신화
+    /// </summary>
+    private System.Collections.IEnumerator DelayedRefresh()
+    {
+        yield return new WaitForSeconds(0.2f);
+        RefreshSlotsUIIfReady();
+    }
+
+    /// <summary>
+    /// SaveManager가 준비되었을 때만 슬롯 UI 최신화
+    /// </summary>
+    private void RefreshSlotsUIIfReady()
+    {
+        if (SaveManager.Instance != null && slotButtons != null && slotButtons.Length > 0)
+        {
+            RefreshSlotsUI();
+        }
+        else
+        {
+            LogDebug("⚠ SaveDataPanelController: SaveManager or slot buttons not ready yet");
+        }
     }
 
     /// <summary>

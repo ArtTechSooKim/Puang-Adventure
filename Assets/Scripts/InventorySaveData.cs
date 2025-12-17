@@ -63,6 +63,22 @@ public class InventorySaveData
 
             // Load actual ItemData from Resources
             ItemData loadedItem = Resources.Load<ItemData>("Items/" + itemIDs[i]);
+
+            // Fallback: Try alternative naming conventions
+            if (loadedItem == null)
+            {
+                // Try capitalizing first letter: weapon_tier1 → Weapon_tier1
+                string altID1 = char.ToUpper(itemIDs[i][0]) + itemIDs[i].Substring(1);
+                loadedItem = Resources.Load<ItemData>("Items/" + altID1);
+
+                if (loadedItem == null)
+                {
+                    // Try converting to PascalCase: weapon_tier1 → Item_WeaponTier1
+                    string altID2 = ConvertToPascalCase(itemIDs[i]);
+                    loadedItem = Resources.Load<ItemData>("Items/" + altID2);
+                }
+            }
+
             if (loadedItem != null)
             {
                 ItemData runtimeCopy = loadedItem.CreateRuntimeCopy();
@@ -78,5 +94,34 @@ public class InventorySaveData
 
         // Refresh UI
         inventory.RefreshUIReferences();
+    }
+
+    /// <summary>
+    /// Convert snake_case or lowercase to PascalCase with "Item_" prefix
+    /// Example: weapon_tier1 → Item_WeaponTier1
+    /// </summary>
+    private static string ConvertToPascalCase(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+            return input;
+
+        // Split by underscore
+        string[] parts = input.Split('_');
+        System.Text.StringBuilder result = new System.Text.StringBuilder("Item_");
+
+        foreach (string part in parts)
+        {
+            if (string.IsNullOrEmpty(part))
+                continue;
+
+            // Capitalize first letter of each part
+            result.Append(char.ToUpper(part[0]));
+            if (part.Length > 1)
+            {
+                result.Append(part.Substring(1));
+            }
+        }
+
+        return result.ToString();
     }
 }
